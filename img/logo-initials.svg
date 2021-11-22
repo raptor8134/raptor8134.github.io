@@ -2,13 +2,13 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="100mm"
-   height="100mm"
-   viewBox="0 0 100 100"
+   width="104.27375mm"
+   height="104.27375mm"
+   viewBox="0 0 104.27375 104.27375"
    version="1.1"
    id="svg5"
    inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20, custom)"
-   sodipodi:docname="logo.svg"
+   sodipodi:docname="logo-initials.svg"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -24,8 +24,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.528944"
-     inkscape:cx="68.347828"
-     inkscape:cy="168.08987"
+     inkscape:cx="76.196381"
+     inkscape:cy="175.93843"
      inkscape:window-width="1892"
      inkscape:window-height="1010"
      inkscape:window-x="14"
@@ -37,25 +37,26 @@
     <marker
        style="overflow:visible"
        id="Arrow1Lstart"
-       refX="0.0"
-       refY="0.0"
+       refX="0"
+       refY="0"
        orient="auto"
        inkscape:stockid="Arrow1Lstart"
        inkscape:isstock="true">
       <path
-         transform="scale(0.8) translate(12.5,0)"
-         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt"
-         d="M 0.0,0.0 L 5.0,-5.0 L -12.5,0.0 L 5.0,5.0 L 0.0,0.0 z "
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
          id="path1086" />
     </marker>
   </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1">
+     id="layer1"
+     transform="translate(2.0255552,2.1368754)">
     <path
        sodipodi:type="star"
-       style="fill:none;stroke-width:9.99825963;stroke-miterlimit:0;stroke-dasharray:none;stroke:#ffffff;stroke-opacity:1;stroke-linejoin:miter;stroke-linecap:round"
+       style="fill:none;stroke:#ffffff;stroke-width:19.9965;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1"
        id="path31"
        inkscape:flatsided="true"
        sodipodi:sides="7"
@@ -71,20 +72,20 @@
        transform="matrix(0.20259062,0,0,0.19751125,37.195134,37.811794)"
        inkscape:transform-center-x="-2.6047536" />
     <path
-       style="fill:none;stroke:#ffffff;stroke-width:2;stroke-linecap:butt;stroke-linejoin:round;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none;fill-opacity:1"
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:4;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1"
        d="M -1.5717189e-6,72.252093 35.689585,-1.2071857e-6 100,50 35.689585,100 -1.5717189e-6,27.747907 80.193773,9.9031122 V 90.096887 Z"
        id="path4871" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:19.5415px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.261715"
-       x="26.628162"
-       y="57.383999"
+       style="font-style:normal;font-weight:normal;font-size:23.2736px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26563"
+       x="23.497351"
+       y="56.03524"
        id="text4089"
-       transform="scale(0.98915977,1.010959)"><tspan
+       transform="scale(0.97233834,1.0284486)"><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:19.5415px;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';stroke-width:0.261715;fill:#ffffff;fill-opacity:1"
-         x="26.628162"
-         y="57.383999"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:23.2736px;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';fill:#ffffff;fill-opacity:1;stroke-width:0.26563"
+         x="23.497351"
+         y="56.03524"
          id="tspan23385">J.N.</tspan></text>
   </g>
 </svg>
