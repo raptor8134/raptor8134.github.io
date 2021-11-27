@@ -1,0 +1,24 @@
+.footer {
+	width: 100%;
+	height: 80px;
+	display: flex;
+	align-items: center;
+	background-color: #202020;
+}
+
+.footer-interior {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.footer-item {
+	color: white;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.footer-icon {
+	width: 32px;
+	height: 32px;
+}
