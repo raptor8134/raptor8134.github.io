@@ -23,7 +23,7 @@ h1 {
 
 h2 {
 	font-family: 'Roboto', sans-serif;
-	font-size: 36px;
+	font-size: 40px;
 	text-align: center;
 	line-height: 30px;
 	font-weight: 300;
@@ -63,7 +63,7 @@ hr {
 }
 
 .main-404 {
-	padding-top: 20px;
+	padding-top: 100px;
 	height: calc(100vh -  180px);
 	min-height: 80px;
 }
