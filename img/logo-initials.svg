@@ -24,8 +24,8 @@
      inkscape:document-units="mm"
      showgrid="false"
      inkscape:zoom="1.528944"
-     inkscape:cx="76.196381"
-     inkscape:cy="175.93843"
+     inkscape:cx="85.353028"
+     inkscape:cy="253.11588"
      inkscape:window-width="1892"
      inkscape:window-height="1010"
      inkscape:window-x="14"
@@ -56,7 +56,7 @@
      transform="translate(2.0255552,2.1368754)">
     <path
        sodipodi:type="star"
-       style="fill:none;stroke:#ffffff;stroke-width:19.9965;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;stroke:#ffffff;stroke-width:19.9965;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill;opacity:1"
        id="path31"
        inkscape:flatsided="true"
        sodipodi:sides="7"
@@ -72,18 +72,18 @@
        transform="matrix(0.20259062,0,0,0.19751125,37.195134,37.811794)"
        inkscape:transform-center-x="-2.6047536" />
     <path
-       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:4;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:none;fill-opacity:1;stroke:#ffffff;stroke-width:4;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:2;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill;opacity:1"
        d="M -1.5717189e-6,72.252093 35.689585,-1.2071857e-6 100,50 35.689585,100 -1.5717189e-6,27.747907 80.193773,9.9031122 V 90.096887 Z"
        id="path4871" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-weight:normal;font-size:23.2736px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26563"
+       style="font-style:normal;font-weight:normal;font-size:23.2736px;line-height:1.25;font-family:sans-serif;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26563;stroke-linejoin:round;paint-order:stroke markers fill;opacity:1"
        x="23.497351"
        y="56.03524"
        id="text4089"
        transform="scale(0.97233834,1.0284486)"><tspan
          sodipodi:role="line"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:23.2736px;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';fill:#ffffff;fill-opacity:1;stroke-width:0.26563"
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:23.2736px;font-family:'Liberation Mono';-inkscape-font-specification:'Liberation Mono';fill:#ffffff;fill-opacity:1;stroke-width:0.26563;stroke-linejoin:round;paint-order:stroke markers fill"
          x="23.497351"
          y="56.03524"
          id="tspan23385">J.N.</tspan></text>

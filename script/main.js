@@ -7,7 +7,7 @@ var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
 var currentScrollPos = window.pageYOffset;
 	if (currentScrollPos < 40) {
-		document.getElementById("top-bar").style.top = "-" + currentScrollPos + "px";
+		document.getElementById("top-bar").style.top = "-" + currentScrollPos/2 + "px";
 	} else if (prevScrollpos > currentScrollPos) {
 		document.getElementById("top-bar").style.top = "0";
 	} else {

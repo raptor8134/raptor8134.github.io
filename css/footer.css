@@ -12,13 +12,19 @@
 	justify-content: center;
 }
 
-.footer-item {
-	color: white;
-	padding-left: 10px;
-	padding-right: 10px;
+.footer-interior a {
+	text-decoration: none;
 }
 
-.footer-icon {
-	width: 32px;
-	height: 32px;
+.footer-item {
+	color: white;
+	padding-left: 30px;
+	padding-right: 30px;
+	font-size: 40px;
+	font-family: "Font Awesome 5 Brands" !important;
+}
+
+.footer-icon { /* for images proper, if used */
+	width: 40px;
+	height: 40px;
 }
