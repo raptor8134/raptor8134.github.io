@@ -41,35 +41,77 @@
                 <div class="whole">
                     <div class="half">
                         <video autoplay loop muted src="img/winder.webm"></video>
+                        <div class="caption">Filament winder in action</div>
+                    </div>
+                    <div class="half">
                         <img src="img/gcode_viewer.png">
+                        <div class="caption">Plotted nosecone gcode</div>
+                    </div>
+                </div>
+                <div class="p">
+                    For my university rocket team, I built a heavily modified 
+                    version of Andrew Reilley's <a href="https://reilley.net/winder"
+                    >Contraption filament winder</a> as an Ender 3 conversion, 
+                    adding a fourth axis from the bed gantry, a huge gear reduction 
+                    replacing the belt drive to run large mandrels on a NEMA 17 
+                    instead of the designed NEMA 23, and some special configuration 
+                    of Marlin firmware to glue it all together. Since the associated 
+                    plotting software was written in TypeScript (eww) and doesn't 
+                    suppport non-cylindrical mandrels such as nosecones, I rewrote 
+                    and extended the <a 
+                    href="https://github.com/Highlander-Space-Program/gcode_gen"
+                    >plotting code in Python</a>. Overall the hardest technical 
+                    problem througout all of this has just been getting samples to 
+                    release from the mandrel, if you know a good mold release system 
+                    please contact me.
+                </div>
+
+                <h3>Other projects<h3>
+                <div class="p">
+                    Placeholder div to add more projects (they exist just haven't been
+                    properly documented. This website will be like 20 pages long inshallah.
+                </div> 
+
+                <h3>Code/programming<h3>
+                    <div class="p">
+                    Some side projects from my coding days, sadly I shower too often to
+                    make a career out of it. Besides, hardware is way more based,
+                    making real stuff >>> typing in the computer.
+                    </div>
+                <div class="whole skinny">
+                    <div class="p half skinny">
+                        <h4><a href="https://github.com/raptor8134/pong2">pong2</a></h4>
+                        Pong, but with twice the paddles. WASD and arrow keys battle for 
+                        the best score defending a ball of increasing speed.
                     </div>
                     <div class="p half">
-                        For my university rocket team, I built a heavily modified 
-                        version of Andrew Reilley's <a href="https://reilley.net/winder"
-                        >Contraption filament winder</a> as an Ender 3 conversion, 
-                        adding a fourth axis from the bed gantry, a huge gear reduction 
-                        replacing the belt drive to run large mandrels on a NEMA 17 
-                        instead of the designed NEMA 23, and some special configuration 
-                        of Marlin firmware to glue it all together. Since the associated 
-                        plotting software was written in TypeScript (eww) and doesn't 
-                        suppport non-cylindrical mandrels such as nosecones, I rewrote 
-                        and extended the <a 
-                        href="https://github.com/Highlander-Space-Program/gcode_gen"
-                        >plotting code in Python</a>. Overall the hardest technical 
-                        problem througout all of this has just been getting samples to 
-                        release from the mandrel, if you know a good mold release system 
-                        please contact me.
+                        <img src="img/pong2.png">
                     </div>
                 </div>
-
-                <div>
-                <h3>Code<h3>
+                <div class="whole skinny">
+                    <div class="p half skinny">
+                        <h4><a href="soy.py">soy.py</a> / <a href="https://github.com/raptor8134/wojak-meme-bot">wojak-meme-bot</a></h4>
+                        Covid-era Discord server/reddit WMDs constructed for the total 
+                        annihilation of all dissenting and cringe opinions. Funniest program
+                        I have ever written.
+                    </div>
+                    <div class="p half">
+                        <img src="img/stupidopinion.jpg" style="width:400px;height:400px;">
+                    </div>
                 </div>
-
-                <div>
-                <h3>Other stuff idk<h3>
+                <div class="whole skinny">
+                    <div class="p half skinny">
+                        <h4><a href="https://github.com/raptor8134/cweather">cweather</a></h4>
+                        Command line utility in C using ip geolocation and a weather API to
+                        deliver weather data in text form for widgets.
+                    </div>
+                    <div class="p half skinny">
+                        <h4><a href="https://github.com/raptor8134/xbacklight-auto">xbacklight-auto</a></h4>
+                        Another utility in C that uses the V4L2 API to get camera data and
+                        make an estimate of the surrounding brightness, then change the
+                        screen brightness to match.
+                    </div>
                 </div>
-
 			</div>
 		</section>
 		<div id="footer-placeholder"></div>

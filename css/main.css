@@ -10,6 +10,13 @@
 	/* dark theme */
 }
 
+a {
+    text-decoration: none;
+}
+a:visited {
+ color: blue;
+}
+
 body, html { 
 	margin: 0px !important;
 	padding: 0px !important;
@@ -20,14 +27,16 @@ h1 {
 	font-family: 'Roboto Mono', monospace;
 	font-size: 20px;
 	font-weight: 300;
+    text-indent: 0px;
 }
 
-h2, h3 {
+h2, h3, h4 {
 	font-family: 'Roboto', sans-serif;
 	font-size: 40px;
 	text-align: center;
 	line-height: 30px;
 	font-weight: 300;
+    text-indent: 0px;
 }
 
 h2 {
@@ -37,7 +46,11 @@ h2 {
 h3 {
     font-size: 25px;
     font-weight: 400;
+}
 
+h4 {
+    font-size: 20px;
+    font-weight: 400;
 }
 
 /* 
@@ -48,20 +61,26 @@ h3 {
 	text-indent: 30px;
 	font-family: 'Roboto', sans-serif;
 	font-size: 20px;
-	line-height: 30px;
-	padding-top: 20px;
+	line-height: 35px;
+	padding-top: 10px;
+    padding-bottom: 20px;
 	font-weight: 300;
     text-align: left;
-    flex: 1;
+    max-width: 800px;
+    margin: auto;
 }
 
 img, video {
-    width: 70%;
+    height: 400px;
+    @media (max-width: 1000px) {
+        width: 80%;
+        height: auto;
+    }
     margin-left: auto;
     margin-right: auto;
     display: block;
-    padding-bottom: 30px;
-    padding-top: 20px;
+    padding-bottom: 15px;
+    padding-top: 25px;
 }
 
 hr {
@@ -92,32 +111,51 @@ hr {
 	min-height: 80px;
 }
 
+.skinny {
+    @media (min-width: 1000px) {
+        max-width: max(75%, 400px);
+    }
+}
+
 .whole {
     resize: both;
     flex-direction: row;
     align-items: flex-start;
+    padding-bottom: 30px;
 
     margin-left: auto;
     margin-right: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /*grid-template-columns: 1fr 1fr;*/
+    grid-template-rows: 100%;
+    grid-template-columns: 50% 50%;
+
     grid-gap: 20px;
+    justify-items: center;
+    align-items: center;
+
     @media (max-width: 1000px) {
         display: block;
     }
 }
 
 .half {
-    margin-top: 0px;
+    margin-top: auto;
     align-self: flex-start;
     display: inline-block;
 
     @media (max-width: 1000px) {
-        width: 80%;
         margin-left: auto;
         margin-right: auto;
         display: block;
     }
+}
+
+.caption {
+	font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    text-align: center;
 }
 
 #hello {
