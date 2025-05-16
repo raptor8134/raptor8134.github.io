@@ -2,59 +2,74 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<meta name="viewport" content="width=device-width, initial-scale=0.7"> 
+        <!--<meta name="viewport" content="width=device-width, initial-scale=0.7"> -->
 		<title>James Notley</title>
 		<link rel="shortcut icon" href="img/icon.svg">
 		<link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 	</head>
 	<body>
 		<div id="top-bar-placeholder"></div>
 		<section id="hello">
-			<div class="main"> 
+			<div class="main" style="padding-bottom: 20px; min-height: 0px;"> 
 				<h2>
 					Hi,&nbsp;I'm
 					<span style="font-weight:500;">James&nbsp;Notley</span>
 				</h2>
-				<hr>
-				<div class="p">
-					Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do 
-					eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
-					ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-					aliquip ex ea commodo consequat. Duis aute irure dolor in 
-					reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-					pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-					culpa qui officia deserunt mollit anim id est laborum.
-				</div>
 			</div>
 		</section>
 		<section id="about">
 			<div class="main">
-				<h2>About Me</h2>
-				<hr>
-				<div class="p">
-					Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do 
-					eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
-					ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-					aliquip ex ea commodo consequat. Duis aute irure dolor in 
-					reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-					pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-					culpa qui officia deserunt mollit anim id est laborum.
-				</div>
+				<h2>About</h2>
+                <hr>
+                <div class="whole">
+                    <div class="half">
+                        <img src="img/professional_mf.jpg">
+                    </div>
+                    <div class="p half">
+                        PLEASE PLEASE PLEASE HIRE ME I LOVE MONEY AND HAVE NO MORALS!!!
+                        @lockheedmartin
+                     </div>
+                </div>
 			</div>
 		</section>
 		<section id="projects">
 			<div class="main">
-				<h2>My Projects</h2>
+				<h2>Projects</h2>
 				<hr>
-				<div class="p">
-					Lorem ipsum dolor sit amet, consectetur adipisci elit, sed do 
-					eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim 
-					ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
-					aliquip ex ea commodo consequat. Duis aute irure dolor in 
-					reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla 
-					pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
-					culpa qui officia deserunt mollit anim id est laborum.
-				</div>
+                <h3>Contraption winder build + software</h3>
+                <div class="whole">
+                    <div class="half">
+                        <video autoplay loop muted src="img/winder.webm"></video>
+                        <img src="img/gcode_viewer.png">
+                    </div>
+                    <div class="p half">
+                        For my university rocket team, I built a heavily modified 
+                        version of Andrew Reilley's <a href="https://reilley.net/winder"
+                        >Contraption filament winder</a> as an Ender 3 conversion, 
+                        adding a fourth axis from the bed gantry, a huge gear reduction 
+                        replacing the belt drive to run large mandrels on a NEMA 17 
+                        instead of the designed NEMA 23, and some special configuration 
+                        of Marlin firmware to glue it all together. Since the associated 
+                        plotting software was written in TypeScript (eww) and doesn't 
+                        suppport non-cylindrical mandrels such as nosecones, I rewrote 
+                        and extended the <a 
+                        href="https://github.com/Highlander-Space-Program/gcode_gen"
+                        >plotting code in Python</a>. Overall the hardest technical 
+                        problem througout all of this has just been getting samples to 
+                        release from the mandrel, if you know a good mold release system 
+                        please contact me.
+                    </div>
+                </div>
+
+                <div>
+                <h3>Code<h3>
+                </div>
+
+                <div>
+                <h3>Other stuff idk<h3>
+                </div>
+
 			</div>
 		</section>
 		<div id="footer-placeholder"></div>

@@ -16,7 +16,7 @@
 }
 
 .top-bar-padding { flex-grow: 1; }
-.top-bar-padding-right { width: 30px; }
+.top-bar-padding-right { width: 20px; }
 
 .top-bar a {
 	text-decoration: none;

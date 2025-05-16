@@ -6,6 +6,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
+
 	/* dark theme */
 }
 
@@ -21,12 +22,22 @@ h1 {
 	font-weight: 300;
 }
 
-h2 {
+h2, h3 {
 	font-family: 'Roboto', sans-serif;
 	font-size: 40px;
 	text-align: center;
 	line-height: 30px;
 	font-weight: 300;
+}
+
+h2 {
+	font-size: 40px;
+}
+
+h3 {
+    font-size: 25px;
+    font-weight: 400;
+
 }
 
 /* 
@@ -37,9 +48,20 @@ h2 {
 	text-indent: 30px;
 	font-family: 'Roboto', sans-serif;
 	font-size: 20px;
-	line-height: 25px;
+	line-height: 30px;
 	padding-top: 20px;
 	font-weight: 300;
+    text-align: left;
+    flex: 1;
+}
+
+img, video {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    padding-bottom: 30px;
+    padding-top: 20px;
 }
 
 hr {
@@ -47,6 +69,7 @@ hr {
 	width: 180px;
 	height: 1px;
 	border-width: 0;
+    margin-bottom: 30px
 }
 
 #top-bar-template {
@@ -55,17 +78,46 @@ hr {
 
 .main {
 	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-bottom: 60px;
 	width: 80%;
 	min-width: 400px;
 	margin: auto;
-	min-height: calc(100vh - 40px);
+    min-height: 600px;
+	/* min-height: calc(100vh - 40px); */
 }
 
 .main-404 {
 	padding-top: 100px;
 	height: calc(100vh -  180px);
 	min-height: 80px;
+}
+
+.whole {
+    resize: both;
+    flex-direction: row;
+    align-items: flex-start;
+
+    margin-left: auto;
+    margin-right: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    @media (max-width: 1000px) {
+        display: block;
+    }
+}
+
+.half {
+    margin-top: 0px;
+    align-self: flex-start;
+    display: inline-block;
+
+    @media (max-width: 1000px) {
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
 }
 
 #hello {
@@ -86,6 +138,7 @@ hr {
  * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blink
  * yes i know they said not to do this but whatever
  */
+
 blink {
 	animation: 1s linear infinite condemned_blink_effect;
 }
