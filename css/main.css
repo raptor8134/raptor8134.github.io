@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@300;500&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Roboto:wght@300;400;500&display=swap');
 :root { --bar-height: 80px }
 @media screen and (resolution >= 3.125dppx) and (max-width <=1440px) {
 	:root { --bar-height: 160px }
@@ -32,30 +31,33 @@ h1 {
 
 h2, h3, h4 {
 	font-family: 'Roboto', sans-serif;
-	font-size: 40px;
 	text-align: center;
 	line-height: 30px;
 	font-weight: 300;
     text-indent: 0px;
+    padding-top: 10px;
 }
 
 h2 {
 	font-size: 40px;
 }
 
-h3 {
-    font-size: 25px;
-    font-weight: 400;
+h3, h4 {
+    font-size: 30px;
+    margin-bottom: 0px;
+    font-weight: 300;
 }
 
 h4 {
+    font-weight: 500;
     font-size: 20px;
-    font-weight: 400;
 }
 
 /* 
  * hack to get the simplified mode thingy to go away on chrome mobile 
  * man i hate mobile
+ *
+ * Maybe actually change this back to normal paragraphs
  */
 .p {
 	text-indent: 30px;
@@ -63,7 +65,7 @@ h4 {
 	font-size: 20px;
 	line-height: 35px;
 	padding-top: 10px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
 	font-weight: 300;
     text-align: left;
     max-width: 800px;
@@ -71,9 +73,9 @@ h4 {
 }
 
 img, video {
-    height: 400px;
+    width: 100%;
     @media (max-width: 1000px) {
-        width: 80%;
+        width: 70%;
         height: auto;
     }
     margin-left: auto;
@@ -81,6 +83,8 @@ img, video {
     display: block;
     padding-bottom: 15px;
     padding-top: 25px;
+
+    object-fit: contain;
 }
 
 hr {
@@ -88,7 +92,7 @@ hr {
 	width: 180px;
 	height: 1px;
 	border-width: 0;
-    margin-bottom: 30px
+    margin-bottom: 15px
 }
 
 #top-bar-template {
@@ -131,7 +135,7 @@ hr {
     grid-template-columns: 50% 50%;
 
     grid-gap: 20px;
-    justify-items: center;
+    justify-items: space-evenly;
     align-items: center;
 
     @media (max-width: 1000px) {
@@ -158,18 +162,27 @@ hr {
     text-align: center;
 }
 
+.pdfembed {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: min(1000px, 80vw);
+    padding-top: 10px;
+}
+
+canvas {
+    border-width: 1px;
+    border-color: gray;
+    border-style: solid;
+}
+
 #hello {
 	background: #f0f0f0;
 	padding-top: 80px;
 }
-
-#about {
-	background: #e8e8e8;
-}
-
-#projects {
-	background: #f0f0f0;
-}
+#about { background: #e8e8e8; }
+#projects { background: #f0f0f0; }
+#resume { background: #e8e8e8; }
 
 /* 
  * blinking bs for the top bar cursor thanks to 
