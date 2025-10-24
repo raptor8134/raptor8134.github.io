@@ -3,7 +3,8 @@
 	height: 80px;
 	display: flex;
 	align-items: center;
-	background-color: #202020;
+	background-color: #003F87;
+    padding-top: 15px;
 }
 
 .footer-interior {

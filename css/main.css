@@ -9,16 +9,33 @@
 	/* dark theme */
 }
 
-a {
+a[href] {
     text-decoration: none;
+    color: #003F87;
+    font-weight: 500;
 }
+
+html {
+    background-color: #003F87;
+}
+
+/* https://stackoverflow.com/questions/18168286/how-can-i-style-external-links-like-wikipedia */
+a[href^="https://"]:after,
+a[href^="http://"]:after {
+    content: url(/img/Icon_External_Link.png);
+    margin: 0 0 0 5px;
+    color: #003F87;
+}
+    
+/*
 a:visited {
- color: blue;
+ color: purple;
 }
+*/
 
 body, html { 
 	margin: 0px !important;
-	padding: 0px !important;
+    padding: 0px !important;
 	scroll-behavior: smooth;
 }
 
@@ -73,7 +90,7 @@ h4 {
 }
 
 img, video {
-    width: 100%;
+    width: 75%;
     @media (max-width: 1000px) {
         width: 70%;
         height: auto;
@@ -117,7 +134,7 @@ hr {
 
 .skinny {
     @media (min-width: 1000px) {
-        max-width: max(75%, 400px);
+        max-width: max(75%, 600px);
     }
 }
 
@@ -136,7 +153,7 @@ hr {
 
     grid-gap: 20px;
     justify-items: space-evenly;
-    align-items: center;
+    /*align-items: center;*/
 
     @media (max-width: 1000px) {
         display: block;
@@ -180,9 +197,9 @@ canvas {
 	background: #f0f0f0;
 	padding-top: 80px;
 }
-#about { background: #e8e8e8; }
-#projects { background: #f0f0f0; }
-#resume { background: #e8e8e8; }
+#about { background: #f0f0f0; }
+#projects { background: #e8e8e8; }
+#resume { background: #f0f0f0; }
 
 /* 
  * blinking bs for the top bar cursor thanks to 
