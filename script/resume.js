@@ -1,6 +1,6 @@
 import * as pdfjsLib from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.mjs';
 import * as pdfjsWorker from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.mjs'; 
-const url = 'pdf/James Notley - Resume.docx.pdf';
+const url = 'pdf/James Notley - Resume.pdf';
 const container = document.getElementById('resume-embed');
 
 function render_resume() {
