@@ -59,7 +59,7 @@ h2, h3, h4 {
 	font-family: 'Roboto', sans-serif;
 	text-align: left;
 	line-height: calc(5 *1rem/16);
-	font-weight: 400;
+	font-weight: 500;
     text-indent: 0px;
     padding-top: calc(30 *1rem/16);
 }
@@ -90,8 +90,6 @@ li {
     margin-bottom: 10px;
     font-size: calc(18 *1rem/16);
     line-height: 30px;
-    padding-left: 20px;
-    text-indent: -20px;
 }
 
 /* 
@@ -204,6 +202,7 @@ hr {
     line-height: 1.25em;
     font-size: calc(35 *1rem/16);
     margin-top: 0px;
+	font-weight: 400;
 }
 
 .pdfembed {
