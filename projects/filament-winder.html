@@ -18,29 +18,90 @@
             <section id="hardware">
                 <h2>Filament winder build</h2>
                 <hr>
-                <div class="whole skinny">
-                    <div class="half">
-                        <video autoplay loop muted src="../img/winder.webm"></video>
-                        <div class="caption">Filament winder in action</div>
-                    </div>
-                    <div class="half">
-                        <img src="../img/nosecone_path.png">
-                        <div class="caption">Nosecone 55° layer gcode</div>
-                    </div>
-                </div>
                 <div class="p">
-                    For my university rocket team, I built a heavily modified 
-                    version of Andrew Reilley's <a href="https://reilley.net/winder"
-                    >Contraption filament winder</a> as an Ender 3 conversion, 
-                    adding a fourth axis from the bed gantry, a huge gear reduction 
-                    replacing the belt drive to run large mandrels on a NEMA 17 
-                    instead of the designed NEMA 23, and some special configuration 
-                    of Marlin firmware to glue it all together.
+                    Rocketry involves a lot of tubes, many of which are structural, and as aerospace hardware tends to be, lightweight.
+                    One of the best known processes for making these is filament winding, where a continuous filament of fiberglass or carbon fiber is
+                    is saturated with resin, wound onto a mandrel (an interior mold), and left to cure. The resulting part is strong and repeatable.
+                    Ordinary hand layups of fiberglass cloth can be used as a cheaper substitute, but they lack the repeatability of a computer-controlled process
+                    and are more prone to delamination unless laboriously vacuum-bagged.
                 </div>
+                    <video autoplay loop muted src="../img/winder.webm"></video>
+                    <div class="caption">Filament winder in action</div>
+                <div class="p">
+                    For my university rocket team, I built a heavily modified version of Andrew Reilley's <a href="https://reilley.net/winder"
+                    >Contraption filament winder</a> as an Ender 3 conversion, adding a fourth axis from the bed gantry, a huge gear reduction 
+                    replacing the belt drive to run large mandrels on a NEMA 17 instead of the designed NEMA 23, and some special configuration 
+                    of Marlin firmware to glue it all together. Why go through all this trouble when you can just buy a winder, or just buy
+                    fiberglass parts from someone else?
+                    <ul>
+                        <li> Buying a winder is expensive. The cheapest commercial option is around $5000 (X-winder), and reportedly sucks.</li>
+                        <li> Fiberglass tube suppliers are few and fickle, our team was burned by one who took our money and then disappeared for a year</li>
+                        <li> There's a nifty open source design that we can build for around $500-$1000, about the cost of two 7.5"ID x 4' tubes</li>
+                        <li> We can use it to make nosecones and even maybe COPVs as well one day</li>
+                    </ul>
+                </div>
+                <img src="/img/winder_prototype.jpg">
+                <div class="caption">Dry winding integration test</div>
+                <video autoplay loop muted src="/img/celsius.mov"></video>
+                <div class="caption">First wet wind onto a Celsius can</div>
+                <div class="p">
+                    The redesign and build process were anything but straightforward, but I still managed to get a passable result in a little under three months.
+                    By sourcing the control electronics and motors from an Ender 3, I was able to start on the build right away, but extensive hardware
+                    modifications were required to fit the new motors, and accomodate for their low torque while also increasing the max mandrel size from 4" to 6".
+                    Sadly, in the end HSP couldn't use any of the parts from the winder, since we failed to consider one thing: mold release.
+                    Obviously to use a fiberglass part you need to take it off of your mandrel, which was easy enough with regular wet layups
+                    that have very low if any tension applied around the mandrel. However, filament winding generates a lot of tension by design
+                    to prevent delamination, which means that the final cured part is stuck on like a fingertrap. 
+                </div>
+                <img src="/img/soaking.jpg">
+                <div class="caption">Water bath to try and remove PVA</div>
+                <div class="p">
+                    My team and I experimented with a variety of mold releases and barriers, including PVA, saran wrap, Mylar, and even condoms.
+                    None of them ended up working well if at all, even for regular wet layups (see below). This year I'm hoping to test more methods
+                    that I've found from other rocketry teams, and maybe even build a new mandrel design that can collapse or split to relieve tension.
+                </div>
+                <img src="/img/delicious.jpg">
+                <div class="caption">Boiling hand-layup nosecone to soften 3D printed mandrel</div>
             </section>
             <section id="software">
                 <h2>Filament winder software</h2>
                 <hr>
+                <div class="p">
+                    While I was working on the hardware, I also began writing software to generate the gcode for the winder.
+                    There is an existing solution that was written to go along with the Contraption, but I had some issues with it,
+                    mostly that it wouldn't be able to handle non-cylindrical mandrels such as nosecones, and didn't have a GUI so
+                    less computer-nerdy engineers would have trouble using it. I originally chose to write it in Python because I'm more familiar with it,
+                    producing the first version of my CAM software called <a href="https://github.com/Highlander-Space-Program/gcode_gen" >gcode_gen</a>.
+                </div>
+                <img src="/img/gcode_viewer.png">
+                <div class="caption">Nosecone path in MeshInspector</div>
+                <div class="p">
+                    The validation process was a lot of trial and error, since I didn't have a way to easily visualize the path other than
+                    importing into an online viewer, and even that required running the code in a special mode so that all the movements
+                    would be properly recognized. Eventually I got the winding kernel itself passable, and was staring down work on a GUI.
+                    Luckily this was right around when vibe coding was starting to get good, so I cooked up a quick and dirty visualizer with
+                    ChatGPT, and it turned out pretty well.
+                </div>
+                <img src="/img/nosecone_path.png">
+                <div class="caption">Nosecone path in homebrew viewer</div>
+                <div class="p">
+                    Of course, there were also user interface problems with this software as well. My decision to use Python meant an easy start,
+                    but was a huge pain to distribute and run on other machines. Also, it was really slow as python tends to be. After some reasarch,
+                    I settled on switching the entire program over to Go for execution speed, reduction in executable size (Python was around 100M and growing),
+                    and better support for cross-platform distribution (I can build for Windows, Linux, and macOS with a single command). I'm still working on the GUI,
+                    but the core functionality is working on the command line and I'm pretty happy with the result. See where <a href="https://github.com/raptor8134/cocoon/">cocoon</a>
+                    is at now by following the link.
+                </div>
+            </section>
+        </div>
+        </div>
+		<div id="footer-placeholder"></div>
+	</body>
+	<script src="/script/main.js"></script>
+    <script src="/script/resume.js" type="module"></script>
+</html>
+
+
                 <div class="p">
                     Since the associated plotting software was written in TypeScript (eww) and doesn't 
                     suppport non-cylindrical mandrels such as nosecones, I rewrote 
@@ -53,7 +114,7 @@
         </div>
 		<div id="footer-placeholder"></div>
 	</body>
-	<script src="../script/main.js"></script>
-    <script src="../script/resume.js" type="module"></script>
+	<script src="/script/main.js"></script>
+    <script src="/script/resume.js" type="module"></script>
 </html>
 

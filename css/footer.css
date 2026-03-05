@@ -24,6 +24,6 @@
 	color: white;
 	padding-left: 3cqh;
 	padding-right: 3cqh;
-	font-size: 4cqh;
+	font-size: calc(var(--bar-height)/3);
 	font-family: "Font Awesome 5 Brands" !important;
 }

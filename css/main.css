@@ -183,7 +183,7 @@ hr {
 }
 
 @media (max-width: 1000px) {
-    img, video {
+    .flex-row-item img, .flex-row-item video {
         width: calc(50%-var(--paper-width)/200%);
         height: auto;
         margin-left: 0;
@@ -200,15 +200,10 @@ hr {
     }
 }
 
-#hello {
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
-
 #hello h2 {
-    padding-bottom: 0px;
     line-height: 1.25em;
     font-size: calc(35 *1rem/16);
+    margin-top: 0px;
 }
 
 .pdfembed {
