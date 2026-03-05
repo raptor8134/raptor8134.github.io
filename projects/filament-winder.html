@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=0.7">
+		<title>Filament winder | James Notley</title>
+		<link rel="shortcut icon" href="../img/icon.svg">
+        <link rel="stylesheet" href="../css/variables.css">
+		<link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="../css/top-bar.css">
+        <link rel="stylesheet" href="../css/footer.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+	</head>
+	<body>
+		<div id="top-bar-placeholder"></div>
+        <div class="mainbg">
+        <div class="main">
+            <section id="hardware">
+                <h2>Filament winder build</h2>
+                <hr>
+                <div class="whole skinny">
+                    <div class="half">
+                        <video autoplay loop muted src="../img/winder.webm"></video>
+                        <div class="caption">Filament winder in action</div>
+                    </div>
+                    <div class="half">
+                        <img src="../img/nosecone_path.png">
+                        <div class="caption">Nosecone 55° layer gcode</div>
+                    </div>
+                </div>
+                <div class="p">
+                    For my university rocket team, I built a heavily modified 
+                    version of Andrew Reilley's <a href="https://reilley.net/winder"
+                    >Contraption filament winder</a> as an Ender 3 conversion, 
+                    adding a fourth axis from the bed gantry, a huge gear reduction 
+                    replacing the belt drive to run large mandrels on a NEMA 17 
+                    instead of the designed NEMA 23, and some special configuration 
+                    of Marlin firmware to glue it all together.
+                </div>
+            </section>
+            <section id="software">
+                <h2>Filament winder software</h2>
+                <hr>
+                <div class="p">
+                    Since the associated plotting software was written in TypeScript (eww) and doesn't 
+                    suppport non-cylindrical mandrels such as nosecones, I rewrote 
+                    and extended the <a 
+                    href="https://github.com/Highlander-Space-Program/gcode_gen"
+                    >plotting code</a> in Python.
+                </div>
+            </section>
+        </div>
+        </div>
+		<div id="footer-placeholder"></div>
+	</body>
+	<script src="../script/main.js"></script>
+    <script src="../script/resume.js" type="module"></script>
+</html>
+

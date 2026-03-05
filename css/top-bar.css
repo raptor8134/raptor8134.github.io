@@ -1,23 +1,41 @@
+/* 
+ * blinking bs for the top bar cursor thanks to 
+ * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/blink
+ * yes i know they said not to do this but whatever
+ */
+
+blink {
+	animation: 1s linear infinite condemned_blink_effect;
+}
+
+@keyframes condemned_blink_effect {
+	0% { visibility: hidden; }
+	50% { visibility: hidden; }
+	100% { visibility: visible; }
+}
+
 .top-bar {
 	align-items: left;
-	position: relative;
 	display: flex;
+	align-items: center;
 
 	padding-top: 0px;
 	width: 100%;
-	height: 80px;
+	height: var(--bar-height);
 
-	/*background: #202020;*/
-    background: #003F87;
+    background: var(--color-accent);
 	box-shadow: 0px 1px 5px grey;
-
+	
 	top: 0;
 	position: fixed;
 	transition: top 0.3s;
+
+	z-index: 1000;
+	container-type: inline-size;
 }
 
 .top-bar-padding { flex-grow: 1; }
-.top-bar-padding-right { width: 20px; }
+.top-bar-padding-right { width: min(2cqh, 1.5vw); }
 
 .top-bar a {
 	text-decoration: none;
@@ -25,30 +43,27 @@
 }
 
 .home-button {
-	position: relative;
-	height: 100%;
+	height: 80%;
 	display: flex;
-	top: 0px;
-	height: 100%;
-	padding-left: 20px;
+	align-items: center;
+	padding-left: min(2cqh, 1.5vw);
 }
 
 .home-text {
-	line-height: 80px;
 	font-family: 'Roboto Mono', monospace;
-	font-size: 20px;
+	font-size: min(2cqh, 3.5cqw);
 	font-weight: 900;
 }
 
 .top-bar-button {
 	font-family: 'Roboto Mono', monospace;
-	font-size: 16px;
+	font-size: min(1.6cqh, 2.5cqw);
 	font-weight: bold;
-	line-height: 80px;
-	padding-right: 20px;
-	padding-left: 20px;
+	height: 80%;
+	padding-right: min(2cqh, 1.5vw);
+	padding-left: min(2cqh, 1.5vw);
 }
+
 .top-bar-button:hover {
 	color: #dddddd;
 }
-

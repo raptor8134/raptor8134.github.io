@@ -1,31 +1,29 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css');
+
 .footer {
 	width: 100%;
-	height: 80px;
 	display: flex;
 	align-items: center;
-	background-color: #003F87;
-    padding-top: 15px;
+	background-color: var(--color-accent);
+	height: var(--bar-height);
 }
 
 .footer-interior {
 	width: 100%;
 	display: flex;
 	justify-content: center;
+	align-items: center;
+	container-type: inline-size;
 }
 
 .footer-interior a {
-	text-decoration: none;
+	height: 100%;
 }
 
 .footer-item {
 	color: white;
-	padding-left: 30px;
-	padding-right: 30px;
-	font-size: 40px;
+	padding-left: 3cqh;
+	padding-right: 3cqh;
+	font-size: 4cqh;
 	font-family: "Font Awesome 5 Brands" !important;
-}
-
-.footer-icon { /* for images proper, if used */
-	width: 40px;
-	height: 40px;
 }

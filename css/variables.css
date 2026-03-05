@@ -1,0 +1,11 @@
+ :root {
+     /* Shared color variables */
+     --color-accent: #040926;
+     --color-background-light: #ffffff;
+     /*--color-background-alt: #7d8093;*/
+     --color-background-alt: #f0f0f0;
+     --color-link: #003470;
+     --color-link-visited: #663f87;
+     --bar-height: 10vh;
+     --paper-width: 1000px;
+ }
