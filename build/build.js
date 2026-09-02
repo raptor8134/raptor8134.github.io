@@ -109,6 +109,8 @@ function mdToBlocks(md, ctx) {
   return blocks;
 }
 
+const VIDEO_RE = /\.(mp4|webm|mov|m4v|ogv)$/i;
+
 function figure(im, ctx) {
   ctx.figN = (ctx.figN || 0) + 1;
   const caption = im.title ? inline(im.title) : im.text ? inline(im.text) : undefined;
@@ -126,7 +128,14 @@ function figure(im, ctx) {
       src = undefined;
     }
   }
-  return { src, alt: im.text || undefined, caption, index: "FIG " + ctx.figN, placeholder };
+  return {
+    src,
+    alt: im.text || undefined,
+    caption,
+    index: "FIG " + ctx.figN,
+    placeholder,
+    video: VIDEO_RE.test(im.href || ""),
+  };
 }
 
 /* ----- hero headline ----- */

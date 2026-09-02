@@ -32,6 +32,10 @@ The full machine has four axes — mandrel rotation, carriage travel, filament h
 
 ![The winder built from salvaged Ender 3 hardware](images/winder_prototype.jpg "The winder built from salvaged Ender 3 hardware")
 
+![winder.mp4 — TK caption](images/winder.mp4 "winder.mp4 — TK caption")
+
+![celsius.mp4 — TK caption](images/celsius.mp4 "celsius.mp4 — TK caption")
+
 ## Toolpath generation
 
 The stock software was the real limitation. It supported cylindrical mandrels only, which meant the machine could produce tubes and nothing else — while the parts we most wanted automated were nosecones, where hand layup is hardest and fiber angle control matters most. It was also terminal-only. I generally prefer terminal tools, but a winding path on a non-trivial mandrel is a three-dimensional object built up over many passes and layers, and there is no reading it as text.
@@ -51,6 +55,10 @@ I rewrote the generator from Python to Go and added a GUI. Go for a compiled sin
 ## Where it failed
 
 The machine never produced a usable part. Every tube seized on its mandrel and could not be recovered, and the team fabricated by hand for that year's launch as planned.
+
+![soaking.jpg — TK caption](images/soaking.jpg "soaking.jpg — TK caption")
+
+![delicious.jpg — TK caption](images/delicious.jpg "delicious.jpg — TK caption")
 
 The failure is in release, and the interesting part is why our known-good release methods stopped working. Our hand layups used single-use 3D printed mandrels wrapped in Mylar or aluminum foil as a barrier layer against direct adhesion. That approach was well proven for us — it had outperformed PVA release agent in practice, including on the nosecone where I once recovered a stuck 3D printed mold by boiling it out on a stovetop. On the winder, both barrier films and PVA failed, on 3D printed mandrels and on aluminum pipe alike.
 

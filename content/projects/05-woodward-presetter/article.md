@@ -47,7 +47,7 @@ To mark the holders I used a laser marker to etch the barcode onto the flat that
 
 Serial numbers had to be protected against duplication: a duplicate would load the wrong measurements into the CNC with no obvious error. I used a spreadsheet with VBA (ugly, I know) to query the main database for the lowest unused serial number and export it straight to a laser marking file. The file loads directly onto the marker, so there is no manual typing at that step either. The number is flagged used in the database as a placeholder before the tool is actually measured and added.
 
-*[Video: laser marker etching a tool holder — TK]*
+![Laser marker etching a barcode onto a tool holder](images/laser.mp4 "Laser marker etching a barcode onto a tool holder")
 
 ![A successful scan event at the CNC](images/scanner.jpg "Successful scan event")
 

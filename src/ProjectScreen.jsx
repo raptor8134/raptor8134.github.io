@@ -16,6 +16,15 @@ function ArticleBlock({block}){
       {block.list.items.map((it,i)=><li key={i} style={{display:"flex",gap:"var(--space-3)",fontSize:"var(--size-sm)",lineHeight:1.5,color:"var(--text-body)"}}><span style={{fontFamily:"var(--font-mono)",fontSize:"var(--size-2xs)",color:"var(--accent-spring)",paddingTop:2}}>{String(i+1).padStart(2,"0")}</span><span dangerouslySetInnerHTML={{__html:it}}/></li>)}
     </ul></div>;
   if(block.skills!=null)return <div style={{marginTop:"var(--space-7)",paddingTop:"var(--space-4)",borderTop:"var(--border-hairline)",fontFamily:"var(--font-mono)",fontSize:"var(--size-2xs)",lineHeight:1.8,color:"var(--text-faint)",maxWidth:"var(--measure)"}}>Skills: {block.skills}</div>;
+  if(block.fig&&block.fig.video&&block.fig.src)return <figure style={{margin:"var(--space-5) 0",display:"flex",flexDirection:"column",gap:"var(--space-2)"}}>
+    <div style={{aspectRatio:"4 / 3",background:"var(--bg-inset)",border:"var(--border-hairline)",overflow:"hidden"}}>
+      <video src={block.fig.src} controls playsInline preload="metadata" style={{width:"100%",height:"100%",objectFit:"cover",filter:"saturate(.85)",display:"block"}}/>
+    </div>
+    {(block.fig.caption||block.fig.index)&&<figcaption style={{display:"flex",gap:"var(--space-2)",fontFamily:"var(--font-mono)",fontSize:"var(--size-2xs)",color:"var(--text-muted)",lineHeight:"var(--leading-snug)"}}>
+      {block.fig.index&&<span style={{color:"var(--accent-spring)"}}>{block.fig.index}</span>}
+      {block.fig.caption&&<RawHtml html={block.fig.caption}/>}
+    </figcaption>}
+  </figure>;
   if(block.fig)return <div style={{margin:"var(--space-5) 0"}}><Figure src={block.fig.src} alt={block.fig.alt} index={block.fig.index}
     placeholder={block.fig.placeholder}
     caption={block.fig.caption?<RawHtml html={block.fig.caption}/>:undefined}/></div>;

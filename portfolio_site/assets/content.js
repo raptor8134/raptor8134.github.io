@@ -209,7 +209,8 @@ window.SITE_DATA = {
             "alt": "The assembled chamber on its fabricated cart",
             "caption": "The assembled chamber on its fabricated cart",
             "index": "FIG 1",
-            "placeholder": "The assembled chamber on its fabricated cart"
+            "placeholder": "The assembled chamber on its fabricated cart",
+            "video": false
           }
         },
         {
@@ -217,7 +218,8 @@ window.SITE_DATA = {
             "alt": "Rotating source-selection stage, sample and monitor positions",
             "caption": "Rotating source-selection stage, sample and monitor positions",
             "index": "FIG 2",
-            "placeholder": "Rotating source-selection stage, sample and monitor positions"
+            "placeholder": "Rotating source-selection stage, sample and monitor positions",
+            "video": false
           }
         },
         {
@@ -237,7 +239,8 @@ window.SITE_DATA = {
             "alt": "Cold finger and copper-braid thermal bridge",
             "caption": "Cold finger and copper-braid thermal bridge",
             "index": "FIG 3",
-            "placeholder": "Cold finger and copper-braid thermal bridge"
+            "placeholder": "Cold finger and copper-braid thermal bridge",
+            "video": false
           }
         },
         {
@@ -257,7 +260,8 @@ window.SITE_DATA = {
             "alt": "Crystal temperature vs. input power, cooled and uncooled",
             "caption": "Crystal temperature vs. input power, cooled and uncooled. Resistive heater standing in for a molten source.",
             "index": "FIG 4",
-            "placeholder": "Crystal temperature vs. input power, cooled and uncooled"
+            "placeholder": "Crystal temperature vs. input power, cooled and uncooled",
+            "video": false
           }
         },
         {
@@ -404,7 +408,26 @@ window.SITE_DATA = {
             "src": "/assets/projects/filament-winder/winder_prototype.jpg",
             "alt": "The winder built from salvaged Ender 3 hardware",
             "caption": "The winder built from salvaged Ender 3 hardware",
-            "index": "FIG 1"
+            "index": "FIG 1",
+            "video": false
+          }
+        },
+        {
+          "fig": {
+            "src": "/assets/projects/filament-winder/winder.mp4",
+            "alt": "winder.mp4 — TK caption",
+            "caption": "winder.mp4 — TK caption",
+            "index": "FIG 2",
+            "video": true
+          }
+        },
+        {
+          "fig": {
+            "src": "/assets/projects/filament-winder/celsius.mp4",
+            "alt": "celsius.mp4 — TK caption",
+            "caption": "celsius.mp4 — TK caption",
+            "index": "FIG 3",
+            "video": true
           }
         },
         {
@@ -424,7 +447,8 @@ window.SITE_DATA = {
             "src": "/assets/projects/filament-winder/nosecone_path.png",
             "alt": "Generated winding path on a nosecone profile",
             "caption": "Generated winding path on a nosecone profile",
-            "index": "FIG 2"
+            "index": "FIG 4",
+            "video": false
           }
         },
         {
@@ -432,7 +456,8 @@ window.SITE_DATA = {
             "src": "/assets/projects/filament-winder/gcode_viewer.png",
             "alt": "Layer-by-layer path visualizer in the Go rewrite",
             "caption": "Layer-by-layer path visualizer in the Go rewrite",
-            "index": "FIG 3"
+            "index": "FIG 5",
+            "video": false
           }
         },
         {
@@ -446,6 +471,24 @@ window.SITE_DATA = {
         },
         {
           "p": "The machine never produced a usable part. Every tube seized on its mandrel and could not be recovered, and the team fabricated by hand for that year&#39;s launch as planned."
+        },
+        {
+          "fig": {
+            "src": "/assets/projects/filament-winder/soaking.jpg",
+            "alt": "soaking.jpg — TK caption",
+            "caption": "soaking.jpg — TK caption",
+            "index": "FIG 6",
+            "video": false
+          }
+        },
+        {
+          "fig": {
+            "src": "/assets/projects/filament-winder/delicious.jpg",
+            "alt": "delicious.jpg — TK caption",
+            "caption": "delicious.jpg — TK caption",
+            "index": "FIG 7",
+            "video": false
+          }
         },
         {
           "p": "The failure is in release, and the interesting part is why our known-good release methods stopped working. Our hand layups used single-use 3D printed mandrels wrapped in Mylar or aluminum foil as a barrier layer against direct adhesion. That approach was well proven for us — it had outperformed PVA release agent in practice, including on the nosecone where I once recovered a stuck 3D printed mold by boiling it out on a stovetop. On the winder, both barrier films and PVA failed, on 3D printed mandrels and on aluminum pipe alike."
@@ -761,7 +804,8 @@ window.SITE_DATA = {
             "src": "/assets/projects/woodward-presetter/grobg350.jpg",
             "alt": "GROB G350 5-axis CNC machine",
             "caption": "GROB G350 5-axis CNC machine",
-            "index": "FIG 1"
+            "index": "FIG 1",
+            "video": false
           }
         },
         {
@@ -769,7 +813,8 @@ window.SITE_DATA = {
             "src": "/assets/projects/woodward-presetter/fortispro.jpg",
             "alt": "Omega Fortis TMM",
             "caption": "Omega Fortis TMM",
-            "index": "FIG 2"
+            "index": "FIG 2",
+            "video": false
           }
         },
         {
@@ -786,7 +831,8 @@ window.SITE_DATA = {
             "src": "/assets/projects/woodward-presetter/cursed_diagram.png",
             "alt": "Data flow diagram, reconstructed from memory",
             "caption": "Data flow diagram (from memory)",
-            "index": "FIG 3"
+            "index": "FIG 3",
+            "video": false
           }
         },
         {
@@ -814,14 +860,21 @@ window.SITE_DATA = {
           "p": "Serial numbers had to be protected against duplication: a duplicate would load the wrong measurements into the CNC with no obvious error. I used a spreadsheet with VBA (ugly, I know) to query the main database for the lowest unused serial number and export it straight to a laser marking file. The file loads directly onto the marker, so there is no manual typing at that step either. The number is flagged used in the database as a placeholder before the tool is actually measured and added."
         },
         {
-          "p": "<em>[Video: laser marker etching a tool holder — TK]</em>"
+          "fig": {
+            "src": "/assets/projects/woodward-presetter/laser.mp4",
+            "alt": "Laser marker etching a barcode onto a tool holder",
+            "caption": "Laser marker etching a barcode onto a tool holder",
+            "index": "FIG 4",
+            "video": true
+          }
         },
         {
           "fig": {
             "src": "/assets/projects/woodward-presetter/scanner.jpg",
             "alt": "A successful scan event at the CNC",
             "caption": "Successful scan event",
-            "index": "FIG 4"
+            "index": "FIG 5",
+            "video": false
           }
         },
         {
