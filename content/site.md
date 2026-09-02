@@ -6,7 +6,7 @@ role: Materials Engineer
 nav: [work, about, contact]
 resume:
   label: Resume
-  href: assets/resume.pdf
+  href: /assets/resume.pdf
 
 # Hero (sits on the dark micrograph backdrop; colours are fixed, not themed).
 # The wordmark above the headline is the design system's Logotype and is not
@@ -23,12 +23,10 @@ hero:
   primaryCta: Latest project
   secondaryCta:
     label: Download Resume
-    href: assets/resume.pdf
+    href: /assets/resume.pdf
 
 # "Selected projects" section
 work:
-  index: "01"
-  label: Selected projects
   # Filter tabs. "All" is added automatically. `match` is tested as a
   # substring of each project's tags.
   tabs:
@@ -49,6 +47,7 @@ footer:
   links:
     - { label: LinkedIn, icon: linkedin, href: "https://linkedin.com/in/jamesnotley" }
     - { label: Email, icon: mail, href: "mailto:jamesnotley@gmail.com" }
+    - { label: GitHub, icon: github, href: "https://github.com/raptor8134/"}
 
 # Background micrographs for the hero. Leave this out to use every image
 # in content/backdrop/ (sorted by filename).

@@ -62,10 +62,14 @@ Body: the prose paragraphs, plain Markdown, one blank line between them.
 
 ## Projects
 
+Each project gets its own page at `jamesnotley.com/<id>/` (the `id` from
+`card.md`). Keep `id` a lowercase-hyphenated slug — it's the public URL.
+
 ### Adding a project
 
 1. Make a folder `content/projects/NN-slug/` — the `NN-` number sets the order
-   projects appear in the grid and the "More work" list.
+   projects appear in the grid and the "More work" list. A folder without a
+   `card.md` is ignored, so `content/projects/img/` etc. is fine to keep here.
 2. Add `card.md` and (optionally) `article.md`. Copy an existing pair as a start.
 3. Put any figures in that folder's `images/`.
 4. Rebuild.
@@ -74,7 +78,7 @@ Body: the prose paragraphs, plain Markdown, one blank line between them.
 
 ```
 ---
-id: filament-winder          # used in the URL / breadcrumb; defaults to the slug
+id: filament-winder          # the public URL: jamesnotley.com/filament-winder/  (defaults to the slug)
 index: "001"                 # the "PROJECT 00X" label; defaults to folder position
 title: Filament Winding Machine and Non-Cylindrical Toolpath Generator
 year: "2025"

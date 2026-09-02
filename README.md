@@ -4,16 +4,17 @@ A Markdown-driven build of the portfolio site from the Notley Design System.
 
 ```
 content/        ← EDIT THIS. Markdown: site.md, about.md, projects/*/…   (see content/README.md)
-src/            the four React screens; read window.SITE_DATA, no content baked in
+src/            App.jsx + the three screens (read window.SITE_DATA); overrides.css
 build/build.js  Node build — content/ + design-system/ + vendor/  →  portfolio_site/
 vendor/         pinned build-time libs (Babel, marked, js-yaml) + React runtime
 design-system/  the original Notley Design System export, untouched (tokens, _ds_bundle.js, components)
 portfolio_site/ ← DEPLOYED. Generated, self-contained static site.
-
-img/ · woodward.html · soy.py · googledd63943926a8d8fc.html · seniordesignposter.pdf
-                held over from the previous raptor8134.github.io — not part of the
-                build or the deploy; kept for reuse. Leave them be.
 ```
+
+Held over from the previous raptor8134.github.io — `img/`, `woodward.html`,
+`soy.py`, `googledd63943926a8d8fc.html`, `seniordesignposter.pdf`. Kept for
+reuse; the build ignores them wherever they sit (a directory under
+`content/projects/` only counts as a project if it has a `card.md`).
 
 ## Workflow
 
@@ -49,6 +50,25 @@ The build writes three files into `portfolio_site/` that aren't derived from
 
 Runtime note: React is vendored, but Lucide icons and the webfonts load from CDNs
 (unpkg, Google Fonts) at view time.
+
+## Routing — one clean URL per project
+
+The build emits a real page per project: `portfolio_site/<project-id>/index.html`,
+served at `jamesnotley.com/<project-id>/` (the `<project-id>` is `id:` in that
+project's `card.md`). Each page boots the same bundle with an injected
+`window.__ROUTE__` so it opens straight to that project. In-app navigation keeps
+the URL in sync with `history.pushState`; Back/Forward and direct links all work.
+`build/build.js` also writes `404.html`, `sitemap.xml` and `robots.txt`.
+
+Because pages live at more than one depth, every in-site URL the build emits is
+root-absolute (`/assets/...`) — including image paths in `assets/content.js`. If
+you reference a file from `content/site.md`, write it as `/assets/whatever`.
+
+## Temporary: gradient turned off
+
+`src/overrides.css` flattens the green→blue accent gradient to solid spring-green
+everywhere except the header style switch. To bring the gradient back, delete that
+file and the line in `build/build.js` that appends it.
 
 ## What changed from the plain implementation
 

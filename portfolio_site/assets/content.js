@@ -10,14 +10,14 @@ window.SITE_DATA = {
     ],
     "resume": {
       "label": "Resume",
-      "href": "assets/resume.pdf"
+      "href": "/assets/resume.pdf"
     },
     "hero": {
       "intro": "I'm a materials science and engineering student, semiconductor researcher, rocketry enthusiast, amateur machinist, and your next hire.",
       "primaryCta": "Latest project",
       "secondaryCta": {
         "label": "Download Resume",
-        "href": "assets/resume.pdf"
+        "href": "/assets/resume.pdf"
       },
       "headlineHtml": "Half scientist,<br>half engineer,<br><span style=\"color:#2BE08A\">all builder</span>"
     },
@@ -53,6 +53,11 @@ window.SITE_DATA = {
           "label": "Email",
           "icon": "mail",
           "href": "mailto:jamesnotley@gmail.com"
+        },
+        {
+          "label": "GitHub",
+          "icon": "github",
+          "href": "https://github.com/raptor8134/"
         }
       ]
     }
@@ -411,19 +416,19 @@ window.SITE_DATA = {
     }
   ],
   "backdrop": [
-    "assets/backdrop/01-d7d18ab2.jpg",
-    "assets/backdrop/02-a61e2612.jpg",
-    "assets/backdrop/03-1af1afef.jpg",
-    "assets/backdrop/04-eaeb2628.jpg",
-    "assets/backdrop/05-d3c4451a.png",
-    "assets/backdrop/06-a9a1f7e4.png",
-    "assets/backdrop/07-a8b942b2.png",
-    "assets/backdrop/08-870733e7.jpg",
-    "assets/backdrop/09-9990a8d7.jpg",
-    "assets/backdrop/10-a6e1e81a.jpg",
-    "assets/backdrop/11-88140b17.png",
-    "assets/backdrop/12-d4048632.png",
-    "assets/backdrop/13-a2d803ba.png",
-    "assets/backdrop/14-5a651c54.png"
+    "/assets/backdrop/01-d7d18ab2.jpg",
+    "/assets/backdrop/02-a61e2612.jpg",
+    "/assets/backdrop/03-1af1afef.jpg",
+    "/assets/backdrop/04-eaeb2628.jpg",
+    "/assets/backdrop/05-d3c4451a.png",
+    "/assets/backdrop/06-a9a1f7e4.png",
+    "/assets/backdrop/07-a8b942b2.png",
+    "/assets/backdrop/08-870733e7.jpg",
+    "/assets/backdrop/09-9990a8d7.jpg",
+    "/assets/backdrop/10-a6e1e81a.jpg",
+    "/assets/backdrop/11-88140b17.png",
+    "/assets/backdrop/12-d4048632.png",
+    "/assets/backdrop/13-a2d803ba.png",
+    "/assets/backdrop/14-5a651c54.png"
   ]
 };

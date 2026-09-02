@@ -1,0 +1,23 @@
+/* ============================================================================
+   TEMPORARY — flatten the accent gradient to solid spring-green.
+
+   Every component reads the gradient through these custom properties, so
+   redefining them here recolours buttons, section rules, selected tabs/tags,
+   meters, etc. in one place. The lone exception is the header style switch,
+   which keeps the green -> blue gradient as its "on" state (see .style-switch).
+
+   To restore the full gradient system: delete this file and the line in
+   build/build.js that appends it.
+   ============================================================================ */
+
+:root {
+  --grad-accent:        var(--accent-spring);
+  --grad-accent-smooth: var(--accent-spring);
+  --grad-accent-diag:   var(--accent-spring);
+  --grad-accent-soft:   color-mix(in srgb, var(--accent-spring) 15%, transparent);
+}
+
+/* keep the real gradient on the header style switch only */
+.style-switch {
+  --grad-accent: linear-gradient(90deg, var(--accent-spring) 0%, var(--accent-blue) 100%);
+}

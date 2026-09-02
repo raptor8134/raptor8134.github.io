@@ -154,15 +154,19 @@ for (const d of ["backdrop", "projects", "micrographs"]) {
 
 // --- site.md ---
 const siteFront = parseFront(read(path.join(CONTENT, "site.md"))).data;
+// Pages live at several URL depths (/, /<project>/), so in-site links must be
+// root-absolute. Normalise any "assets/..." href an author wrote to "/assets/...".
+const rootRel = (h) => (typeof h === "string" ? h.replace(/^assets\//, "/assets/") : h);
+const withHref = (o) => (o && typeof o === "object" && "href" in o ? { ...o, href: rootRel(o.href) } : o);
 const site = {
   name: siteFront.name || "",
   role: siteFront.role || "",
   nav: siteFront.nav || ["work", "about", "contact"],
-  resume: siteFront.resume || null,
+  resume: withHref(siteFront.resume) || null,
   hero: {
     intro: (siteFront.hero && siteFront.hero.intro || "").trim(),
     primaryCta: siteFront.hero && siteFront.hero.primaryCta || "Latest project",
-    secondaryCta: siteFront.hero && siteFront.hero.secondaryCta || null,
+    secondaryCta: withHref(siteFront.hero && siteFront.hero.secondaryCta) || null,
     headlineHtml: headlineHtml(siteFront.hero && siteFront.hero.headline),
   },
   work: {
@@ -192,9 +196,14 @@ const about = {
 };
 
 // --- projects/*/ ---
+// A project folder is any directory under content/projects/ that has a card.md.
+// Anything else (loose files, an img/ dump, etc.) is left alone.
 const projDir = path.join(CONTENT, "projects");
 const projSlugs = exists(projDir)
-  ? fs.readdirSync(projDir).filter((d) => fs.statSync(path.join(projDir, d)).isDirectory()).sort()
+  ? fs.readdirSync(projDir)
+      .filter((d) => fs.statSync(path.join(projDir, d)).isDirectory())
+      .filter((d) => exists(path.join(projDir, d, "card.md")))
+      .sort()
   : [];
 
 const projects = projSlugs.map((slug, idx) => {
@@ -202,7 +211,7 @@ const projects = projSlugs.map((slug, idx) => {
   const card = parseFront(read(path.join(dir, "card.md")));
   const id = card.data.id || slug.replace(/^\d+[-_]/, "");
   const outImgDir = path.join(OUT_ASSETS, "projects", id);
-  const ctx = { images: new Set(), imgBase: "assets/projects/" + id, figN: 0 };
+  const ctx = { images: new Set(), imgBase: "/assets/projects/" + id, figN: 0 };
 
   let body = [];
   const artPath = path.join(dir, "article.md");
@@ -245,7 +254,7 @@ if (Array.isArray(siteFront.backdrop) && siteFront.backdrop.length) {
 } else {
   const files = listImages(path.join(CONTENT, "backdrop"));
   files.forEach((f) => copyInto(path.join(CONTENT, "backdrop", f), path.join(OUT_ASSETS, "backdrop")));
-  backdrop = files.map((f) => "assets/backdrop/" + f);
+  backdrop = files.map((f) => "/assets/backdrop/" + f);
 }
 
 const SITE_DATA = { site, about, projects, backdrop };
@@ -259,10 +268,13 @@ fs.writeFileSync(
     "window.SITE_DATA = " + JSON.stringify(SITE_DATA, null, 2) + ";\n"
 );
 
-// design-system CSS (resolve styles.css @imports)
+// design-system CSS (resolve styles.css @imports) + our local overrides
 const css = ["fonts", "colors", "typography", "spacing", "borders", "motion", "base"]
   .map((n) => `/* tokens/${n}.css */\n` + read(path.join(SRC_DS, "tokens", `${n}.css`)))
-  .join("\n\n");
+  .join("\n\n")
+  + (exists(path.join(SRC_SCREENS, "overrides.css"))
+      ? "\n\n/* src/overrides.css */\n" + read(path.join(SRC_SCREENS, "overrides.css"))
+      : "");
 
 // design-system component bundle
 fs.writeFileSync(path.join(OUT_ASSETS, "ds-bundle.js"), read(path.join(SRC_DS, "_ds_bundle.js")));
@@ -283,15 +295,30 @@ const compiled = ["HomeScreen.jsx", "ProjectScreen.jsx", "AboutScreen.jsx", "App
   }).code)
   .join("\n\n");
 
-const html = `<!DOCTYPE html>
+const FAVICON =
+  "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23121212'/%3E%3Ctext x='4' y='23' font-family='monospace' font-size='18' font-weight='700' fill='%232BE08A'%3Ejn%3C/text%3E%3C/svg%3E";
+
+const domain = exists(path.join(ROOT, "CNAME")) ? read(path.join(ROOT, "CNAME")).trim() : "";
+const origin = domain ? "https://" + domain : "";
+const esc = (s) =>
+  String(s == null ? "" : s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+// Every generated page loads the same bundle and boots the same <App/>; the only
+// per-page difference is <head> metadata and the injected window.__ROUTE__.
+function pageHtml({ title, description, urlPath, route }) {
+  const canon = origin ? origin + urlPath : "";
+  return `<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${site.name}${site.role ? " — " + site.role : ""}</title>
-<meta name="description" content="Portfolio of ${site.name}${site.role ? ", " + site.role.toLowerCase() : ""}.">
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(description)}">
 <meta name="color-scheme" content="dark">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23121212'/%3E%3Ctext x='4' y='23' font-family='monospace' font-size='18' font-weight='700' fill='%232BE08A'%3Ejn%3C/text%3E%3C/svg%3E">
+${canon ? `<link rel="canonical" href="${esc(canon)}">\n` : ""}<meta property="og:type" content="website">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(description)}">
+${canon ? `<meta property="og:url" content="${esc(canon)}">\n` : ""}<link rel="icon" href="${FAVICON}">
 <style>
 ${css}
 </style>
@@ -299,15 +326,16 @@ ${css}
 <body>
 <div id="root"></div>
 
-<script src="assets/vendor/react.production.min.js"></script>
-<script src="assets/vendor/react-dom.production.min.js"></script>
+<script src="/assets/vendor/react.production.min.js"></script>
+<script src="/assets/vendor/react-dom.production.min.js"></script>
 
 <!-- Notley Design System — component bundle -->
-<script src="assets/ds-bundle.js"></script>
+<script src="/assets/ds-bundle.js"></script>
 <script>window.DS = window.NotleyDesignSystem_566c40;</script>
 
 <!-- Site content, generated from content/*.md -->
-<script src="assets/content.js"></script>
+<script src="/assets/content.js"></script>
+<script>window.__ROUTE__ = ${JSON.stringify(route)};</script>
 
 <!-- Screens (JSX pre-compiled at build time) -->
 <script>
@@ -322,8 +350,84 @@ ${compiled}
 </body>
 </html>
 `;
+}
 
-fs.writeFileSync(path.join(OUT, "index.html"), html);
+// Home
+fs.writeFileSync(
+  path.join(OUT, "index.html"),
+  pageHtml({
+    title: `${site.name}${site.role ? " — " + site.role : ""}`,
+    description: `Portfolio of ${site.name}${site.role ? ", " + site.role.toLowerCase() : ""}.`,
+    urlPath: "/",
+    route: { name: "page" },
+  })
+);
+
+// One clean-URL page per project: portfolio_site/<id>/index.html
+for (const p of projects) {
+  const dir = path.join(OUT, p.id);
+  fs.mkdirSync(dir, { recursive: true });
+  fs.writeFileSync(
+    path.join(dir, "index.html"),
+    pageHtml({
+      title: `${p.title} — ${site.name}`,
+      description: p.summary || `${p.title} — a project by ${site.name}.`,
+      urlPath: `/${p.id}/`,
+      route: { name: "project", id: p.id },
+    })
+  );
+}
+
+// Drop generated project dirs that no longer correspond to a project.
+{
+  const keep = new Set(["assets", ...projects.map((p) => p.id)]);
+  for (const entry of fs.readdirSync(OUT)) {
+    const full = path.join(OUT, entry);
+    if (fs.statSync(full).isDirectory() && !keep.has(entry)) {
+      fs.rmSync(full, { recursive: true, force: true });
+    }
+  }
+}
+
+// Branded 404 (GitHub Pages serves this for any unknown path).
+fs.writeFileSync(
+  path.join(OUT, "404.html"),
+  `<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Not found — ${esc(site.name)}</title>
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="${FAVICON}">
+<style>
+  html,body{margin:0;height:100%}
+  body{background:#121212;color:#A8AFAF;display:flex;align-items:center;justify-content:center;
+    font:13px/1.6 "JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+  .box{padding:32px;text-align:center}
+  h1{margin:0 0 12px;color:#EDEDED;
+    font:400 22px/1.2 "Space Grotesk","Helvetica Neue",Arial,sans-serif;letter-spacing:-.02em}
+  a{color:#2BE08A;text-decoration:none;border-bottom:1px solid rgba(43,224,138,.45)}
+  .p{color:#525858}
+</style></head>
+<body><div class="box">
+  <h1>404</h1>
+  <p class="p">~ / that page isn't here</p>
+  <p><a href="/">&larr; home</a></p>
+</div></body></html>
+`
+);
+
+// Sitemap + robots (only meaningful once the domain is known).
+if (origin) {
+  const urls = ["/", ...projects.map((p) => `/${p.id}/`)];
+  fs.writeFileSync(
+    path.join(OUT, "sitemap.xml"),
+    `<?xml version="1.0" encoding="UTF-8"?>\n` +
+      `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
+      urls.map((u) => `  <url><loc>${origin}${u}</loc></url>`).join("\n") +
+      `\n</urlset>\n`
+  );
+  fs.writeFileSync(path.join(OUT, "robots.txt"), `User-agent: *\nAllow: /\nSitemap: ${origin}/sitemap.xml\n`);
+}
 
 // Tell GitHub Pages (and similar) not to run this through Jekyll.
 fs.writeFileSync(path.join(OUT, ".nojekyll"), "");
@@ -343,4 +447,6 @@ if (exists(path.join(ROOT, "CNAME"))) {
 fs.rmSync(path.join(OUT, "README.md"), { force: true });
 
 console.log(`portfolio_site/  —  ${projects.length} project(s), ${about.body.length} about paragraph(s), ${backdrop.length} backdrop image(s)`);
-projects.forEach((p) => console.log(`  ${p.index}  ${p.id}  (${p.body.length} block${p.body.length === 1 ? "" : "s"})`));
+console.log(`  /                 home`);
+projects.forEach((p) => console.log(`  /${p.id}/${" ".repeat(Math.max(1, 16 - p.id.length))}${p.body.length} block${p.body.length === 1 ? "" : "s"}`));
+console.log(origin ? `  sitemap + robots for ${origin}` : `  (no CNAME → skipped sitemap/robots)`);

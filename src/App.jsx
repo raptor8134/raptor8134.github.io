@@ -49,13 +49,38 @@ function SiteFooter(){
   </footer>;
 }
 
+// Each project also has its own clean URL: /<project-id>/ . On a direct hit the
+// page injects window.__ROUTE__; in-app navigation keeps the URL in sync with
+// history.pushState, and Back/Forward is handled by the popstate listener below.
+const PROJECT_IDS=(window.SITE_DATA.projects||[]).map(p=>p.id);
+function routeFromPath(){
+  const seg=(typeof location!=="undefined"?location.pathname:"/").replace(/^\/+|\/+$/g,"");
+  return seg&&PROJECT_IDS.indexOf(seg)!==-1?{name:"project",id:seg}:{name:"page"};
+}
+function pushPath(p){
+  if(typeof history!=="undefined"&&location.pathname!==p) history.pushState({},"",p);
+}
+
 function App(){
   const {SiteHeader,Button,Icon,Switch}=window.DS;
   const S=window.SITE_DATA.site;
-  const [route,setRoute]=React.useState({name:"page"});
+  const [route,setRoute]=React.useState(()=>window.__ROUTE__||routeFromPath());
   const [active,setActive]=React.useState((S.nav&&S.nav[0])||"work");
   const [paper,setPaper]=React.useState(false);
   React.useEffect(()=>{document.body.dataset.theme=paper?"paper":""},[paper]);
+
+  React.useEffect(()=>{
+    const onPop=()=>{setRoute(routeFromPath());window.scrollTo(0,0)};
+    window.addEventListener("popstate",onPop);
+    return ()=>window.removeEventListener("popstate",onPop);
+  },[]);
+
+  // keep <title> in sync across in-app navigation (direct loads already ship the right one)
+  React.useEffect(()=>{
+    const base=S.name+(S.role?" — "+S.role:"");
+    const p=route.name==="project"&&(window.SITE_DATA.projects||[]).find(x=>x.id===route.id);
+    document.title=p?p.title+" — "+S.name:base;
+  },[route]);
 
   React.useEffect(()=>{
     if(route.name!=="page")return;
@@ -72,18 +97,18 @@ function App(){
     if(el)window.scrollTo({top:el.offsetTop-56,behavior:"smooth"});
   };
   const goSection=id=>{
-    if(route.name!=="page"){setRoute({name:"page"});setTimeout(()=>scrollToId(id),0);return}
+    if(route.name!=="page"){setRoute({name:"page"});pushPath("/");setTimeout(()=>scrollToId(id),0);return}
     scrollToId(id);
   };
-  const open=id=>{setRoute({name:"project",id});window.scrollTo(0,0)};
-  const backHome=()=>{setRoute({name:"page"});window.scrollTo(0,0)};
+  const open=id=>{setRoute({name:"project",id});pushPath("/"+id+"/");window.scrollTo(0,0)};
+  const backHome=()=>{setRoute({name:"page"});pushPath("/");window.scrollTo(0,0)};
 
   const resume=S.resume||{};
   return <div style={{minHeight:"100vh",display:"flex",flexDirection:"column"}}>
     <SiteHeader links={S.nav} active={route.name==="project"?(S.nav&&S.nav[0]||"work"):active}
       onNavigate={goSection}
       brand={<span style={{fontFamily:"var(--font-mono)",fontSize:"var(--size-sm)",letterSpacing:"var(--track-wide)",color:"var(--text-strong)"}}>[jn@portfolio ~] <span style={{animation:"cursor-blink 1s step-end infinite"}}>_</span></span>}
-      navPrefix={<Switch checked={paper} onChange={()=>setPaper(!paper)}/>}
+      navPrefix={<span className="style-switch"><Switch checked={paper} onChange={()=>setPaper(!paper)}/></span>}
       action={<Button as={resume.href?"a":"button"} href={resume.href} size="sm" variant="secondary" prefix={<Icon name="download" size={13}/>}>{resume.label||"Resume"}</Button>}/>
     <main style={{flex:1}}>
       {route.name==="page"&&<>
