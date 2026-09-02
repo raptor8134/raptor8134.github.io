@@ -1,0 +1,13 @@
+:root{
+  --dur-1:80ms; /* @kind other */
+  --dur-2:140ms; /* @kind other */
+  --dur-3:240ms; /* @kind other */
+  --dur-4:420ms; /* @kind other */
+  --ease-term:cubic-bezier(.2,.8,.2,1); /* @kind other */   /* default: quick out, settled */
+  --ease-linear:linear; /* @kind other */                    /* cursor blink, scan sweeps */
+  --ease-in-out:cubic-bezier(.4,0,.2,1); /* @kind other */
+  --transition-control:background-color var(--dur-2) var(--ease-term),border-color var(--dur-2) var(--ease-term),color var(--dur-2) var(--ease-term); /* @kind other */
+  --blink:1s steps(2,jump-none) infinite; /* @kind other */
+}
+@keyframes ds-blink{50%{opacity:0}}
+@keyframes ds-type{from{width:0}to{width:100%}}

@@ -1,0 +1,18 @@
+:root{
+  --font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --font-sans:"Space Grotesk","Helvetica Neue",Arial,sans-serif;
+  --font-display:var(--font-sans);
+  --font-body:var(--font-mono);
+  /* Type scale — 1.25 ratio off a 13px mono body */
+  --size-2xs:10px; --size-xs:11px; --size-sm:12px; --size-md:13px; --size-lg:15px;
+  --size-xl:18px; --size-2xl:22px; --size-3xl:28px; --size-4xl:38px; --size-5xl:52px; --size-6xl:72px;
+  --leading-tight:1.1; --leading-snug:1.3; --leading-body:1.55; --leading-loose:1.75;
+  --track-tight:-0.02em; --track-normal:0; /* @kind font */ --track-wide:0.06em; --track-caps:0.14em;
+  --weight-light:300; --weight-regular:400; --weight-medium:500; --weight-bold:700;
+  /* Semantic roles */
+  --text-display-font:var(--font-display); --text-display-size:var(--size-5xl);
+  --text-heading-font:var(--font-display); --text-heading-size:var(--size-2xl);
+  --text-body-font:var(--font-mono); --text-body-size:var(--size-md);
+  --text-label-font:var(--font-mono); --text-label-size:var(--size-2xs);
+  --text-code-font:var(--font-mono);
+}

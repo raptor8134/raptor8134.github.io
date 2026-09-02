@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Portfolio project page" description="Article-style case study: path-bar title, prose, inline figures and a results table." -->
+<helmet><script src="./ds-base.js"></script><style>body{margin:0;background:#121212}</style></helmet>
+<div style="min-height:100vh;background:rgba(18,18,18,.85);font-family:'JetBrains Mono',ui-monospace,monospace;color:#A8AFAF">
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.SiteHeader" links="{{ navLinks }}" active="work" hint-size="100%,56px"></x-import>
+<article style="max-width:820px;margin:0 auto;padding:48px 32px 96px">
+<div style="border-bottom:1px solid rgba(237,237,237,.16);padding-bottom:12px">
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.Breadcrumb" size="lg" items="{{ crumbs }}" hint-size="300px,22px"></x-import>
+</div>
+<div>
+<div style="margin:24px 0 8px">
+<span style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#525858">Project 004 · 2025</span>
+</div>
+<h1 style="font-family:'Space Grotesk',sans-serif;font-size:38px;line-height:1.1;letter-spacing:-.02em;color:#EDEDED;margin:0 0 16px;font-weight:500">Fatigue-resistant lattice inserts</h1>
+<p style="font-size:15px;line-height:1.5;color:#EDEDED;max-width:58ch;margin:0 0 16px">Redesigned a titanium lattice insert for a spinal cage so it survives 10⁶ cycles at body temperature without stress shielding.</p>
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:24px">
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.Tag" hint-size="80px,22px">ti-6al-4v</x-import>
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.Tag" hint-size="60px,22px">slm</x-import>
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.Tag" hint-size="70px,22px">fatigue</x-import>
+</div>
+<div style="max-width:66ch;margin-bottom:48px">
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.KeyValueList" columns="{{ 2 }}" items="{{ meta }}" hint-size="100%,80px"></x-import>
+</div>
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.SectionRule" index="01" label="Method" hint-size="100%,16px"></x-import>
+<div style="margin:16px 0 32px">
+<p style="font-size:13px;line-height:1.55;max-width:66ch">Build orientation drove nearly all of the scatter in fatigue life. Struts printed at 45° carried the largest unmelted-powder defects, so the lattice was re-oriented to put every load-bearing strut within 20° of vertical.</p>
+<p style="font-size:13px;line-height:1.55;max-width:66ch">Hot isostatic pressing closed the remaining gas porosity and moved failure initiation from internal defects to the surface, where it can be controlled by chemical polishing.</p>
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.Callout" tone="note" title="Test conditions" hint-size="100%,64px">Room temperature, 10 Hz, R = 0.1, n = 6 per condition.</x-import>
+</div>
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.SectionRule" index="02" label="Figures" hint-size="100%,16px"></x-import>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0 32px">
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.Figure" index="FIG 1" caption="As-built strut cross-section, 200×." hint-size="100%,240px"></x-import>
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.Figure" index="FIG 2" caption="Fracture surface after 1.0 × 10⁶ cycles." hint-size="100%,240px"></x-import>
+</div>
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.SectionRule" index="03" label="Results" hint-size="100%,16px"></x-import>
+<div style="max-width:66ch;margin-top:16px;display:flex;flex-direction:column;gap:24px">
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.SpecTable" caption="Tensile after HIP, ASTM E8" columns="{{ specColumns }}" rows="{{ specRows }}" hint-size="100%,160px"></x-import>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.Meter" label="Yield strength" value="{{ 880 }}" max="{{ 1100 }}" unit="MPa" hint-size="100%,32px"></x-import>
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.Meter" label="Porosity" value="{{ 0.4 }}" max="{{ 3 }}" unit="%" tone="ok" hint-size="100%,32px"></x-import>
+</div>
+<p style="font-size:13px;line-height:1.55">The trade is visible in the table: HIP costs 8% of ultimate strength and doubles elongation. For a part that is fatigue-limited rather than strength-limited, that is the right direction.</p>
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.Button" variant="secondary" size="sm" hint-size="160px,26px">One-page PDF</x-import>
+</div>
+</div>
+</article>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals(){
+    return {
+      navLinks:["work","about","writing","contact"],
+      crumbs:["work","lattice-inserts"],
+      specColumns:["Condition","UTS (MPa)","Elong. (%)"],
+      specRows:[["As-built","1043","6.8"],["Stress relieved","998","9.4"],["HIP 920 °C","961","14.1"]],
+      meta:[{key:"Role",value:"Lead engineer"},{key:"Year",value:"2025"},{key:"Process",value:"SLM + HIP"},{key:"Standard",value:"ASTM F3001"}]
+    };
+  }
+}
+</script>
+</body>
+</html>

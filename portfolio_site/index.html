@@ -1,0 +1,1105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>James Notley — Materials Engineer</title>
+<meta name="description" content="Portfolio of James Notley, materials engineer.">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23121212'/%3E%3Ctext x='4' y='23' font-family='monospace' font-size='18' font-weight='700' fill='%232BE08A'%3Ejn%3C/text%3E%3C/svg%3E">
+<style>
+/* tokens/fonts.css */
+/* Webfonts served from Google Fonts CDN. See readme.md > Typography for the
+   self-hosting note: drop .woff2 files in assets/fonts/ and swap the @import
+   for the commented @font-face blocks below. */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+/* Self-hosted equivalents (uncomment once assets/fonts/ is populated):
+@font-face{font-family:"JetBrains Mono";src:url("../assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"JetBrains Mono";src:url("../assets/fonts/JetBrainsMono-Bold.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Space Grotesk";src:url("../assets/fonts/SpaceGrotesk-Variable.woff2") format("woff2");font-weight:400 700;font-style:normal;font-display:swap}
+*/
+
+
+/* tokens/colors.css */
+:root{
+  /* ---- Ink ramp (neutral, keyed to rgba(18,18,18)) ---- */
+  --ink-1000:#0C0C0C; --ink-900:#121212; --ink-800:#181818; --ink-700:#1F1F1F;
+  --ink-600:#262626; --ink-500:#303030; --ink-400:#3D3D3D;
+  /* ---- Foreground ramp ---- */
+  --fg-1:#EDEDED; --fg-2:#A8AFAF; --fg-3:#757C7C; --fg-4:#525858;
+  /* ---- Paper ramp (print / light) ---- */
+  --paper-100:#FBFCFB; --paper-200:#F1F4F3; --paper-300:#E3E8E7; --paper-400:#CBD3D2;
+  /* ---- Accent: spring green -> deep blue ---- */
+  --accent-spring:#2BE08A; --accent-mint:#5AE9AE; --accent-teal:#1FA9C0;
+  --accent-azure:#3D7BFF; --accent-blue:#1B4FD1; --accent-deep:#123C9E;
+  --grad-accent:linear-gradient(90deg,color-mix(in oklch,var(--accent-spring) 100%,var(--accent-blue) 0%) 0%,color-mix(in oklch,var(--accent-spring) 100%,var(--accent-blue) 0%) 12.5%,color-mix(in oklch,var(--accent-spring) 85.7%,var(--accent-blue) 14.3%) 12.5%,color-mix(in oklch,var(--accent-spring) 85.7%,var(--accent-blue) 14.3%) 25%,color-mix(in oklch,var(--accent-spring) 71.4%,var(--accent-blue) 28.6%) 25%,color-mix(in oklch,var(--accent-spring) 71.4%,var(--accent-blue) 28.6%) 37.5%,color-mix(in oklch,var(--accent-spring) 57.1%,var(--accent-blue) 42.9%) 37.5%,color-mix(in oklch,var(--accent-spring) 57.1%,var(--accent-blue) 42.9%) 50%,color-mix(in oklch,var(--accent-spring) 42.9%,var(--accent-blue) 57.1%) 50%,color-mix(in oklch,var(--accent-spring) 42.9%,var(--accent-blue) 57.1%) 62.5%,color-mix(in oklch,var(--accent-spring) 28.6%,var(--accent-blue) 71.4%) 62.5%,color-mix(in oklch,var(--accent-spring) 28.6%,var(--accent-blue) 71.4%) 75%,color-mix(in oklch,var(--accent-spring) 14.3%,var(--accent-blue) 85.7%) 75%,color-mix(in oklch,var(--accent-spring) 14.3%,var(--accent-blue) 85.7%) 87.5%,var(--accent-blue) 87.5%,var(--accent-blue) 100%);
+  --grad-accent-smooth:linear-gradient(90deg,var(--accent-spring) 0%,var(--accent-blue) 100%);
+  --grad-accent-diag:linear-gradient(135deg,var(--accent-spring) 0%,var(--accent-blue) 100%);
+  --grad-accent-soft:linear-gradient(90deg,rgba(43,224,138,.16) 0%,rgba(27,79,209,.20) 100%); /* @kind color */
+  /* ---- Signals ---- */
+  --signal-ok:#2BE08A; --signal-info:#3D7BFF; --signal-warn:#F0C05A; --signal-fail:#FF6B5E;
+  /* ---- Backdrop ---- */
+  --bg-scrim:rgba(18,18,18,.85);
+  --blur-backdrop:6px; /* @kind other */
+  /* ---- Semantic aliases: screen (default) ---- */
+  --bg-canvas:var(--bg-scrim); --bg-panel:rgba(24,24,24,.78); --bg-inset:rgba(12,12,12,.82);
+  --bg-raised:rgba(31,31,31,.86); --bg-hover:rgba(255,255,255,.05); --bg-active:rgba(255,255,255,.09);
+  --surface-card:rgba(24,24,24,.78); --surface-card-hover:rgba(31,31,31,.88);
+  --text-body:var(--fg-2); --text-strong:var(--fg-1); --text-muted:var(--fg-3); --text-faint:var(--fg-4);
+  --text-accent:var(--accent-spring); --text-inverse:var(--ink-900);
+  --line-1:rgba(237,237,237,.16); --line-2:rgba(237,237,237,.28); --line-accent:rgba(43,224,138,.45);
+  --focus-ring:var(--accent-azure);
+  --selection-bg:rgba(43,224,138,.24);
+}
+/* Paper scope: print sheets, PDF views, light embeds. */
+[data-theme="paper"]{
+  --bg-canvas:var(--paper-100); --bg-panel:#FFFFFF; --bg-inset:var(--paper-200);
+  --bg-raised:#FFFFFF; --bg-hover:rgba(18,18,18,.04); --bg-active:rgba(18,18,18,.07);
+  --surface-card:#FFFFFF; --surface-card-hover:var(--paper-200);
+  --text-body:#2E3436; --text-strong:#121212; --text-muted:#5D6668; --text-faint:#8A9192;
+  --text-inverse:#FBFCFB;
+  --line-1:rgba(18,18,18,.14); --line-2:rgba(18,18,18,.26); --line-accent:rgba(11,143,107,.5);
+  --accent-spring:#12A870; --accent-blue:#123C9E; --accent-azure:#1B4FD1;
+  --text-accent:#0B8F6B;
+  --selection-bg:rgba(18,168,112,.18);
+}
+
+
+/* tokens/typography.css */
+:root{
+  --font-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --font-sans:"Space Grotesk","Helvetica Neue",Arial,sans-serif;
+  --font-display:var(--font-sans);
+  --font-body:var(--font-mono);
+  /* Type scale — 1.25 ratio off a 13px mono body */
+  --size-2xs:10px; --size-xs:11px; --size-sm:12px; --size-md:13px; --size-lg:15px;
+  --size-xl:18px; --size-2xl:22px; --size-3xl:28px; --size-4xl:38px; --size-5xl:52px; --size-6xl:72px;
+  --leading-tight:1.1; --leading-snug:1.3; --leading-body:1.55; --leading-loose:1.75;
+  --track-tight:-0.02em; --track-normal:0; /* @kind font */ --track-wide:0.06em; --track-caps:0.14em;
+  --weight-light:300; --weight-regular:400; --weight-medium:500; --weight-bold:700;
+  /* Semantic roles */
+  --text-display-font:var(--font-display); --text-display-size:var(--size-5xl);
+  --text-heading-font:var(--font-display); --text-heading-size:var(--size-2xl);
+  --text-body-font:var(--font-mono); --text-body-size:var(--size-md);
+  --text-label-font:var(--font-mono); --text-label-size:var(--size-2xs);
+  --text-code-font:var(--font-mono);
+}
+
+
+/* tokens/spacing.css */
+:root{
+  /* Character-cell grid: 1 cell = 8px, mirrors the mono advance width at 13px. */
+  --cell:8px;
+  --space-0:0; --space-1:4px; --space-2:8px; --space-3:12px; --space-4:16px;
+  --space-5:24px; --space-6:32px; --space-7:48px; --space-8:64px; --space-9:96px; --space-10:128px;
+  --gutter:var(--space-5);
+  --pad-panel:var(--space-5); --pad-card:var(--space-4); --pad-control-x:var(--space-3); --pad-control-y:var(--space-2);
+  --measure:66ch;      /* max line length for prose */
+  --container:1160px;  /* site content width */
+  --rail:248px;        /* sidebar / index rail */
+  --control-h:32px; --control-h-sm:26px; --control-h-lg:40px;
+}
+
+
+/* tokens/borders.css */
+:root{
+  /* Terminal geometry: everything is square. No radii anywhere. */
+  --radius-0:0; --radius-1:0; --radius-2:0; --radius-pill:0;
+  --stroke-1:1px; --stroke-2:2px;
+  --border-hairline:var(--stroke-1) solid var(--line-1);
+  --border-strong:var(--stroke-1) solid var(--line-2);
+  --border-accent:var(--stroke-1) solid var(--line-accent);
+  --border-dashed:var(--stroke-1) dashed var(--line-1);
+  /* No drop shadows and no glow. Depth reads through 1px rules and insets alone. */
+  --shadow-none:none;
+  --shadow-inset:inset 0 1px 0 rgba(255,255,255,.04);
+  --ring-focus:0 0 0 1px var(--accent-azure);
+  --ring-accent:0 0 0 1px var(--line-accent);
+  --scanline:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px); /* @kind color */
+  --grid-overlay:linear-gradient(rgba(168,175,175,.06) 1px,transparent 1px) 0 0/100% 24px,linear-gradient(90deg,rgba(168,175,175,.06) 1px,transparent 1px) 0 0/24px 100%; /* @kind color */
+}
+
+
+/* tokens/motion.css */
+:root{
+  --dur-1:80ms; /* @kind other */
+  --dur-2:140ms; /* @kind other */
+  --dur-3:240ms; /* @kind other */
+  --dur-4:420ms; /* @kind other */
+  --ease-term:cubic-bezier(.2,.8,.2,1); /* @kind other */   /* default: quick out, settled */
+  --ease-linear:linear; /* @kind other */                    /* cursor blink, scan sweeps */
+  --ease-in-out:cubic-bezier(.4,0,.2,1); /* @kind other */
+  --transition-control:background-color var(--dur-2) var(--ease-term),border-color var(--dur-2) var(--ease-term),color var(--dur-2) var(--ease-term); /* @kind other */
+  --blink:1s steps(2,jump-none) infinite; /* @kind other */
+}
+@keyframes ds-blink{50%{opacity:0}}
+@keyframes ds-type{from{width:0}to{width:100%}}
+
+
+/* tokens/base.css */
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg-canvas);backdrop-filter:blur(var(--blur-backdrop));color:var(--text-body);font-family:var(--font-body);font-size:var(--text-body-size);line-height:var(--leading-body);font-variant-ligatures:none;-webkit-font-smoothing:antialiased}
+::selection{background:var(--selection-bg);color:var(--text-strong)}
+h1,h2,h3,h4{font-family:var(--font-display);color:var(--text-strong);letter-spacing:var(--track-tight);line-height:var(--leading-tight);margin:0;font-weight:var(--weight-medium)}
+h1{font-size:var(--size-4xl)}h2{font-size:var(--size-2xl)}h3{font-size:var(--size-xl)}h4{font-size:var(--size-lg)}
+p{margin:0 0 var(--space-4);max-width:var(--measure);text-wrap:pretty}
+a{color:var(--text-accent);text-decoration:none;border-bottom:1px solid var(--line-accent);transition:var(--transition-control)}
+a:hover{color:var(--accent-cyan);border-bottom-color:var(--accent-cyan)}
+hr{border:0;border-top:var(--border-hairline);margin:var(--space-5) 0}
+code,pre,kbd{font-family:var(--font-mono)}
+small{font-size:var(--size-xs)}
+:focus-visible{outline:none;box-shadow:var(--ring-focus)}
+.ds-label{font-family:var(--font-mono);font-size:var(--size-2xs);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-muted)}
+.pf-grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+.pf-header-nav{display:flex}
+.pf-header-burger{display:none!important}
+.pf-tabs-row{display:flex}
+.pf-card-row{display:flex;gap:var(--space-3);align-items:flex-start}
+.pf-card-img{width:84px;height:84px;flex-shrink:0;border-radius:var(--radius-1);border:var(--border-hairline);background-image:repeating-linear-gradient(45deg,var(--bg-inset) 0 6px,var(--surface-card) 6px 12px);display:flex;align-items:center;justify-content:center}
+@media (max-width:720px){
+.pf-grid-2{grid-template-columns:1fr}
+.pf-card-row{flex-direction:column}
+.pf-card-img{width:100%;height:140px}
+.pf-header-nav{display:none!important}
+.pf-header-nav.pf-open{display:flex!important;position:absolute;top:56px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:var(--space-4);padding:var(--space-5) var(--space-6);background:rgba(24,24,24,.95);border-bottom:var(--border-hairline)}
+[data-theme="paper"] .pf-header-nav.pf-open{background:rgba(255,255,255,.95)}
+.pf-header-burger{display:flex!important}
+.pf-tabs-row{flex-direction:column;align-items:stretch!important}
+.pf-search-wrap{width:100%!important}
+}
+
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script src="assets/vendor/react.production.min.js"></script>
+<script src="assets/vendor/react-dom.production.min.js"></script>
+
+<!-- Notley Design System — component bundle -->
+<script src="assets/ds-bundle.js"></script>
+<script>window.DS = window.NotleyDesignSystem_566c40;</script>
+
+<!-- Site content, generated from content/*.md -->
+<script src="assets/content.js"></script>
+
+<!-- Screens (JSX pre-compiled at build time) -->
+<script>
+/* HomeScreen.jsx */
+function HomeScreen({
+  onOpen
+}) {
+  const {
+    Button,
+    Icon,
+    Card,
+    Tag,
+    SectionRule,
+    Logotype,
+    ScrollBackdrop,
+    Breadcrumb
+  } = window.DS;
+  const {
+    Terminal,
+    KeyValueList
+  } = window.DS;
+  const {
+    Tabs
+  } = window.DS;
+  const {
+    Input
+  } = window.DS;
+  const data = window.SITE_DATA;
+  const hero = data.site.hero || {};
+  const work = data.site.work || {};
+  const [tab, setTab] = React.useState("all");
+  const [q, setQ] = React.useState("");
+  const [bgIdx, setBgIdx] = React.useState(() => Math.floor(Math.random() * data.backdrop.length));
+  React.useEffect(() => {
+    if (data.backdrop.length < 2) return;
+    const t = setInterval(() => setBgIdx(i => (i + 1) % data.backdrop.length), 7000);
+    return () => clearInterval(t);
+  }, []);
+  const matchTab = (p, m) => m === "all" || p.tags.some(t => t.toLowerCase().includes(String(m).toLowerCase()));
+  const tabItems = [{
+    value: "all",
+    label: "All",
+    count: data.projects.length
+  }].concat((work.tabs || []).map(t => ({
+    value: t.match || t.label,
+    label: t.label,
+    count: data.projects.filter(p => matchTab(p, t.match || t.label)).length
+  })));
+  const list = data.projects.filter(p => matchTab(p, tab) && (q === "" || (p.title + p.tags.join(" ")).toLowerCase().includes(q.toLowerCase())));
+  const primary = data.projects[0];
+  const sec = hero.secondaryCta || {};
+  return /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("section", {
+    style: {
+      position: "relative",
+      padding: "var(--space-9) var(--space-6) var(--space-7)"
+    }
+  }, /*#__PURE__*/React.createElement(ScrollBackdrop, {
+    image: data.backdrop[bgIdx],
+    scrim: "rgba(18,18,18,.55)"
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      width: "min(540px,100%)",
+      margin: "0 auto",
+      color: "#EDEDED",
+      textAlign: "center",
+      padding: "0 var(--space-4)",
+      boxSizing: "border-box"
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginBottom: "var(--space-4)",
+      display: "flex",
+      justifyContent: "center"
+    }
+  }, /*#__PURE__*/React.createElement(Logotype, {
+    size: 14,
+    variant: "name",
+    style: {
+      color: "#EDEDED"
+    }
+  })), /*#__PURE__*/React.createElement("h1", {
+    style: {
+      fontSize: "var(--size-5xl)",
+      lineHeight: 1.04,
+      marginBottom: "var(--space-4)",
+      color: "#EDEDED"
+    },
+    dangerouslySetInnerHTML: {
+      __html: hero.headlineHtml || ""
+    }
+  }), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: "var(--size-lg)",
+      maxWidth: "100%"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      color: "#FFFFFF"
+    }
+  }, hero.intro)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: "var(--space-2)",
+      marginTop: "var(--space-5)",
+      justifyContent: "center",
+      flexWrap: "wrap"
+    }
+  }, primary && /*#__PURE__*/React.createElement(Button, {
+    prefix: /*#__PURE__*/React.createElement(Icon, {
+      name: "arrow-down",
+      size: 13
+    }),
+    onClick: () => onOpen(primary.id),
+    style: {
+      width: 169,
+      justifyContent: "center"
+    }
+  }, hero.primaryCta || "Latest project"), /*#__PURE__*/React.createElement(Button, {
+    as: sec.href ? "a" : "button",
+    href: sec.href,
+    variant: "secondary",
+    style: {
+      color: "#EDEDED",
+      borderColor: "#EDEDED",
+      width: 169,
+      justifyContent: "center"
+    },
+    prefix: /*#__PURE__*/React.createElement(Icon, {
+      name: "download",
+      size: 13
+    })
+  }, sec.label || "Download Resume"))))), /*#__PURE__*/React.createElement("section", {
+    style: {
+      padding: "calc(var(--space-8) / 2) var(--space-6) var(--space-8)",
+      maxWidth: "var(--container)",
+      margin: "0 auto"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      borderBottom: "2px solid var(--line-1)",
+      paddingBottom: "var(--space-3)",
+      marginBottom: "var(--space-6)"
+    }
+  }, /*#__PURE__*/React.createElement(Breadcrumb, {
+    size: "xl",
+    items: ["work"]
+  })), /*#__PURE__*/React.createElement(SectionRule, {
+    index: work.index || "01",
+    label: work.label || "Selected projects"
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "pf-tabs-row",
+    style: {
+      alignItems: "flex-end",
+      justifyContent: "space-between",
+      gap: "var(--space-5)",
+      margin: "calc(var(--space-4) / 2) 0 var(--space-5)"
+    }
+  }, /*#__PURE__*/React.createElement(Tabs, {
+    items: tabItems,
+    value: tab,
+    onChange: setTab
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "pf-search-wrap",
+    style: {
+      width: 240
+    }
+  }, /*#__PURE__*/React.createElement(Input, {
+    prompt: true,
+    size: "sm",
+    placeholder: "filter projects\u2026",
+    value: q,
+    onChange: e => setQ(e.target.value)
+  }))), /*#__PURE__*/React.createElement("div", {
+    className: "pf-grid-2",
+    style: {
+      gap: "var(--space-4)"
+    }
+  }, list.map(p => /*#__PURE__*/React.createElement(Card, {
+    key: p.id,
+    label: "Project",
+    index: p.index,
+    title: p.title,
+    interactive: true,
+    onClick: () => onOpen(p.id),
+    footer: /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("span", null, "Read case study"), /*#__PURE__*/React.createElement(Icon, {
+      name: "arrow-up-right",
+      size: 13
+    }))
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "var(--font-mono)",
+      fontSize: "var(--size-2xs)",
+      color: "var(--text-faint)",
+      letterSpacing: "var(--track-caps)"
+    }
+  }, p.year), /*#__PURE__*/React.createElement("div", {
+    className: "pf-card-row"
+  }, /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: "var(--size-xs)",
+      color: "var(--text-body)",
+      margin: 0,
+      flex: 1
+    }
+  }, p.summary), p.cardImage ? /*#__PURE__*/React.createElement("div", {
+    className: "pf-card-img",
+    style: {
+      backgroundImage: `url("${p.cardImage}")`,
+      backgroundSize: "cover",
+      backgroundPosition: "center"
+    }
+  }) : /*#__PURE__*/React.createElement("div", {
+    className: "pf-card-img"
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "var(--font-mono)",
+      fontSize: "var(--size-2xs)",
+      color: "var(--text-faint)",
+      textTransform: "uppercase",
+      letterSpacing: "var(--track-caps)"
+    }
+  }, "image"))))), list.length === 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "var(--font-mono)",
+      fontSize: "var(--size-xs)",
+      color: "var(--text-faint)",
+      padding: "var(--space-5)",
+      border: "var(--border-dashed)"
+    }
+  }, "no matches for \"", q, "\""))));
+}
+window.HomeScreen = HomeScreen;
+
+/* ProjectScreen.jsx */
+function RawHtml({
+  html,
+  tag,
+  style
+}) {
+  const T = tag || "span";
+  return /*#__PURE__*/React.createElement(T, {
+    style: style,
+    dangerouslySetInnerHTML: {
+      __html: html || ""
+    }
+  });
+}
+function ArticleBlock({
+  block
+}) {
+  const {
+    SpecTable,
+    Figure,
+    Callout,
+    SectionRule
+  } = window.DS;
+  if (block.h != null) return /*#__PURE__*/React.createElement(RawHtml, {
+    tag: "h2",
+    html: block.h,
+    style: {
+      fontSize: "var(--size-2xl)",
+      margin: "var(--space-7) 0 var(--space-3)",
+      maxWidth: "32ch"
+    }
+  });
+  if (block.p != null) return /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: "var(--size-md)",
+      lineHeight: "var(--leading-body)",
+      color: "var(--text-body)",
+      maxWidth: "var(--measure)"
+    }
+  }, block.lead && /*#__PURE__*/React.createElement("strong", {
+    style: {
+      color: "var(--text-strong)",
+      fontWeight: 600
+    },
+    dangerouslySetInnerHTML: {
+      __html: block.lead + " "
+    }
+  }), /*#__PURE__*/React.createElement("span", {
+    dangerouslySetInnerHTML: {
+      __html: block.p
+    }
+  }));
+  if (block.list) return /*#__PURE__*/React.createElement("div", {
+    style: {
+      margin: "var(--space-5) 0",
+      maxWidth: "var(--measure)",
+      borderTop: "var(--border-hairline)",
+      borderBottom: "var(--border-hairline)",
+      padding: "var(--space-4) 0"
+    }
+  }, block.list.title && /*#__PURE__*/React.createElement(RawHtml, {
+    html: block.list.title,
+    style: {
+      display: "block",
+      fontFamily: "var(--font-mono)",
+      fontSize: "var(--size-2xs)",
+      letterSpacing: "var(--track-caps)",
+      textTransform: "uppercase",
+      color: "var(--text-faint)",
+      marginBottom: "var(--space-3)"
+    }
+  }), /*#__PURE__*/React.createElement("ul", {
+    style: {
+      margin: 0,
+      padding: 0,
+      listStyle: "none",
+      display: "flex",
+      flexDirection: "column",
+      gap: "var(--space-2)"
+    }
+  }, block.list.items.map((it, i) => /*#__PURE__*/React.createElement("li", {
+    key: i,
+    style: {
+      display: "flex",
+      gap: "var(--space-3)",
+      fontSize: "var(--size-sm)",
+      lineHeight: 1.5,
+      color: "var(--text-body)"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "var(--font-mono)",
+      fontSize: "var(--size-2xs)",
+      color: "var(--accent-spring)",
+      paddingTop: 2
+    }
+  }, String(i + 1).padStart(2, "0")), /*#__PURE__*/React.createElement("span", {
+    dangerouslySetInnerHTML: {
+      __html: it
+    }
+  })))));
+  if (block.skills != null) return /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: "var(--space-7)",
+      paddingTop: "var(--space-4)",
+      borderTop: "var(--border-hairline)",
+      fontFamily: "var(--font-mono)",
+      fontSize: "var(--size-2xs)",
+      lineHeight: 1.8,
+      color: "var(--text-faint)",
+      maxWidth: "var(--measure)"
+    }
+  }, "Skills: ", block.skills);
+  if (block.fig) return /*#__PURE__*/React.createElement("div", {
+    style: {
+      margin: "var(--space-5) 0"
+    }
+  }, /*#__PURE__*/React.createElement(Figure, {
+    src: block.fig.src,
+    alt: block.fig.alt,
+    index: block.fig.index,
+    caption: block.fig.caption ? /*#__PURE__*/React.createElement(RawHtml, {
+      html: block.fig.caption
+    }) : undefined
+  }));
+  if (block.table) return /*#__PURE__*/React.createElement("div", {
+    style: {
+      margin: "var(--space-5) 0",
+      maxWidth: "var(--measure)"
+    }
+  }, /*#__PURE__*/React.createElement(SpecTable, {
+    caption: block.table.caption ? /*#__PURE__*/React.createElement(RawHtml, {
+      html: block.table.caption
+    }) : undefined,
+    columns: block.table.columns.map((c, i) => /*#__PURE__*/React.createElement(RawHtml, {
+      key: i,
+      html: c
+    })),
+    rows: block.table.rows.map(r => r.map((c, i) => /*#__PURE__*/React.createElement(RawHtml, {
+      key: i,
+      html: c
+    })))
+  }));
+  if (block.note) return /*#__PURE__*/React.createElement("div", {
+    style: {
+      margin: "var(--space-5) 0",
+      maxWidth: "var(--measure)"
+    }
+  }, /*#__PURE__*/React.createElement(Callout, {
+    tone: block.note.tone,
+    title: block.note.title
+  }, /*#__PURE__*/React.createElement(RawHtml, {
+    html: block.note.children
+  })));
+  return null;
+}
+function ProjectScreen({
+  id,
+  onBack,
+  onOpen
+}) {
+  const {
+    Breadcrumb,
+    Tag,
+    SectionRule,
+    KeyValueList,
+    Button,
+    Icon
+  } = window.DS;
+  const data = window.SITE_DATA;
+  const p = data.projects.find(x => x.id === id) || data.projects[0];
+  const others = data.projects.filter(x => x.id !== p.id);
+  return /*#__PURE__*/React.createElement("article", {
+    style: {
+      maxWidth: 820,
+      margin: "0 auto",
+      padding: "var(--space-7) var(--space-6) var(--space-9)"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      gap: "var(--space-4)",
+      borderBottom: "var(--border-hairline)",
+      paddingBottom: "var(--space-3)"
+    }
+  }, /*#__PURE__*/React.createElement(Breadcrumb, {
+    size: "xl",
+    items: ["work", p.id]
+  }), /*#__PURE__*/React.createElement(Button, {
+    size: "sm",
+    variant: "ghost",
+    prefix: /*#__PURE__*/React.createElement(Icon, {
+      name: "arrow-left",
+      size: 13
+    }),
+    onClick: onBack
+  }, "Back")), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      alignItems: "baseline",
+      gap: "var(--space-3)",
+      marginTop: "var(--space-5)"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "var(--font-mono)",
+      fontSize: "var(--size-2xs)",
+      letterSpacing: "var(--track-caps)",
+      textTransform: "uppercase",
+      color: "var(--text-faint)"
+    }
+  }, "Project ", p.index, " \xB7 ", p.year)), /*#__PURE__*/React.createElement("h1", {
+    style: {
+      fontSize: "var(--size-4xl)",
+      margin: "var(--space-2) 0 var(--space-4)",
+      maxWidth: "24ch"
+    }
+  }, p.title), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: "var(--size-lg)",
+      lineHeight: 1.5,
+      color: "var(--text-strong)",
+      maxWidth: "58ch"
+    }
+  }, p.summary), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      flexWrap: "wrap",
+      margin: "var(--space-4) 0 var(--space-5)"
+    }
+  }, p.tags.map(t => /*#__PURE__*/React.createElement(Tag, {
+    key: t
+  }, t))), p.meta && p.meta.length > 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      margin: "var(--space-5) 0 var(--space-6)",
+      maxWidth: "var(--measure)"
+    }
+  }, /*#__PURE__*/React.createElement(KeyValueList, {
+    columns: 2,
+    items: p.meta
+  })), /*#__PURE__*/React.createElement("div", null, (p.body && p.body.length ? p.body : [{
+    p: "Write-up in progress."
+  }]).map((b, i) => /*#__PURE__*/React.createElement(ArticleBlock, {
+    key: i,
+    block: b
+  }))), others.length > 0 && /*#__PURE__*/React.createElement("div", {
+    style: {
+      marginTop: "var(--space-8)"
+    }
+  }, /*#__PURE__*/React.createElement(SectionRule, {
+    label: "More work"
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      marginTop: "var(--space-3)"
+    }
+  }, others.map(o => /*#__PURE__*/React.createElement("button", {
+    key: o.id,
+    onClick: () => onOpen(o.id),
+    style: {
+      all: "unset",
+      cursor: "pointer",
+      display: "flex",
+      alignItems: "baseline",
+      gap: "var(--space-3)",
+      padding: "var(--space-3) 0",
+      borderBottom: "var(--border-hairline)"
+    }
+  }, /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "var(--font-mono)",
+      fontSize: "var(--size-2xs)",
+      color: "var(--text-faint)"
+    }
+  }, o.index), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "var(--font-display)",
+      fontSize: "var(--size-lg)",
+      color: "var(--text-strong)",
+      flex: 1
+    }
+  }, o.title), /*#__PURE__*/React.createElement("span", {
+    style: {
+      fontFamily: "var(--font-mono)",
+      fontSize: "var(--size-xs)",
+      color: "var(--text-muted)"
+    }
+  }, o.year))))));
+}
+window.ArticleBlock = ArticleBlock;
+window.ProjectScreen = ProjectScreen;
+
+/* AboutScreen.jsx */
+function AboutScreen() {
+  const {
+    Breadcrumb,
+    SectionRule,
+    KeyValueList,
+    SpecTable,
+    Tag,
+    Tooltip,
+    Button,
+    Icon
+  } = window.DS;
+  const a = window.SITE_DATA.about || {};
+  const exp = a.experience || [];
+  const methods = a.methods || [];
+  const edu = a.education || [];
+  const splitDegree = d => {
+    const s = String(d).split(" — ");
+    return s.length > 1 ? /*#__PURE__*/React.createElement(React.Fragment, null, s[0], /*#__PURE__*/React.createElement("br", null), s.slice(1).join(" — ")) : d;
+  };
+  return /*#__PURE__*/React.createElement("article", {
+    style: {
+      maxWidth: "var(--container)",
+      margin: "0 auto",
+      padding: "calc(var(--space-8) / 2) var(--space-6) var(--space-8)"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      borderBottom: "2px solid var(--line-1)",
+      paddingBottom: "var(--space-3)"
+    }
+  }, /*#__PURE__*/React.createElement(Breadcrumb, {
+    size: "xl",
+    items: ["about"]
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "pf-grid-2",
+    style: {
+      gap: "var(--space-8)",
+      margin: "var(--space-6) 0 0"
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: "var(--size-xl)",
+      lineHeight: 1.45,
+      color: "var(--text-strong)",
+      maxWidth: "46ch",
+      margin: "0 0 var(--space-5)"
+    }
+  }, a.intro), (a.body || []).map((html, i) => /*#__PURE__*/React.createElement("p", {
+    key: i,
+    style: {
+      fontSize: "var(--size-md)"
+    },
+    dangerouslySetInnerHTML: {
+      __html: html
+    }
+  }))), /*#__PURE__*/React.createElement("div", null, exp.length > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(SectionRule, {
+    index: "01",
+    label: "Experience"
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      margin: "var(--space-3) 0 var(--space-7)",
+      fontFamily: "var(--font-mono)",
+      fontSize: "var(--size-xs)"
+    }
+  }, exp.map((d, i) => /*#__PURE__*/React.createElement("div", {
+    key: i,
+    style: {
+      display: "flex",
+      alignItems: "baseline",
+      justifyContent: "space-between",
+      gap: "var(--space-3)",
+      padding: "6px 0",
+      borderBottom: "var(--border-hairline)"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      color: "var(--text-strong)"
+    }
+  }, /*#__PURE__*/React.createElement("strong", {
+    style: {
+      fontWeight: "var(--weight-bold)"
+    }
+  }, d.role), /*#__PURE__*/React.createElement("br", null), d.org), /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontSize: "var(--size-2xs)",
+      letterSpacing: "var(--track-caps)",
+      textTransform: "uppercase",
+      color: "var(--text-muted)",
+      whiteSpace: "nowrap",
+      textAlign: "right"
+    }
+  }, d.dates))))), methods.length > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(SectionRule, {
+    index: "02",
+    label: "Instruments & methods"
+  }), /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: "var(--size-xs)",
+      color: "var(--text-muted)",
+      margin: "var(--space-3) 0 var(--space-3)"
+    }
+  }, "Hover for the full name."), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: 6,
+      flexWrap: "wrap",
+      marginBottom: "var(--space-7)"
+    }
+  }, methods.map(m => /*#__PURE__*/React.createElement(Tooltip, {
+    key: m.tag,
+    label: m.name
+  }, /*#__PURE__*/React.createElement(Tag, null, m.tag))))), edu.length > 0 && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(SectionRule, {
+    index: "03",
+    label: "Education"
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      margin: "var(--space-3) 0 0"
+    }
+  }, /*#__PURE__*/React.createElement(SpecTable, {
+    dense: true,
+    columns: ["Institution", "Degree", "Grad"],
+    rows: edu.map(e => [e.institution, splitDegree(e.degree), e.grad])
+  }))))));
+}
+window.AboutScreen = AboutScreen;
+
+/* App.jsx */
+function ContactSection() {
+  const {
+    SectionRule,
+    Input,
+    Textarea,
+    Button,
+    Icon,
+    Breadcrumb
+  } = window.DS;
+  const c = window.SITE_DATA.site.contact;
+  const [sent, setSent] = React.useState(false);
+  return /*#__PURE__*/React.createElement("section", {
+    id: "contact",
+    style: {
+      padding: "calc(var(--space-8) / 2) var(--space-6) var(--space-9)",
+      maxWidth: "var(--container)",
+      margin: "0 auto"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      borderBottom: "2px solid var(--line-1)",
+      paddingBottom: "var(--space-3)",
+      marginBottom: "var(--space-6)"
+    }
+  }, /*#__PURE__*/React.createElement(Breadcrumb, {
+    size: "xl",
+    items: ["contact"]
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "pf-grid-2",
+    style: {
+      gap: "var(--space-7)",
+      marginTop: "var(--space-5)"
+    }
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("p", {
+    style: {
+      fontSize: "var(--size-xl)",
+      lineHeight: 1.45,
+      color: "var(--text-strong)",
+      maxWidth: "36ch",
+      margin: 0
+    }
+  }, c.blurb), c.email && /*#__PURE__*/React.createElement("a", {
+    href: "mailto:" + c.email,
+    style: {
+      display: "inline-block",
+      marginTop: "var(--space-4)",
+      fontFamily: "var(--font-mono)",
+      fontSize: "var(--size-sm)"
+    }
+  }, c.email), c.phone && /*#__PURE__*/React.createElement("a", {
+    href: "tel:" + (c.phoneHref || c.phone),
+    style: {
+      display: "block",
+      marginTop: "var(--space-2)",
+      fontFamily: "var(--font-mono)",
+      fontSize: "var(--size-sm)"
+    }
+  }, c.phone)), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "var(--space-3)"
+    }
+  }, sent ? /*#__PURE__*/React.createElement("div", {
+    style: {
+      fontFamily: "var(--font-mono)",
+      fontSize: "var(--size-xs)",
+      color: "var(--accent-spring)"
+    }
+  }, c.sentMessage) : /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement(Input, {
+    label: "Email",
+    placeholder: "you@email.xyz"
+  }), /*#__PURE__*/React.createElement(Textarea, {
+    label: "Message",
+    rows: 5
+  }), /*#__PURE__*/React.createElement(Button, {
+    onClick: () => setSent(true),
+    prefix: /*#__PURE__*/React.createElement(Icon, {
+      name: "mail",
+      size: 13
+    })
+  }, "Send")))));
+}
+window.ContactSection = ContactSection;
+function SiteFooter() {
+  const {
+    Logotype,
+    SectionRule,
+    Icon
+  } = window.DS;
+  const links = window.SITE_DATA.site.footer.links || [];
+  return /*#__PURE__*/React.createElement("footer", {
+    style: {
+      borderTop: "var(--border-hairline)",
+      padding: "var(--space-6)"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      maxWidth: "var(--container)",
+      margin: "0 auto"
+    }
+  }, /*#__PURE__*/React.createElement(SectionRule, {
+    gradient: true
+  }), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      justifyContent: "space-between",
+      alignItems: "flex-end",
+      gap: "var(--space-5)",
+      marginTop: "var(--space-4)"
+    }
+  }, /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "var(--space-2)"
+    }
+  }, /*#__PURE__*/React.createElement(Logotype, {
+    size: 14
+  })), /*#__PURE__*/React.createElement("div", {
+    style: {
+      display: "flex",
+      gap: "var(--space-4)",
+      alignItems: "center"
+    }
+  }, links.map(l => /*#__PURE__*/React.createElement("a", {
+    key: l.href,
+    href: l.href,
+    "aria-label": l.label,
+    style: {
+      color: "var(--text-strong)",
+      fontWeight: "var(--weight-bold)",
+      borderBottom: "none"
+    }
+  }, /*#__PURE__*/React.createElement(Icon, {
+    name: l.icon || "external-link",
+    size: 14
+  })))))));
+}
+function App() {
+  const {
+    SiteHeader,
+    Button,
+    Icon,
+    Switch
+  } = window.DS;
+  const S = window.SITE_DATA.site;
+  const [route, setRoute] = React.useState({
+    name: "page"
+  });
+  const [active, setActive] = React.useState(S.nav && S.nav[0] || "work");
+  const [paper, setPaper] = React.useState(false);
+  React.useEffect(() => {
+    document.body.dataset.theme = paper ? "paper" : "";
+  }, [paper]);
+  React.useEffect(() => {
+    if (route.name !== "page") return;
+    const ids = S.nav || ["work", "about", "contact"];
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) setActive(e.target.id);
+      });
+    }, {
+      rootMargin: "-40% 0px -50% 0px"
+    });
+    ids.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+    return () => obs.disconnect();
+  }, [route.name]);
+  const scrollToId = id => {
+    const el = document.getElementById(id);
+    if (el) window.scrollTo({
+      top: el.offsetTop - 56,
+      behavior: "smooth"
+    });
+  };
+  const goSection = id => {
+    if (route.name !== "page") {
+      setRoute({
+        name: "page"
+      });
+      setTimeout(() => scrollToId(id), 0);
+      return;
+    }
+    scrollToId(id);
+  };
+  const open = id => {
+    setRoute({
+      name: "project",
+      id
+    });
+    window.scrollTo(0, 0);
+  };
+  const backHome = () => {
+    setRoute({
+      name: "page"
+    });
+    window.scrollTo(0, 0);
+  };
+  const resume = S.resume || {};
+  return /*#__PURE__*/React.createElement("div", {
+    style: {
+      minHeight: "100vh",
+      display: "flex",
+      flexDirection: "column"
+    }
+  }, /*#__PURE__*/React.createElement(SiteHeader, {
+    links: S.nav,
+    active: route.name === "project" ? S.nav && S.nav[0] || "work" : active,
+    onNavigate: goSection,
+    brand: /*#__PURE__*/React.createElement("span", {
+      style: {
+        fontFamily: "var(--font-mono)",
+        fontSize: "var(--size-sm)",
+        letterSpacing: "var(--track-wide)",
+        color: "var(--text-strong)"
+      }
+    }, "[jn@portfolio ~] ", /*#__PURE__*/React.createElement("span", {
+      style: {
+        animation: "cursor-blink 1s step-end infinite"
+      }
+    }, "_")),
+    navPrefix: /*#__PURE__*/React.createElement(Switch, {
+      checked: paper,
+      onChange: () => setPaper(!paper)
+    }),
+    action: /*#__PURE__*/React.createElement(Button, {
+      as: resume.href ? "a" : "button",
+      href: resume.href,
+      size: "sm",
+      variant: "secondary",
+      prefix: /*#__PURE__*/React.createElement(Icon, {
+        name: "download",
+        size: 13
+      })
+    }, resume.label || "Resume")
+  }), /*#__PURE__*/React.createElement("main", {
+    style: {
+      flex: 1
+    }
+  }, route.name === "page" && /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("section", {
+    id: "work"
+  }, /*#__PURE__*/React.createElement(window.HomeScreen, {
+    onOpen: open
+  })), /*#__PURE__*/React.createElement("section", {
+    id: "about"
+  }, /*#__PURE__*/React.createElement(window.AboutScreen, null)), /*#__PURE__*/React.createElement(window.ContactSection, null)), route.name === "project" && /*#__PURE__*/React.createElement(window.ProjectScreen, {
+    id: route.id,
+    onBack: backHome,
+    onOpen: open
+  })), /*#__PURE__*/React.createElement(SiteFooter, null));
+}
+window.App = App;
+</script>
+
+<script>
+  ReactDOM.createRoot(document.getElementById("root")).render(
+    React.createElement(window.App)
+  );
+</script>
+</body>
+</html>

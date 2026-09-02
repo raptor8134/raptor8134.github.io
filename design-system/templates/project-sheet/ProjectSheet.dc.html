@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="One-page project sheet" description="Printable A4 project sheet in the paper theme: metadata, method, figures, results." -->
+<helmet><script src="./ds-base.js"></script><script src="./doc-page.js"></script><style>doc-page:not(:defined){visibility:hidden}.page{background:#fff}</style></helmet>
+<doc-page size="a4">
+<section class="page" data-theme="paper" style="padding:18mm 16mm 14mm;display:flex;flex-direction:column;gap:16px;font-family:'JetBrains Mono',ui-monospace,monospace;color:#2C3A40">
+<header style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;border-bottom:2px solid #0A1017;padding-bottom:12px">
+<div>
+<div style="font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#5D6E75">Project 004 · 2025</div>
+<h1 style="font-family:'Space Grotesk',sans-serif;font-size:24px;letter-spacing:-.02em;color:#121212;margin:6px 0 0;font-weight:500">Fatigue-resistant lattice inserts</h1>
+</div>
+<div style="font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#8A9192;text-align:right;line-height:1.7">james@notley.eng<br>notley.eng</div>
+</header>
+<p style="font-size:12px;line-height:1.6;margin:0">Redesigned a titanium lattice insert for a spinal cage so it survives 10⁶ cycles at body temperature without stress shielding.</p>
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.KeyValueList" columns="{{ 2 }}" items="{{ meta }}" hint-size="100%,80px"></x-import>
+<div>
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.SectionRule" index="01" label="Method" hint-size="100%,16px"></x-import>
+<p style="font-size:10.5px;line-height:1.55;margin:12px 0 0">Build orientation drove nearly all of the scatter in fatigue life. Struts printed at 45° carried the largest unmelted-powder defects, so the lattice was re-oriented to put every load-bearing strut within 20° of vertical.</p>
+<p style="font-size:10.5px;line-height:1.55;margin:8px 0 0">Hot isostatic pressing closed the remaining gas porosity and moved failure initiation from internal defects to the surface, where it can be controlled by chemical polishing.</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.Figure" index="FIG 1" caption="As-built strut cross-section, 200×." hint-size="100%,200px"></x-import>
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.Figure" index="FIG 2" caption="Fracture surface after 1.0 × 10⁶ cycles at 10 Hz." hint-size="100%,200px"></x-import>
+</div>
+<div>
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.SectionRule" index="02" label="Results" hint-size="100%,16px"></x-import>
+<div style="display:grid;grid-template-columns:1.25fr 1fr;gap:16px;margin-top:12px;align-items:start">
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.SpecTable" dense="{{ true }}" caption="Tensile after HIP, ASTM E8" columns="{{ specColumns }}" rows="{{ specRows }}" hint-size="100%,140px"></x-import>
+<div style="display:flex;flex-direction:column;gap:12px">
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.Meter" label="Yield strength" value="{{ 880 }}" max="{{ 1100 }}" unit="MPa" hint-size="100%,32px"></x-import>
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.Meter" label="Porosity" value="{{ 0.4 }}" max="{{ 3 }}" unit="%" tone="ok" hint-size="100%,32px"></x-import>
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.Meter" label="Cycles to failure" value="{{ 96 }}" max="{{ 100 }}" unit="%" tone="ok" hint-size="100%,32px"></x-import>
+</div>
+</div>
+</div>
+<x-import component-from-global-scope="NotleyDesignSystem_566c40.Callout" tone="note" title="Test conditions" hint-size="100%,56px">Room temperature, 10 Hz, R = 0.1, n = 6 per condition. Fatigue per ASTM E466.</x-import>
+<footer style="margin-top:auto;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(10,16,23,.14);padding-top:8px;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#8A999E">
+<span>James Notley · lattice-inserts</span><span>Page 1 / 1</span>
+</footer>
+</section>
+</doc-page>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals(){
+    return {
+      meta:[{key:"Role",value:"Lead engineer"},{key:"Year",value:"2025"},{key:"Process",value:"SLM + HIP"},{key:"Standard",value:"ASTM F3001"}],
+      specColumns:["Condition","UTS (MPa)","Elong. (%)"],
+      specRows:[["As-built","1043","6.8"],["Stress relieved","998","9.4"],["HIP 920 °C","961","14.1"]]
+    };
+  }
+}
+</script>
+</body>
+</html>

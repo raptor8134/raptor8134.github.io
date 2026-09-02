@@ -1,0 +1,118 @@
+# Editing site content
+
+Everything on the site comes from the Markdown files in this folder. Edit them,
+then rebuild:
+
+    node build/build.js
+
+and reload `portfolio_site/index.html`. Nothing here needs JavaScript knowledge.
+
+```
+content/
+  site.md                       header, hero, contact, footer  (frontmatter only)
+  about.md                      the About section
+  resume.pdf                    linked from the Resume / Download Resume buttons
+  backdrop/                     hero background micrographs (every image here is used, sorted by name)
+  projects/
+    01-uhv-deposition/
+      card.md                   the grid card: title, year, tags + one-sentence brief
+      article.md                the case-study write-up (long-form Markdown)
+      images/                   figures referenced from article.md
+    02-filament-winder/
+      card.md
+      article.md
+      images/
+```
+
+## Frontmatter
+
+The block between the two `---` lines at the top of a file is *frontmatter* —
+`key: value` settings. Body text (below the second `---`) is normal Markdown.
+Keep the indentation as shown; it is significant.
+
+## `site.md`
+
+All in frontmatter. Common edits:
+
+- `hero.headline` — one line of the headline per line. Wrap a phrase in `[[ ]]`
+  to paint it spring-green: `[[all builder]]`.
+- `hero.intro`, `contact.blurb` — plain sentences.
+- `contact.email`, `contact.phone`, `contact.phoneHref` (digits only, e.g. `+19165214107`).
+- `work.tabs` — the project filter tabs. `match` is checked as a substring of a
+  project's `tags`, so `match: uhv` selects every project tagged `uhv`. "All" is
+  added automatically; its count and each tab's count are computed for you.
+- `footer.links` — `icon` is a Lucide name (`linkedin`, `github`, `mail`, …).
+- `resume` / `hero.secondaryCta` — `href` points at a file in `assets/`
+  (`resume.pdf` is copied there from `content/resume.pdf`).
+
+The wordmark above the headline and in the footer is the design system's
+`Logotype` and is not editable here.
+
+## `about.md`
+
+Frontmatter:
+
+- `intro` — the large opening line.
+- `experience` — list of `{ role, org, dates }`. **This is where job dates live.**
+- `methods` — list of `{ tag, name }`; `tag` shows as a chip, `name` on hover.
+- `education` — list of `{ institution, degree, grad }`. Put a ` — ` in `degree`
+  to break it onto a second line.
+
+Body: the prose paragraphs, plain Markdown, one blank line between them.
+
+## Projects
+
+### Adding a project
+
+1. Make a folder `content/projects/NN-slug/` — the `NN-` number sets the order
+   projects appear in the grid and the "More work" list.
+2. Add `card.md` and (optionally) `article.md`. Copy an existing pair as a start.
+3. Put any figures in that folder's `images/`.
+4. Rebuild.
+
+### `card.md`
+
+```
+---
+id: filament-winder          # used in the URL / breadcrumb; defaults to the slug
+index: "001"                 # the "PROJECT 00X" label; defaults to folder position
+title: Filament Winding Machine and Non-Cylindrical Toolpath Generator
+year: "2025"
+category: aerospace
+tags: [composites, g-code, golang, failure]
+image: images/winder.jpg     # optional grid-card thumbnail
+---
+
+One sentence. This is the card brief and the lead line on the project page.
+```
+
+### `article.md`
+
+```
+---
+meta:
+  - { key: Scope, value: "Independent project, year 2" }
+  - { key: Role, value: Sole contributor }
+skills: "composites manufacturing · motion control · Go and Python"
+---
+
+Body goes here.
+```
+
+Body Markdown maps to the design-system blocks:
+
+| You write | You get |
+| --- | --- |
+| `## Heading` | section heading |
+| paragraph | body paragraph |
+| `**Lead sentence.** rest…` | paragraph with a bold strong opening |
+| `**Title**` on its own line, then a list | the ruled, numbered "At a glance"-style list |
+| `- item` / `1. item` | list rows |
+| `> [!note] Title` / `> body` | a Callout. Tones: `note`, `ok`, `warn`, `fail` |
+| GFM table, then an `*italic line*` under it | SpecTable with that line as its caption |
+| `![alt](images/x.jpg "Caption")` | a numbered Figure (FIG 1, FIG 2, …) |
+| `[text](https://…)` | a link |
+| `skills:` in frontmatter | the trailing "Skills: …" line |
+
+Images are referenced by path relative to the project folder
+(`images/x.jpg`); only files actually referenced get copied into the build.
