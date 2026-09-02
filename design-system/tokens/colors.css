@@ -1,0 +1,42 @@
+:root{
+  /* ---- Ink ramp (neutral, keyed to rgba(18,18,18)) ---- */
+  --ink-1000:#0C0C0C; --ink-900:#121212; --ink-800:#181818; --ink-700:#1F1F1F;
+  --ink-600:#262626; --ink-500:#303030; --ink-400:#3D3D3D;
+  /* ---- Foreground ramp ---- */
+  --fg-1:#EDEDED; --fg-2:#A8AFAF; --fg-3:#757C7C; --fg-4:#525858;
+  /* ---- Paper ramp (print / light) ---- */
+  --paper-100:#FBFCFB; --paper-200:#F1F4F3; --paper-300:#E3E8E7; --paper-400:#CBD3D2;
+  /* ---- Accent: spring green -> deep blue ---- */
+  --accent-spring:#2BE08A; --accent-mint:#5AE9AE; --accent-teal:#1FA9C0;
+  --accent-azure:#3D7BFF; --accent-blue:#1B4FD1; --accent-deep:#123C9E;
+  --grad-accent:linear-gradient(90deg,color-mix(in oklch,var(--accent-spring) 100%,var(--accent-blue) 0%) 0%,color-mix(in oklch,var(--accent-spring) 100%,var(--accent-blue) 0%) 12.5%,color-mix(in oklch,var(--accent-spring) 85.7%,var(--accent-blue) 14.3%) 12.5%,color-mix(in oklch,var(--accent-spring) 85.7%,var(--accent-blue) 14.3%) 25%,color-mix(in oklch,var(--accent-spring) 71.4%,var(--accent-blue) 28.6%) 25%,color-mix(in oklch,var(--accent-spring) 71.4%,var(--accent-blue) 28.6%) 37.5%,color-mix(in oklch,var(--accent-spring) 57.1%,var(--accent-blue) 42.9%) 37.5%,color-mix(in oklch,var(--accent-spring) 57.1%,var(--accent-blue) 42.9%) 50%,color-mix(in oklch,var(--accent-spring) 42.9%,var(--accent-blue) 57.1%) 50%,color-mix(in oklch,var(--accent-spring) 42.9%,var(--accent-blue) 57.1%) 62.5%,color-mix(in oklch,var(--accent-spring) 28.6%,var(--accent-blue) 71.4%) 62.5%,color-mix(in oklch,var(--accent-spring) 28.6%,var(--accent-blue) 71.4%) 75%,color-mix(in oklch,var(--accent-spring) 14.3%,var(--accent-blue) 85.7%) 75%,color-mix(in oklch,var(--accent-spring) 14.3%,var(--accent-blue) 85.7%) 87.5%,var(--accent-blue) 87.5%,var(--accent-blue) 100%);
+  --grad-accent-smooth:linear-gradient(90deg,var(--accent-spring) 0%,var(--accent-blue) 100%);
+  --grad-accent-diag:linear-gradient(135deg,var(--accent-spring) 0%,var(--accent-blue) 100%);
+  --grad-accent-soft:linear-gradient(90deg,rgba(43,224,138,.16) 0%,rgba(27,79,209,.20) 100%); /* @kind color */
+  /* ---- Signals ---- */
+  --signal-ok:#2BE08A; --signal-info:#3D7BFF; --signal-warn:#F0C05A; --signal-fail:#FF6B5E;
+  /* ---- Backdrop ---- */
+  --bg-scrim:rgba(18,18,18,.85);
+  --blur-backdrop:6px; /* @kind other */
+  /* ---- Semantic aliases: screen (default) ---- */
+  --bg-canvas:var(--bg-scrim); --bg-panel:rgba(24,24,24,.78); --bg-inset:rgba(12,12,12,.82);
+  --bg-raised:rgba(31,31,31,.86); --bg-hover:rgba(255,255,255,.05); --bg-active:rgba(255,255,255,.09);
+  --surface-card:rgba(24,24,24,.78); --surface-card-hover:rgba(31,31,31,.88);
+  --text-body:var(--fg-2); --text-strong:var(--fg-1); --text-muted:var(--fg-3); --text-faint:var(--fg-4);
+  --text-accent:var(--accent-spring); --text-inverse:var(--ink-900);
+  --line-1:rgba(237,237,237,.16); --line-2:rgba(237,237,237,.28); --line-accent:rgba(43,224,138,.45);
+  --focus-ring:var(--accent-azure);
+  --selection-bg:rgba(43,224,138,.24);
+}
+/* Paper scope: print sheets, PDF views, light embeds. */
+[data-theme="paper"]{
+  --bg-canvas:var(--paper-100); --bg-panel:#FFFFFF; --bg-inset:var(--paper-200);
+  --bg-raised:#FFFFFF; --bg-hover:rgba(18,18,18,.04); --bg-active:rgba(18,18,18,.07);
+  --surface-card:#FFFFFF; --surface-card-hover:var(--paper-200);
+  --text-body:#2E3436; --text-strong:#121212; --text-muted:#5D6668; --text-faint:#8A9192;
+  --text-inverse:#FBFCFB;
+  --line-1:rgba(18,18,18,.14); --line-2:rgba(18,18,18,.26); --line-accent:rgba(11,143,107,.5);
+  --accent-spring:#12A870; --accent-blue:#123C9E; --accent-azure:#1B4FD1;
+  --text-accent:#0B8F6B;
+  --selection-bg:rgba(18,168,112,.18);
+}

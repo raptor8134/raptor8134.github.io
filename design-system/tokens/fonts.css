@@ -1,0 +1,9 @@
+/* Webfonts served from Google Fonts CDN. See readme.md > Typography for the
+   self-hosting note: drop .woff2 files in assets/fonts/ and swap the @import
+   for the commented @font-face blocks below. */
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+/* Self-hosted equivalents (uncomment once assets/fonts/ is populated):
+@font-face{font-family:"JetBrains Mono";src:url("../assets/fonts/JetBrainsMono-Regular.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"JetBrains Mono";src:url("../assets/fonts/JetBrainsMono-Bold.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Space Grotesk";src:url("../assets/fonts/SpaceGrotesk-Variable.woff2") format("woff2");font-weight:400 700;font-style:normal;font-display:swap}
+*/

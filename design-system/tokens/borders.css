@@ -1,0 +1,16 @@
+:root{
+  /* Terminal geometry: everything is square. No radii anywhere. */
+  --radius-0:0; --radius-1:0; --radius-2:0; --radius-pill:0;
+  --stroke-1:1px; --stroke-2:2px;
+  --border-hairline:var(--stroke-1) solid var(--line-1);
+  --border-strong:var(--stroke-1) solid var(--line-2);
+  --border-accent:var(--stroke-1) solid var(--line-accent);
+  --border-dashed:var(--stroke-1) dashed var(--line-1);
+  /* No drop shadows and no glow. Depth reads through 1px rules and insets alone. */
+  --shadow-none:none;
+  --shadow-inset:inset 0 1px 0 rgba(255,255,255,.04);
+  --ring-focus:0 0 0 1px var(--accent-azure);
+  --ring-accent:0 0 0 1px var(--line-accent);
+  --scanline:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px); /* @kind color */
+  --grid-overlay:linear-gradient(rgba(168,175,175,.06) 1px,transparent 1px) 0 0/100% 24px,linear-gradient(90deg,rgba(168,175,175,.06) 1px,transparent 1px) 0 0/24px 100%; /* @kind color */
+}

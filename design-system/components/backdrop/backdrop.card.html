@@ -1,0 +1,16 @@
+<!-- @dsCard group="Components" viewport="700x260" name="Backdrop" subtitle="Full-width micrograph backdrop for a title/intro card, scrim + blur" -->
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="../../styles.css"><script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script><script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script><script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script><script src="../../_ds_bundle.js"></script><style>body{padding:16px;background:var(--ink-900)}.t{font-family:var(--font-mono);font-size:var(--size-2xs);letter-spacing:var(--track-caps);text-transform:uppercase;color:var(--text-faint)}</style></head><body>
+<div id="root"></div>
+<script type="text/babel">
+const {ScrollBackdrop}=window.NotleyDesignSystem_566c40;
+function Demo(){
+  return <div>
+    <div style={{position:"relative",padding:"40px 32px",overflow:"hidden",border:"var(--border-hairline)"}}>
+      <ScrollBackdrop image="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='300'%3E%3Crect width='800' height='300' fill='%23121212'/%3E%3Cg stroke='%235AE9AE' stroke-width='1'%3E%3Cpath d='M0 0 800 300M800 0 0 300M400 0 400 300M0 150 800 150'/%3E%3C/g%3E%3Ccircle cx='400' cy='150' r='120' fill='none' stroke='%233D7BFF' stroke-width='2'/%3E%3C/svg%3E"/>
+      <h1 style={{fontSize:"var(--size-3xl)",color:"var(--text-strong)",margin:0}}>Materials that hold up</h1>
+      <p style={{fontFamily:"var(--font-mono)",fontSize:"var(--size-xs)",color:"var(--text-body)",marginTop:8}}>Title/intro card — backdrop fills the card full width, content sits on top.</p>
+    </div>
+    <div className="t" style={{marginTop:6}}>Full-width backdrop behind title/intro card copy</div>
+  </div>;}
+ReactDOM.createRoot(document.getElementById("root")).render(<Demo/>);
+</script></body></html>
