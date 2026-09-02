@@ -27,15 +27,25 @@ vendored in `vendor/`. To preview: `cd portfolio_site && python3 -m http.server 
 ## Deploy (GitHub Pages)
 
 `.github/workflows/deploy.yml` runs `node build/build.js` on every push to `main`
-and publishes `portfolio_site/` to `https://raptor8134.github.io/`. One-time setup:
+and publishes `portfolio_site/` to the custom domain in `CNAME` (`jamesnotley.com`).
+One-time setup:
 
 1. Repo **Settings → Pages → Build and deployment → Source: GitHub Actions**.
 2. Push to `main` (or run the "Deploy to GitHub Pages" workflow manually). The
    run's `deploy` job prints the live URL.
 
 The committed `portfolio_site/` is just a convenience for local/other hosts — CI
-always rebuilds from source, so it doesn't matter if it's stale. `.nojekyll` (emitted
-by the build) stops Pages running the output through Jekyll.
+always rebuilds from source, so it doesn't matter if it's stale.
+
+The build writes three files into `portfolio_site/` that aren't derived from
+`content/`:
+
+- `.nojekyll` — stops Pages running the output through Jekyll.
+- `CNAME` — copied from the repo root so the custom domain survives each deploy
+  (the artifact is the whole site; a root `CNAME` alone would never be served).
+- *(no `README.md`)* — deliberately not shipped, so it can't stand in as the
+  homepage. A root `.nojekyll` is also committed as a backstop in case Pages is
+  ever switched back to "deploy from a branch".
 
 Runtime note: React is vendored, but Lucide icons and the webfonts load from CDNs
 (unpkg, Google Fonts) at view time.
