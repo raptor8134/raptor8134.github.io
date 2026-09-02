@@ -8,7 +8,11 @@ src/            the four React screens; read window.SITE_DATA, no content baked 
 build/build.js  Node build — content/ + design-system/ + vendor/  →  portfolio_site/
 vendor/         pinned build-time libs (Babel, marked, js-yaml) + React runtime
 design-system/  the original Notley Design System export, untouched (tokens, _ds_bundle.js, components)
-portfolio_site/ ← DEPLOY THIS. Generated, self-contained static site.
+portfolio_site/ ← DEPLOYED. Generated, self-contained static site.
+
+img/ · woodward.html · soy.py · googledd63943926a8d8fc.html · seniordesignposter.pdf
+                held over from the previous raptor8134.github.io — not part of the
+                build or the deploy; kept for reuse. Leave them be.
 ```
 
 ## Workflow
@@ -22,13 +26,12 @@ vendored in `vendor/`. To preview: `cd portfolio_site && python3 -m http.server 
 
 ## Deploy (GitHub Pages)
 
-`.github/workflows/deploy.yml` runs `node build/build.js` on every push to `master`
-and publishes `portfolio_site/` to Pages. One-time setup:
+`.github/workflows/deploy.yml` runs `node build/build.js` on every push to `main`
+and publishes `portfolio_site/` to `https://raptor8134.github.io/`. One-time setup:
 
-1. Create a GitHub repo and push this one to it (default branch `master`).
-2. Repo **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-3. Push (or run the "Deploy to GitHub Pages" workflow manually). The run's
-   `deploy` job prints the live URL.
+1. Repo **Settings → Pages → Build and deployment → Source: GitHub Actions**.
+2. Push to `main` (or run the "Deploy to GitHub Pages" workflow manually). The
+   run's `deploy` job prints the live URL.
 
 The committed `portfolio_site/` is just a convenience for local/other hosts — CI
 always rebuilds from source, so it doesn't matter if it's stale. `.nojekyll` (emitted
