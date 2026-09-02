@@ -1,23 +1,29 @@
 /* ============================================================================
-   TEMPORARY — flatten the accent gradient to solid spring-green.
-
-   Every component reads the gradient through these custom properties, so
-   redefining them here recolours buttons, section rules, selected tabs/tags,
-   meters, etc. in one place. The lone exception is the header style switch,
-   which keeps the green -> blue gradient as its "on" state (see .style-switch).
-
-   To restore the full gradient system: delete this file and the line in
-   build/build.js that appends it.
+   src/overrides.css — local CSS layered on top of the design-system tokens.
+   build/build.js appends this to the token bundle in <style>.
    ============================================================================ */
 
+/* --- Theme switch: flip the palette in one step ---------------------------- *
+ * The design-system controls each carry a ~140ms colour/border transition for
+ * hover and focus. When [data-theme] flips they all fire at once while plain
+ * text and the page background snap instantly, so the swap reads as a slow,
+ * staggered wipe. App.jsx sets [data-theme-animating] on <html> for two frames
+ * around the toggle; this makes the change instant.                          */
+html[data-theme-animating] *,
+html[data-theme-animating] *::before,
+html[data-theme-animating] *::after {
+  transition: none !important;
+}
+
+/* --- TEMPORARY: flatten the accent gradient to solid spring-green --------- *
+ * Delete this block (leave the file) to restore the green -> blue gradient.
+ * The header style switch keeps the real gradient via .style-switch below.   */
 :root {
   --grad-accent:        var(--accent-spring);
   --grad-accent-smooth: var(--accent-spring);
   --grad-accent-diag:   var(--accent-spring);
   --grad-accent-soft:   color-mix(in srgb, var(--accent-spring) 15%, transparent);
 }
-
-/* keep the real gradient on the header style switch only */
 .style-switch {
   --grad-accent: linear-gradient(90deg, var(--accent-spring) 0%, var(--accent-blue) 100%);
 }

@@ -67,7 +67,14 @@ function App(){
   const [route,setRoute]=React.useState(()=>window.__ROUTE__||routeFromPath());
   const [active,setActive]=React.useState((S.nav&&S.nav[0])||"work");
   const [paper,setPaper]=React.useState(false);
-  React.useEffect(()=>{document.body.dataset.theme=paper?"paper":""},[paper]);
+  React.useEffect(()=>{
+    // flip the palette with control transitions off, so it changes in one step
+    const root=document.documentElement;
+    root.setAttribute("data-theme-animating","");
+    document.body.dataset.theme=paper?"paper":"";
+    void document.body.offsetWidth;                 // commit the new colours now
+    root.removeAttribute("data-theme-animating");
+  },[paper]);
 
   React.useEffect(()=>{
     const onPop=()=>{setRoute(routeFromPath());window.scrollTo(0,0)};

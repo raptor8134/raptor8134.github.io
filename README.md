@@ -69,11 +69,17 @@ Because pages live at more than one depth, every in-site URL the build emits is
 root-absolute (`/assets/...`) — including image paths in `assets/content.js`. If
 you reference a file from `content/site.md`, write it as `/assets/whatever`.
 
-## Temporary: gradient turned off
+## Local CSS
 
-`src/overrides.css` flattens the green→blue accent gradient to solid spring-green
-everywhere except the header style switch. To bring the gradient back, delete that
-file and the line in `build/build.js` that appends it.
+`src/overrides.css` is appended to the design-system token bundle by the build.
+It currently does two things:
+
+- Flips the light/dark palette in one step. `App.jsx` briefly sets
+  `[data-theme-animating]` on `<html>` and the rule kills control transitions for
+  those two frames, so the swap doesn't animate as a staggered wipe.
+- **Temporary:** flattens the green→blue accent gradient to solid spring-green
+  everywhere except the header style switch. Delete that `:root` / `.style-switch`
+  block (keep the file) to restore the gradient.
 
 ## What changed from the plain implementation
 
