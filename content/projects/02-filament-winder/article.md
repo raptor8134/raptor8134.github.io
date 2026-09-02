@@ -30,6 +30,8 @@ Running the machine on 3D printer firmware was a deliberate choice, not a shortc
 
 The full machine has four axes — mandrel rotation, carriage travel, filament head rotation, and standoff from the mandrel surface. I ran process development in a two-axis configuration, since head orientation and mandrel proximity matter for fiber placement quality but not for validating that the path geometry and release process work at all.
 
+![The winder built from salvaged Ender 3 hardware](images/winder_prototype.jpg "The winder built from salvaged Ender 3 hardware")
+
 ## Toolpath generation
 
 The stock software was the real limitation. It supported cylindrical mandrels only, which meant the machine could produce tubes and nothing else — while the parts we most wanted automated were nosecones, where hand layup is hardest and fiber angle control matters most. It was also terminal-only. I generally prefer terminal tools, but a winding path on a non-trivial mandrel is a three-dimensional object built up over many passes and layers, and there is no reading it as text.
@@ -37,6 +39,10 @@ The stock software was the real limitation. It supported cylindrical mandrels on
 The core computation is the relationship between carriage travel and mandrel rotation needed to produce a target fiber angle relative to the mandrel axis. On a cylinder that ratio is a constant, which is why the stock implementation could get away with what it did. On any profile that changes diameter, the local circumference changes as the carriage advances, so the ratio has to be recomputed continuously along the path.
 
 My generator takes a mandrel profile — either a list of points or a closed-form expression — and solves for dx/dθ along it, then discretizes the result into G-code moves that hold the fiber angle as close to target as the segmentation allows. It also solves pass distribution, spacing each pass of a helical layer around the mandrel circumference so a layer closes out with even coverage rather than overlapping bands and bare stripes.
+
+![Generated winding path on a nosecone profile](images/nosecone_path.png "Generated winding path on a nosecone profile")
+
+![Layer-by-layer path visualizer in the Go rewrite](images/gcode_viewer.png "Layer-by-layer path visualizer in the Go rewrite")
 
 The path solution is purely geometric and does not model friction. On a tapered surface a wound fiber under tension will tend to slip toward the small end unless the path is either geodesic or shallow enough that friction holds it — a non-geodesic winding constraint I did not implement. For the mandrel geometries in scope this was a known, accepted limitation rather than an oversight, and characterizing actual slip against predicted path was queued behind getting parts off the mandrel at all.
 

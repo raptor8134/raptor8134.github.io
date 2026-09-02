@@ -111,18 +111,22 @@ function mdToBlocks(md, ctx) {
 
 function figure(im, ctx) {
   ctx.figN = (ctx.figN || 0) + 1;
-  let src = im.href;
-  if (!/^(https?:|\/|data:)/.test(src)) {
+  const caption = im.title ? inline(im.title) : im.text ? inline(im.text) : undefined;
+  let src = im.href || "";
+  let placeholder;
+  if (src && !/^(https?:|\/|data:)/.test(src)) {
     const base = src.replace(/^.*[/\\]/, "");
-    ctx.images.add(base);
-    src = ctx.imgBase + "/" + base;
+    if (ctx.imgDir && exists(path.join(ctx.imgDir, base))) {
+      ctx.images.add(base);
+      src = ctx.imgBase + "/" + base;
+    } else {
+      // referenced but not on disk yet → render the design-system placeholder slot
+      console.warn(`  ~ ${ctx.slug}: images/${base} missing — placeholder for now`);
+      placeholder = im.text || (im.title ? String(im.title) : "image");
+      src = undefined;
+    }
   }
-  return {
-    src,
-    alt: im.text || undefined,
-    caption: im.title ? inline(im.title) : im.text ? inline(im.text) : undefined,
-    index: "FIG " + ctx.figN,
-  };
+  return { src, alt: im.text || undefined, caption, index: "FIG " + ctx.figN, placeholder };
 }
 
 /* ----- hero headline ----- */
@@ -211,7 +215,13 @@ const projects = projSlugs.map((slug, idx) => {
   const card = parseFront(read(path.join(dir, "card.md")));
   const id = card.data.id || slug.replace(/^\d+[-_]/, "");
   const outImgDir = path.join(OUT_ASSETS, "projects", id);
-  const ctx = { images: new Set(), imgBase: "/assets/projects/" + id, figN: 0 };
+  const ctx = {
+    images: new Set(),
+    imgBase: "/assets/projects/" + id,
+    imgDir: path.join(dir, "images"),
+    slug,
+    figN: 0,
+  };
 
   let body = [];
   const artPath = path.join(dir, "article.md");

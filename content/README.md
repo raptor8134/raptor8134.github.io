@@ -1,11 +1,13 @@
 # Editing site content
 
-Everything on the site comes from the Markdown files in this folder. Edit them,
-then rebuild:
+Everything on the site comes from the Markdown files in this folder. While
+editing, run
 
-    node build/build.js
+    node build/watch.js
 
-and reload `portfolio_site/index.html`. Nothing here needs JavaScript knowledge.
+from the repo root and open http://localhost:4321 — every save rebuilds and the
+page refreshes on its own. (`node build/build.js` does a one-off build.) Nothing
+here needs JavaScript knowledge.
 
 ```
 content/

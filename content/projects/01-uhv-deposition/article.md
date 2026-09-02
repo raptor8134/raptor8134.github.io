@@ -31,6 +31,10 @@ The available hardware constrained the design before I drew anything. Between th
 
 The three-source requirement invites an obvious but expensive solution: three thickness monitors, one per source. Instead I arranged the sources around a rotating stage that presents either the sample or the monitor to any one source. One crystal, one set of electronics, one calibration to maintain.
 
+![The assembled chamber on its fabricated cart](images/chamber.jpg "The assembled chamber on its fabricated cart")
+
+![Rotating source-selection stage, sample and monitor positions](images/rotating-stage.jpg "Rotating source-selection stage, sample and monitor positions")
+
 ## Thermal design
 
 That decision created the thermal problem I actually had to solve. A stationary QCM can be water cooled directly. A rotating one cannot: there are no rotary water feedthroughs in this size class and no UHV-compatible flexible hose to route around the motion. Cooling had to be conductive.
@@ -39,6 +43,8 @@ The solution is a cold finger with a flexible solid-state thermal bridge. A 0.25
 
 Both ends are joined for thermal contact rather than convenience. The stage end is clamped over roughly 1 in² of direct contact by a stainless backing plate and screws; the cold finger end wraps the tube under a clamp of similar contact area. Copper braid was chosen for conductivity and for its ability to take repeated flexure without work-hardening into failure the way solid strap would.
 
+![Cold finger and copper-braid thermal bridge](images/cold-finger.jpg "Cold finger and copper-braid thermal bridge")
+
 Rotation is indexed manually via an external handle, repeatable to ±2° against a scale. Motorized indexing was out of scope, and the source-to-monitor geometry tolerates the error.
 
 ## Verification
@@ -46,6 +52,8 @@ Rotation is indexed manually via an external handle, repeatable to ±2° against
 The e-beam gun was installed in another group's chamber for the duration, so I characterized the thermal system using a resistive heater to stand in for the radiant load of a molten source. This turned out to be the better test regardless: it let me sweep input power continuously and independently of deposition, which a real source does not allow.
 
 I instrumented the crystal and both ends of the thermal bridge. Two results came out of it:
+
+![Crystal temperature vs. input power, cooled and uncooled](images/dt-sweep.png "Crystal temperature vs. input power, cooled and uncooled. Resistive heater standing in for a molten source.")
 
 **The cooling loop absorbs roughly twice the radiant load at the same crystal temperature.** Uncooled, the crystal climbed to 65 °C and stopped stabilizing entirely — past the linear region and past the point where the measurement means anything. Cooled, the system holds equivalent crystal temperature at double the input wattage.
 

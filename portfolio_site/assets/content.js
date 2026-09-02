@@ -205,6 +205,22 @@ window.SITE_DATA = {
           "p": "The three-source requirement invites an obvious but expensive solution: three thickness monitors, one per source. Instead I arranged the sources around a rotating stage that presents either the sample or the monitor to any one source. One crystal, one set of electronics, one calibration to maintain."
         },
         {
+          "fig": {
+            "alt": "The assembled chamber on its fabricated cart",
+            "caption": "The assembled chamber on its fabricated cart",
+            "index": "FIG 1",
+            "placeholder": "The assembled chamber on its fabricated cart"
+          }
+        },
+        {
+          "fig": {
+            "alt": "Rotating source-selection stage, sample and monitor positions",
+            "caption": "Rotating source-selection stage, sample and monitor positions",
+            "index": "FIG 2",
+            "placeholder": "Rotating source-selection stage, sample and monitor positions"
+          }
+        },
+        {
           "h": "Thermal design"
         },
         {
@@ -217,6 +233,14 @@ window.SITE_DATA = {
           "p": "Both ends are joined for thermal contact rather than convenience. The stage end is clamped over roughly 1 in² of direct contact by a stainless backing plate and screws; the cold finger end wraps the tube under a clamp of similar contact area. Copper braid was chosen for conductivity and for its ability to take repeated flexure without work-hardening into failure the way solid strap would."
         },
         {
+          "fig": {
+            "alt": "Cold finger and copper-braid thermal bridge",
+            "caption": "Cold finger and copper-braid thermal bridge",
+            "index": "FIG 3",
+            "placeholder": "Cold finger and copper-braid thermal bridge"
+          }
+        },
+        {
           "p": "Rotation is indexed manually via an external handle, repeatable to ±2° against a scale. Motorized indexing was out of scope, and the source-to-monitor geometry tolerates the error."
         },
         {
@@ -227,6 +251,14 @@ window.SITE_DATA = {
         },
         {
           "p": "I instrumented the crystal and both ends of the thermal bridge. Two results came out of it:"
+        },
+        {
+          "fig": {
+            "alt": "Crystal temperature vs. input power, cooled and uncooled",
+            "caption": "Crystal temperature vs. input power, cooled and uncooled. Resistive heater standing in for a molten source.",
+            "index": "FIG 4",
+            "placeholder": "Crystal temperature vs. input power, cooled and uncooled"
+          }
         },
         {
           "lead": "The cooling loop absorbs roughly twice the radiant load at the same crystal temperature.",
@@ -368,6 +400,14 @@ window.SITE_DATA = {
           "p": "The full machine has four axes — mandrel rotation, carriage travel, filament head rotation, and standoff from the mandrel surface. I ran process development in a two-axis configuration, since head orientation and mandrel proximity matter for fiber placement quality but not for validating that the path geometry and release process work at all."
         },
         {
+          "fig": {
+            "src": "/assets/projects/filament-winder/winder_prototype.jpg",
+            "alt": "The winder built from salvaged Ender 3 hardware",
+            "caption": "The winder built from salvaged Ender 3 hardware",
+            "index": "FIG 1"
+          }
+        },
+        {
           "h": "Toolpath generation"
         },
         {
@@ -378,6 +418,22 @@ window.SITE_DATA = {
         },
         {
           "p": "My generator takes a mandrel profile — either a list of points or a closed-form expression — and solves for dx/dθ along it, then discretizes the result into G-code moves that hold the fiber angle as close to target as the segmentation allows. It also solves pass distribution, spacing each pass of a helical layer around the mandrel circumference so a layer closes out with even coverage rather than overlapping bands and bare stripes."
+        },
+        {
+          "fig": {
+            "src": "/assets/projects/filament-winder/nosecone_path.png",
+            "alt": "Generated winding path on a nosecone profile",
+            "caption": "Generated winding path on a nosecone profile",
+            "index": "FIG 2"
+          }
+        },
+        {
+          "fig": {
+            "src": "/assets/projects/filament-winder/gcode_viewer.png",
+            "alt": "Layer-by-layer path visualizer in the Go rewrite",
+            "caption": "Layer-by-layer path visualizer in the Go rewrite",
+            "index": "FIG 3"
+          }
         },
         {
           "p": "The path solution is purely geometric and does not model friction. On a tapered surface a wound fiber under tension will tend to slip toward the small end unless the path is either geodesic or shallow enough that friction holds it — a non-geodesic winding constraint I did not implement. For the mandrel geometries in scope this was a known, accepted limitation rather than an oversight, and characterizing actual slip against predicted path was queued behind getting parts off the mandrel at all."
@@ -411,6 +467,388 @@ window.SITE_DATA = {
         },
         {
           "skills": "composites manufacturing · motion control and G-code · Go and Python · geometric algorithms · design for manufacture · root cause analysis"
+        }
+      ]
+    },
+    {
+      "id": "poseidon-airframe",
+      "index": "003",
+      "title": "Poseidon: Composite Airframe for a Competition Liquid Bipropellant Vehicle",
+      "year": "2025",
+      "category": "aerospace",
+      "tags": [
+        "composites",
+        "wet-layup",
+        "aerospace",
+        "team-lead"
+      ],
+      "summary": "Co-led airframe for the team's competition vehicle, fabricating the upper composite structure by wet layup and building the sub-team that produced it.",
+      "meta": [
+        {
+          "key": "Scope",
+          "value": "[ROCKETRY ORG], year 2"
+        },
+        {
+          "key": "Role",
+          "value": "Airframe co-lead"
+        }
+      ],
+      "body": [
+        {
+          "list": {
+            "title": "At a glance",
+            "items": [
+              "Wet layup fiberglass over single-use printed tooling; parachute tubes, nosecone, and fin attachment",
+              "Personally executed roughly half the hands-on composite work and was involved in every composite component",
+              "Recruited and led a six-person sub-team on a first-article-then-delegate model",
+              "<strong>1st place, FAR-OUT competition</strong> (scored across all elements of vehicle performance)"
+            ]
+          }
+        },
+        {
+          "h": "The vehicle"
+        },
+        {
+          "p": "Poseidon is a liquid bipropellant vehicle derived from the HalfCat reference design — nitrous oxide and ethanol, piston-driven tank pressurization, pintle injector — with a substantially enlarged and modified engine. I did not work on the engine; my scope was airframe, and specifically the composite structure of the upper half of the vehicle. <em>[Vehicle length, diameter, and target altitude — TK]</em>"
+        },
+        {
+          "h": "Composite fabrication"
+        },
+        {
+          "lead": "Wet layup over single-use printed tooling.",
+          "p": "Prepreg was out on cost. Every part was laid up wet over 3D printed male mandrels wrapped in Mylar or aluminum foil, which served as a barrier against direct adhesion. We had tried PVA release agent and found the barrier film approach more reliable — worth noting because that conclusion held for hand layup and later proved invalid under filament winding tension, which is a separate project."
+        },
+        {
+          "lead": "Material.",
+          "p": "Soller Composites 6&quot; light biaxial fiberglass braided sleeve, 9.6 oz/yd², with West System epoxy and slow hardener. The slow hardener was chosen for working time: a full tube is a long layup with student labor, and pot life was the binding constraint on how much part we could complete in one session. Parts ran 3-5 plies depending on component. <em>[Ply schedule by part; cure and any post-cure — TK]</em>"
+        },
+        {
+          "lead": "Why braided sleeving.",
+          "p": "Biaxial braid over an axisymmetric mandrel can be tensioned by twisting both ends against each other, which consolidates the sleeve and conforms it to the tool. The braid trellises as it is tensioned — the fiber crossings scissor, the diameter shrinks, and the tension distributes evenly along the part rather than pulling locally. Practically, it means one person can get uniform consolidation on a long part without vacuum bagging."
+        },
+        {
+          "p": "The consequence worth flagging is that braid angle depends on the ratio of the sleeve&#39;s relaxed diameter to the local mandrel diameter. On a tapered part like the nosecone, the fiber angle therefore varies continuously along the length. <em>[Whether this was accounted for in ply selection, or characterized after the fact — TK]</em>"
+        },
+        {
+          "h": "Fin attachment"
+        },
+        {
+          "p": "The fins bolt to the structural struts separating the motor from the fuel tank rather than being bonded through-wall or tip-to-tip laminated to the airframe."
+        },
+        {
+          "p": "The driver was transportability. A bonded fin can can is a permanent, awkward, fragile object to move; a bolted arrangement lets the vehicle come apart for transport and lets a damaged fin be replaced without touching the airframe. The trade is joint stiffness and a discrete load introduction into the strut structure rather than a distributed one into the skin. <em>[Fin material and construction; flutter margin — TK]</em>"
+        },
+        {
+          "h": "Team"
+        },
+        {
+          "p": "I was co-lead of the airframe team and recruited six members into it. The working model was first-article-then-delegate: I developed and executed the first instance of a given process or part, then handed routine fabrication, calculations, and simulations to the team once the method was proven and documented. That kept process risk on me and let the sub-team produce volume without each member independently rediscovering how a layup goes wrong."
+        },
+        {
+          "p": "Earlier in the year we also built and flew a solid-motor kit rocket to test recovery systems. From the airframe side its main value was composite practice under low stakes."
+        },
+        {
+          "h": "Result"
+        },
+        {
+          "p": "Poseidon took <strong>first place at the FAR-OUT competition</strong>, scored on a points system combining all elements of vehicle performance."
+        },
+        {
+          "skills": "composites fabrication · wet layup and tooling design · design for assembly · team lead and process documentation"
+        }
+      ]
+    },
+    {
+      "id": "tangerine-airframe",
+      "index": "004",
+      "title": "Tangerine: Skeletal Sheet Metal and Extrusion Airframe for a Liquid Test Vehicle",
+      "year": "2026",
+      "category": "aerospace",
+      "tags": [
+        "structures",
+        "fea",
+        "sheet-metal",
+        "propulsion"
+      ],
+      "summary": "Designed, analyzed, and fabricated a non-composite rocket airframe built around access and reconfigurability rather than performance, then owned subsystem integration and resized the engine to double baseline thrust.",
+      "meta": [
+        {
+          "key": "Scope",
+          "value": "[ROCKETRY ORG], year 3"
+        },
+        {
+          "key": "Role",
+          "value": "Airframe lead"
+        }
+      ],
+      "body": [
+        {
+          "list": {
+            "title": "At a glance",
+            "items": [
+              "Extruded-column and sheet metal skeletal structure with removable aeroshell",
+              "Designed to support non-structural tanks ahead of a planned LOX vehicle",
+              "Buckling-critical due to a full-width payload deployment cutout; verified by FEA, hand calculation, and independent re-analysis",
+              "Custom 3D printed forming dies, driven on a drill press",
+              "Engine resized from the HalfCat reference design to roughly double baseline thrust",
+              "Built and integrated; not yet flown, pending resolution of ignition issues"
+            ]
+          }
+        },
+        {
+          "h": "Why not composites"
+        },
+        {
+          "p": "Our previous vehicle, Poseidon, was a composite airframe built for competition performance. Tangerine had a different job: it is a test vehicle, and performance was explicitly not a requirement. Once that constraint comes off, composite fabrication stops being worth what it costs — it is slow, it consumes single-use tooling, and a finished monocoque tube is a sealed box you cannot get inside."
+        },
+        {
+          "p": "What we needed instead was access. Three things drove the architecture:"
+        },
+        {
+          "lead": "Plumbing access.",
+          "p": "A liquid bipropellant test vehicle is mostly plumbing, and every iteration means getting to it. A skeletal structure exposes the entire run."
+        },
+        {
+          "lead": "Non-structural tank development.",
+          "p": "The team is working toward a LOX vehicle, where at minimum the pressurant tank cannot carry airframe loads. That is a significant departure from a design where the tank <em>is</em> the airframe, and it needed a structure to develop against before the propellant change compounded the risk."
+        },
+        {
+          "lead": "Aerodynamics as a separable problem.",
+          "p": "A removable aeroshell handles the airflow and comes off entirely for ground work, which decouples aerodynamic surfaces from structural and plumbing iteration."
+        },
+        {
+          "h": "Structural architecture"
+        },
+        {
+          "p": "The vehicle is a column-and-ring skeleton: extruded columns running the vehicle length <em>[PROFILE, ALLOY — TK]</em>, tied by sheet metal reinforcement segments <em>[MATERIAL, GAUGE — TK]</em>, with a non-load-bearing aeroshell over the top."
+        },
+        {
+          "p": "The design driver is a cutout in the side of the vehicle for payload deployment. Removing material from the side of a slender compression structure is the classic way to make it buckle, and it is the reason this airframe needed real analysis rather than a sizing rule."
+        },
+        {
+          "p": "The load path resolves it without any local reinforcement, by asymmetry. Of the four columns, <strong>three are sized to carry the entire flight load.</strong> The fourth exists only to retain the tank and is truncated before the payload section begins. The payload cutout therefore interrupts a member that carries no airframe load — the primary load path passes the cutout untouched."
+        },
+        {
+          "p": "This is worth stating plainly because an un-reinforced cutout in a buckling-critical structure looks like an omission unless the load path is explained. It was the point of the architecture: put the opening where the structure does not need to be continuous, rather than opening the structure and patching it."
+        },
+        {
+          "p": "I also hand-verified the redundancy case: <strong>two of the three primary columns can carry the load if the third fails</strong>, accounting for the resulting asymmetric loading."
+        },
+        {
+          "h": "Analysis and verification"
+        },
+        {
+          "p": "Load cases <em>[TK — flight loads, boundary conditions, margin carried]</em>."
+        },
+        {
+          "p": "The verification chain had three independent legs, which was deliberate given the first one:"
+        },
+        {
+          "lead": "Primary FEA",
+          "p": "was run in a cloud analysis tool integrated with OnShape — not Onshape&#39;s own simulation, a third-party service I wanted to evaluate. Using an unvalidated solver on a buckling-critical part is not something to do quietly, so I treated its output as a hypothesis rather than a result."
+        },
+        {
+          "lead": "Hand calculation",
+          "p": "independently confirmed the column sizing and produced the two-of-three redundancy result above."
+        },
+        {
+          "lead": "Independent re-analysis",
+          "p": "by two teammates with prior Fusion 360 simulation experience, in a solver with a known track record. Results agreed with mine."
+        },
+        {
+          "p": "The methodology matters more here than the numbers. Verification cost me almost nothing in schedule and meant an unfamiliar tool never became a single point of failure in a structure whose failure mode is sudden."
+        },
+        {
+          "p": "<em>[Re-running the analysis in Fusion 360 for documented plots and margin figures.]</em>"
+        },
+        {
+          "h": "Forming dies"
+        },
+        {
+          "p": "The sheet metal reinforcement segments needed accurate, repeatable bends, and no forming tooling for them existed. Commercial dies or machined tooling were not justifiable for a handful of low-load parts on a student budget, and outsourcing meant lead time we did not have."
+        },
+        {
+          "p": "I designed and 3D printed a set of dies, with the top die carrying a shank so the whole operation could run in a drill press instead of a press brake we did not own."
+        },
+        {
+          "p": "Springback was handled empirically rather than analytically: I printed dies across a range of overbend angles, formed samples on each, and selected the die that produced the squarest finished bend. Computing springback for a given material, gauge, and radius is possible, but it depends on material properties we did not have certified data for, and iterating a printed die costs a few hours of print time. The sweep was faster and produced an answer good enough for a non-load-critical part."
+        },
+        {
+          "p": "The honest limitation: finished bend angles were assessed by comparison, not measured to a tolerance. For these parts that was acceptable. For anything structural it would not be, and the fix is a measured sweep producing an actual springback curve for the material rather than a single selected die."
+        },
+        {
+          "h": "Propulsion"
+        },
+        {
+          "p": "The engine is a direct resize of the HalfCat reference design — nitrous oxide and ethanol, piston-driven tank pressurization, pintle injector — scaled to roughly <strong>double the baseline thrust.</strong> I ran the engine sizing and propellant flow calculations using HalfCat&#39;s published simulation spreadsheet and performed a substantial share of the fabrication."
+        },
+        {
+          "p": "I want to be precise about the scope: this was applying a well-documented open design at a new operating point, not clean-sheet engine design. The engineering was in understanding which parameters could be scaled and which could not, and in the fabrication."
+        },
+        {
+          "h": "Integration"
+        },
+        {
+          "p": "I owned integration of recovery, payload, and propulsion into the airframe, and specifically the payload-to-airframe and propulsion-to-airframe interfaces."
+        },
+        {
+          "p": "The representative problem was a conflict between the media team, who needed a mount for a 360° camera, and the payload team, who needed mount points for the ejection system — both wanting the same real estate in a vehicle with no spare volume. Rather than arbitrate one out, I resolved it by consolidating both onto a shared mounting ring, keeping the camera on board and conserving the space the alternative would have consumed."
+        },
+        {
+          "h": "Status"
+        },
+        {
+          "p": "Vehicle built and integrated. Not yet flown, held by ignition issues unrelated to the airframe. The structure, forming process, and integration approach are validated to the extent ground work allows."
+        },
+        {
+          "skills": "structural design and FEA · buckling and load path analysis · sheet metal design and forming · design for manufacture · systems integration · propulsion sizing"
+        }
+      ]
+    },
+    {
+      "id": "woodward-presetter",
+      "index": "005",
+      "title": "Automated presetter data exchange",
+      "year": "2025",
+      "category": "manufacturing",
+      "tags": [
+        "automation",
+        "cnc",
+        "manufacturing",
+        "internship"
+      ],
+      "summary": "Built a proof-of-concept automation replacing manual CNC tool-offset entry with a barcode-linked presetter-to-machine data pipeline, targeting roughly $20,000 a year in scrap and lost-time losses.",
+      "meta": [
+        {
+          "key": "Scope",
+          "value": "Manufacturing Engineering internship, Woodward Inc. — Santa Clarita, CA"
+        },
+        {
+          "key": "Role",
+          "value": "Sole project engineer"
+        }
+      ],
+      "body": [
+        {
+          "note": {
+            "tone": "note",
+            "children": "I no longer have access to my digital files from this project — I either forgot to keep them or was not permitted to. This write-up is reconstructed from photographs (none from the shop floor) and handwritten notes, so it is less complete than it could be."
+          }
+        },
+        {
+          "h": "The problem"
+        },
+        {
+          "p": "In Summer 2025 I interned at Woodward, Inc. in Santa Clarita, CA under the Manufacturing Engineering department. My main project was a proof-of-concept automation for measuring and loading CNC tool offsets."
+        },
+        {
+          "p": "The existing workflow:"
+        },
+        {
+          "list": {
+            "items": [
+              "Operator precisely measures tooling on a presetting machine",
+              "Operator prints a label with the tooling information",
+              "Operator manually keys the tool offsets from the label into the CNC control"
+            ]
+          }
+        },
+        {
+          "p": "This is error-prone and slow — it runs for over 100 tools per job — and the operator carries responsibility for the tooling being correct. Scrap rates are technically low, but the forgings are expensive and the machine is new and costly, so it adds up. Using machinists&#39; scrap-rate figures (the low end) and my supervisor&#39;s numbers for forging cost and labor rates, I estimated total losses from the current procedure at around $20,000 per year — mostly wasted forgings, with a few thousand in lost time."
+        },
+        {
+          "fig": {
+            "src": "/assets/projects/woodward-presetter/grobg350.jpg",
+            "alt": "GROB G350 5-axis CNC machine",
+            "caption": "GROB G350 5-axis CNC machine",
+            "index": "FIG 1"
+          }
+        },
+        {
+          "fig": {
+            "src": "/assets/projects/woodward-presetter/fortispro.jpg",
+            "alt": "Omega Fortis TMM",
+            "caption": "Omega Fortis TMM",
+            "index": "FIG 2"
+          }
+        },
+        {
+          "p": "Both machines can network and have dedicated functionality for exactly this. The catch is that setting it up correctly is very time-consuming and needs a specific solution per machine type — and per software version, which I found out the hard way. I had a general roadmap and sporadic emails from colleagues at another campus who had done something similar, but worked through the specific issues on my own."
+        },
+        {
+          "h": "The approach"
+        },
+        {
+          "p": "The general pattern for these projects is to attach a machine-readable ID to each piece of tooling so its data can be tied to the tool automatically. There are a few ways to do it. RFID tags on each holder are the easiest and most expensive — they encode the measurement data directly, and the GROB G350 can read them on load. A barcode or QR code on the tool is cheaper and harder — it is a lookup key into a networked database that has to be kept current. The barcode route is cheap to run and expand but a major pain to stand up."
+        },
+        {
+          "fig": {
+            "src": "/assets/projects/woodward-presetter/cursed_diagram.png",
+            "alt": "Data flow diagram, reconstructed from memory",
+            "caption": "Data flow diagram (from memory)",
+            "index": "FIG 3"
+          }
+        },
+        {
+          "p": "Broken into steps:"
+        },
+        {
+          "list": {
+            "items": [
+              "The CAM programmer creates a tool list for a part.",
+              "They export it through WinTool (tool-management software) so each tool type and its nominal geometry is stored under a unique ID.",
+              "That ID is printed as a barcode on a physical tool list, which the operator scans when measuring — it queues the correct measurement program on the presetter instead of a manual selection.",
+              "The presetter also records the tool holder&#39;s serial number, identifying which <em>instance</em> of a tool is being measured. A WinTool ID is a <em>model</em> of a tool assembly; the serial number is a <em>specific holder</em>.",
+              "Once measured and in tolerance, the tooling data — serial number, WinTool ID, offsets, other geometry — is pulled from both the presetter and WinTool databases by a script on another server and written to a third, aggregate database that keeps only the most recent measurement per serial number.",
+              "When the tool is loaded, a fixed scanner on the CNC reads it during the loading sequence, coordinated by MiConnect on a dedicated PC. MiConnect pulls from the scanner and database and pushes to the CNC control — none of which the CNC does on its own."
+            ]
+          }
+        },
+        {
+          "h": "Marking and serialization"
+        },
+        {
+          "p": "To mark the holders I used a laser marker to etch the barcode onto the flat that faces the CNC&#39;s fixed scanner — a good surface to etch and read, and in the right place."
+        },
+        {
+          "p": "Serial numbers had to be protected against duplication: a duplicate would load the wrong measurements into the CNC with no obvious error. I used a spreadsheet with VBA (ugly, I know) to query the main database for the lowest unused serial number and export it straight to a laser marking file. The file loads directly onto the marker, so there is no manual typing at that step either. The number is flagged used in the database as a placeholder before the tool is actually measured and added."
+        },
+        {
+          "p": "<em>[Video: laser marker etching a tool holder — TK]</em>"
+        },
+        {
+          "fig": {
+            "src": "/assets/projects/woodward-presetter/scanner.jpg",
+            "alt": "A successful scan event at the CNC",
+            "caption": "Successful scan event",
+            "index": "FIG 4"
+          }
+        },
+        {
+          "h": "The new workflow"
+        },
+        {
+          "list": {
+            "items": [
+              "Operator scans the tool holder barcode and tool list barcode with a handheld scanner when loading into the presetter. If the tool is not yet marked, they generate a new barcode with the serialization spreadsheet and etch it onto the correct flat.",
+              "Operator measures the tooling on the presetter; the data is pushed to the database.",
+              "Operator loads the tool into the CNC; the fixed scanner reads the barcode and the tooling data loads automatically via MiConnect.",
+              "MiConnect shows a prompt to review the tooling data and confirm it is correct.",
+              "Tool is loaded."
+            ]
+          }
+        },
+        {
+          "p": "No more manual entry, and no more transcription errors."
+        },
+        {
+          "h": "Cost"
+        },
+        {
+          "p": "The system is not cheap, but it is roughly equal to the first year&#39;s savings, and it extends to more machines at much lower marginal cost — the spend is mostly one-time setup, software licenses, and equipment."
+        },
+        {
+          "skills": "manufacturing process automation · industrial data integration · barcode and RFID tooling ID · VBA scripting · cost-of-quality analysis"
         }
       ]
     }

@@ -18,12 +18,17 @@ reuse; the build ignores them wherever they sit (a directory under
 
 ## Workflow
 
-1. Edit files in `content/` — see [`content/README.md`](content/README.md).
-2. `node build/build.js`
-3. Reload / redeploy `portfolio_site/`.
+    node build/watch.js          # dev server + live reload on http://localhost:4321
 
-Requires Node (any recent version). No npm install — everything the build needs is
-vendored in `vendor/`. To preview: `cd portfolio_site && python3 -m http.server 8000`.
+Edit anything under `content/` (or `src/`) and the open page refreshes itself —
+no rebuild by hand. See [`content/README.md`](content/README.md) for the content
+format. Ctrl-C to stop.
+
+One-off build without the server: `node build/build.js`, then serve the folder
+with e.g. `cd portfolio_site && python3 -m http.server 8000`.
+
+Requires Node (any recent version). No npm install — everything is vendored in
+`vendor/`.
 
 ## Deploy (GitHub Pages)
 

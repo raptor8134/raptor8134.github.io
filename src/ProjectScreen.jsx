@@ -17,6 +17,7 @@ function ArticleBlock({block}){
     </ul></div>;
   if(block.skills!=null)return <div style={{marginTop:"var(--space-7)",paddingTop:"var(--space-4)",borderTop:"var(--border-hairline)",fontFamily:"var(--font-mono)",fontSize:"var(--size-2xs)",lineHeight:1.8,color:"var(--text-faint)",maxWidth:"var(--measure)"}}>Skills: {block.skills}</div>;
   if(block.fig)return <div style={{margin:"var(--space-5) 0"}}><Figure src={block.fig.src} alt={block.fig.alt} index={block.fig.index}
+    placeholder={block.fig.placeholder}
     caption={block.fig.caption?<RawHtml html={block.fig.caption}/>:undefined}/></div>;
   if(block.table)return <div style={{margin:"var(--space-5) 0",maxWidth:"var(--measure)"}}><SpecTable
     caption={block.table.caption?<RawHtml html={block.table.caption}/>:undefined}
