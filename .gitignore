@@ -1,3 +1,6 @@
 .DS_Store
 *.log
 node_modules/
+
+# Loose media kept on disk for reuse, not part of the build.
+content/projects/img/
