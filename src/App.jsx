@@ -1,7 +1,6 @@
 function ContactSection(){
-  const {SectionRule,Input,Textarea,Button,Icon,Breadcrumb}=window.DS;
+  const {Breadcrumb}=window.DS;
   const c=window.SITE_DATA.site.contact;
-  const [sent,setSent]=React.useState(false);
   return <section id="contact" style={{padding:"calc(var(--space-8) / 2) var(--space-6) var(--space-9)",maxWidth:"var(--container)",margin:"0 auto"}}>
     <div style={{borderBottom:"2px solid var(--line-1)",paddingBottom:"var(--space-3)",marginBottom:"var(--space-6)"}}>
       <Breadcrumb size="xl" items={["contact"]}/>
@@ -11,17 +10,10 @@ function ContactSection(){
         <p style={{fontSize:"var(--size-xl)",lineHeight:1.45,color:"var(--text-strong)",maxWidth:"36ch",margin:0}}>
           {c.blurb}
         </p>
-        {c.email&&<a href={"mailto:"+c.email} style={{display:"inline-block",marginTop:"var(--space-4)",fontFamily:"var(--font-mono)",fontSize:"var(--size-sm)"}}>{c.email}</a>}
-        {c.phone&&<a href={"tel:"+(c.phoneHref||c.phone)} style={{display:"block",marginTop:"var(--space-2)",fontFamily:"var(--font-mono)",fontSize:"var(--size-sm)"}}>{c.phone}</a>}
       </div>
-      <div style={{display:"flex",flexDirection:"column",gap:"var(--space-3)"}}>
-        {sent
-          ? <div style={{fontFamily:"var(--font-mono)",fontSize:"var(--size-xs)",color:"var(--accent-spring)"}}>{c.sentMessage}</div>
-          : <>
-            <Input label="Email" placeholder="you@email.xyz"/>
-            <Textarea label="Message" rows={5}/>
-            <Button onClick={()=>setSent(true)} prefix={<Icon name="mail" size={13}/>}>Send</Button>
-          </>}
+      <div style={{display:"flex",flexDirection:"column",gap:"var(--space-2)"}}>
+        {c.email&&<a href={"mailto:"+c.email} style={{fontFamily:"var(--font-mono)",fontSize:"var(--size-sm)"}}>{c.email}</a>}
+        {c.phone&&<a href={"tel:"+(c.phoneHref||c.phone)} style={{fontFamily:"var(--font-mono)",fontSize:"var(--size-sm)"}}>{c.phone}</a>}
       </div>
     </div>
   </section>;
