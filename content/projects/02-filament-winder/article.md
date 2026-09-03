@@ -58,8 +58,6 @@ The machine never produced a usable part. Every tube seized on its mandrel and c
 
 ![soaking.jpg — TK caption](images/soaking.jpg "soaking.jpg — TK caption")
 
-![delicious.jpg — TK caption](images/delicious.jpg "delicious.jpg — TK caption")
-
 The failure is in release, and the interesting part is why our known-good release methods stopped working. Our hand layups used single-use 3D printed mandrels wrapped in Mylar or aluminum foil as a barrier layer against direct adhesion. That approach was well proven for us — it had outperformed PVA release agent in practice, including on the nosecone where I once recovered a stuck 3D printed mold by boiling it out on a stovetop. On the winder, both barrier films and PVA failed, on 3D printed mandrels and on aluminum pipe alike.
 
 The mechanism is process, not chemistry. Hand layup places material on a mandrel; winding actively pulls it down. Continuous filament tension compacts the laminate radially onto the tool as it is laid, with the compaction pressure scaling as tension over mandrel radius. A release strategy that only has to prevent adhesion is not sufficient once the part is being actively clamped to the tool by its own fiber tension. Our release methods were never bad — they were validated against a process that does not generate that pressure, and we carried the assumption across to one that does.

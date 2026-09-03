@@ -26,6 +26,8 @@ Poseidon is a liquid bipropellant vehicle derived from the HalfCat reference des
 
 The consequence worth flagging is that braid angle depends on the ratio of the sleeve's relaxed diameter to the local mandrel diameter. On a tapered part like the nosecone, the fiber angle therefore varies continuously along the length. *[Whether this was accounted for in ply selection, or characterized after the fact — TK]*
 
+![delicious.jpg — TK caption](images/delicious.jpg "delicious.jpg — TK caption")
+
 ## Fin attachment
 
 The fins bolt to the structural struts separating the motor from the fuel tank rather than being bonded through-wall or tip-to-tip laminated to the airframe.

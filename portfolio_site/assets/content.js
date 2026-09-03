@@ -482,15 +482,6 @@ window.SITE_DATA = {
           }
         },
         {
-          "fig": {
-            "src": "/assets/projects/filament-winder/delicious.jpg",
-            "alt": "delicious.jpg — TK caption",
-            "caption": "delicious.jpg — TK caption",
-            "index": "FIG 7",
-            "video": false
-          }
-        },
-        {
           "p": "The failure is in release, and the interesting part is why our known-good release methods stopped working. Our hand layups used single-use 3D printed mandrels wrapped in Mylar or aluminum foil as a barrier layer against direct adhesion. That approach was well proven for us — it had outperformed PVA release agent in practice, including on the nosecone where I once recovered a stuck 3D printed mold by boiling it out on a stovetop. On the winder, both barrier films and PVA failed, on 3D printed mandrels and on aluminum pipe alike."
         },
         {
@@ -571,6 +562,15 @@ window.SITE_DATA = {
         },
         {
           "p": "The consequence worth flagging is that braid angle depends on the ratio of the sleeve&#39;s relaxed diameter to the local mandrel diameter. On a tapered part like the nosecone, the fiber angle therefore varies continuously along the length. <em>[Whether this was accounted for in ply selection, or characterized after the fact — TK]</em>"
+        },
+        {
+          "fig": {
+            "src": "/assets/projects/poseidon-airframe/delicious.jpg",
+            "alt": "delicious.jpg — TK caption",
+            "caption": "delicious.jpg — TK caption",
+            "index": "FIG 1",
+            "video": false
+          }
         },
         {
           "h": "Fin attachment"
