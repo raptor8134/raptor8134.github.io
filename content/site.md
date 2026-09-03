@@ -41,6 +41,7 @@ contact:
   email: jamesnotley@gmail.com
   phone: "(916) 521-4107"
   phoneHref: "+19165214107"
+  linkedin: linkedin.com/in/jamesnotley
 
 footer:
   links:

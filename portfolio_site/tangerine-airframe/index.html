@@ -973,7 +973,15 @@ function ContactSection() {
       fontFamily: "var(--font-mono)",
       fontSize: "var(--size-sm)"
     }
-  }, c.phone))));
+  }, c.phone), c.linkedin && /*#__PURE__*/React.createElement("a", {
+    href: /^https?:\/\//.test(c.linkedin) ? c.linkedin : "https://" + c.linkedin,
+    target: "_blank",
+    rel: "noopener noreferrer",
+    style: {
+      fontFamily: "var(--font-mono)",
+      fontSize: "var(--size-sm)"
+    }
+  }, c.linkedin.replace(/^https?:\/\//, "")))));
 }
 window.ContactSection = ContactSection;
 function SiteFooter() {

@@ -189,7 +189,7 @@ const site = {
   },
   contact: (() => {
     const c = Object.assign(
-      { blurb: "", email: "", phone: "", phoneHref: "" },
+      { blurb: "", email: "", phone: "", phoneHref: "", linkedin: "" },
       siteFront.contact || {}
     );
     c.blurb = String(c.blurb).trim();

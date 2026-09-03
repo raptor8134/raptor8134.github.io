@@ -14,6 +14,7 @@ function ContactSection(){
       <div style={{display:"flex",flexDirection:"column",gap:"var(--space-2)"}}>
         {c.email&&<a href={"mailto:"+c.email} style={{fontFamily:"var(--font-mono)",fontSize:"var(--size-sm)"}}>{c.email}</a>}
         {c.phone&&<a href={"tel:"+(c.phoneHref||c.phone)} style={{fontFamily:"var(--font-mono)",fontSize:"var(--size-sm)"}}>{c.phone}</a>}
+        {c.linkedin&&<a href={/^https?:\/\//.test(c.linkedin)?c.linkedin:"https://"+c.linkedin} target="_blank" rel="noopener noreferrer" style={{fontFamily:"var(--font-mono)",fontSize:"var(--size-sm)"}}>{c.linkedin.replace(/^https?:\/\//,"")}</a>}
       </div>
     </div>
   </section>;
