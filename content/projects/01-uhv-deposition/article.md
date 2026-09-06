@@ -1,6 +1,6 @@
 ---
 meta:
-  - { key: Scope, value: "Senior design project, sponsored by [LAB NAME], continued under a summer research fellowship" }
+  - { key: Scope, value: "Senior design project, sponsored by Dr. [Ludwig Bartels lab at UCR](https://bartels.chem.ucr.edu), continued under a summer research fellowship" }
   - { key: Role, value: Sole technical contributor }
 skills: "UHV system design · thermal analysis · precision machining · design for vacuum · instrumentation and measurement · test planning and data analysis"
 ---

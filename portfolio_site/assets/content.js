@@ -66,8 +66,7 @@ window.SITE_DATA = {
     "intro": "I'm a materials science and engineering student at UC Riverside, building hardware for ultra-high vacuum systems and rocketry.",
     "body": [
       "As a researcher on the MEMENCYS fellowship at the Bartels Lab, I design and build vacuum systems for semiconductor material growth, including a manipulator-compatible heated stage and a multi-source metal deposition chamber.",
-      "As Airframe Lead for the Highlander Space Program, I led a team of seven students fabricating launch vehicle airframes from fiberglass and sheet metal, and built the filament winder documented on this site.",
-      "I write projects up in full because half-documented work gets repeated. If something here is useful and the detail is missing, ask and I will send the data."
+      "As Airframe Lead for the Highlander Space Program, I led a team of seven students fabricating launch vehicle airframes from fiberglass and sheet metal, and built the filament winder documented on this site."
     ],
     "experience": [
       {
@@ -154,7 +153,7 @@ window.SITE_DATA = {
         "machining",
         "instrumentation"
       ],
-      "summary": "Designed, built, and qualified a three-material evaporation chamber with a rotating source-selection stage and an actively cooled quartz crystal monitor, then extended it with a 1000 °C in-vacuum annealing stage.",
+      "summary": "Designed, built, and qualified a three-material evaporation chamber with a rotating source-selection stage and an actively cooled quartz crystal monitor, then extended it with an interchangeable sample holder with built-in annealing up to 1000°C and capable swapping while pumped down.",
       "meta": [
         {
           "key": "Scope",
