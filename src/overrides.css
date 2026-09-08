@@ -21,6 +21,17 @@ figcaption > span:first-child {
   white-space: nowrap;
 }
 
+/* Project cards in light mode: the hairline border on white is nearly
+ * invisible. The border is an inline `var(--border-hairline)`, and the token
+ * bakes in --line-1 at :root, so it can't be nudged by redefining --line-1 on
+ * the card — override the colour directly. Keep the accent border on hover. */
+[data-theme="paper"] .pf-card {
+  border-color: var(--line-2) !important;
+}
+[data-theme="paper"] .pf-card:hover {
+  border-color: var(--line-accent) !important;
+}
+
 /* --- TEMPORARY: flatten the accent gradient to solid spring-green --------- *
  * Delete this block (leave the file) to restore the green -> blue gradient.
  * The header style switch keeps the real gradient via .style-switch below.   */

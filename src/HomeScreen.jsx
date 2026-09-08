@@ -64,7 +64,7 @@ function HomeScreen({onOpen}){
         </div>
         <div className="pf-grid-2" style={{gap:"var(--space-4)"}}>
           {list.map(p=>(
-            <Card key={p.id} label="Project" index={p.index} title={p.title} interactive onClick={()=>onOpen(p.id)}
+            <Card key={p.id} className="pf-card" label="Project" index={p.index} title={p.title} interactive onClick={()=>onOpen(p.id)}
               footer={<><span>Read case study</span><Icon name="arrow-up-right" size={13}/></>}>
               <span style={{fontFamily:"var(--font-mono)",fontSize:"var(--size-2xs)",color:"var(--text-faint)",letterSpacing:"var(--track-caps)"}}>{p.year}</span>
               <div className="pf-card-row">
