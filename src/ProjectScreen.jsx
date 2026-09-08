@@ -21,7 +21,7 @@ function ArticleBlock({block}){
       <video src={block.fig.src} controls playsInline preload="metadata" style={{width:"100%",height:"100%",objectFit:"cover",filter:"saturate(.85)",display:"block"}}/>
     </div>
     {(block.fig.caption||block.fig.index)&&<figcaption style={{display:"flex",gap:"var(--space-2)",fontFamily:"var(--font-mono)",fontSize:"var(--size-2xs)",color:"var(--text-muted)",lineHeight:"var(--leading-snug)"}}>
-      {block.fig.index&&<span style={{color:"var(--accent-spring)"}}>{block.fig.index}</span>}
+      {block.fig.index&&<span style={{color:"var(--accent-spring)",whiteSpace:"nowrap"}}>{block.fig.index}</span>}
       {block.fig.caption&&<RawHtml html={block.fig.caption}/>}
     </figcaption>}
   </figure>;

@@ -15,6 +15,12 @@ html[data-theme-animating] *::after {
   transition: none !important;
 }
 
+/* Figure captions: keep the "FIG N" label on one line (build also joins it
+ * with a non-breaking space). */
+figcaption > span:first-child {
+  white-space: nowrap;
+}
+
 /* --- TEMPORARY: flatten the accent gradient to solid spring-green --------- *
  * Delete this block (leave the file) to restore the green -> blue gradient.
  * The header style switch keeps the real gradient via .style-switch below.   */

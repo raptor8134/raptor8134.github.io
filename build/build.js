@@ -132,7 +132,7 @@ function figure(im, ctx) {
     src,
     alt: im.text || undefined,
     caption: caption || "Add a caption",   // default so every figure shows a caption slot
-    index: "FIG " + ctx.figN,
+    index: "FIG\u00A0" + ctx.figN,   // NBSP so the "FIG N" label never wraps
     placeholder,
     video: VIDEO_RE.test(im.href || ""),
   };

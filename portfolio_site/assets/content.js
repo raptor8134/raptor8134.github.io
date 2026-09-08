@@ -207,7 +207,7 @@ window.SITE_DATA = {
           "fig": {
             "alt": "The assembled chamber on its fabricated cart",
             "caption": "The assembled chamber on its fabricated cart",
-            "index": "FIG 1",
+            "index": "FIG 1",
             "placeholder": "The assembled chamber on its fabricated cart",
             "video": false
           }
@@ -216,7 +216,7 @@ window.SITE_DATA = {
           "fig": {
             "alt": "Rotating source-selection stage, sample and monitor positions",
             "caption": "Rotating source-selection stage, sample and monitor positions",
-            "index": "FIG 2",
+            "index": "FIG 2",
             "placeholder": "Rotating source-selection stage, sample and monitor positions",
             "video": false
           }
@@ -237,7 +237,7 @@ window.SITE_DATA = {
           "fig": {
             "alt": "Cold finger and copper-braid thermal bridge",
             "caption": "Cold finger and copper-braid thermal bridge",
-            "index": "FIG 3",
+            "index": "FIG 3",
             "placeholder": "Cold finger and copper-braid thermal bridge",
             "video": false
           }
@@ -258,7 +258,7 @@ window.SITE_DATA = {
           "fig": {
             "alt": "Crystal temperature vs. input power, cooled and uncooled",
             "caption": "Crystal temperature vs. input power, cooled and uncooled. Resistive heater standing in for a molten source.",
-            "index": "FIG 4",
+            "index": "FIG 4",
             "placeholder": "Crystal temperature vs. input power, cooled and uncooled",
             "video": false
           }
@@ -407,7 +407,7 @@ window.SITE_DATA = {
             "src": "/assets/projects/filament-winder/winder_prototype.jpg",
             "alt": "The winder built from salvaged Ender 3 hardware",
             "caption": "The winder built from salvaged Ender 3 hardware",
-            "index": "FIG 1",
+            "index": "FIG 1",
             "video": false
           }
         },
@@ -415,7 +415,7 @@ window.SITE_DATA = {
           "fig": {
             "src": "/assets/projects/filament-winder/winder.mp4",
             "caption": "Add a caption",
-            "index": "FIG 2",
+            "index": "FIG 2",
             "video": true
           }
         },
@@ -423,7 +423,7 @@ window.SITE_DATA = {
           "fig": {
             "src": "/assets/projects/filament-winder/celsius.mp4",
             "caption": "Add a caption",
-            "index": "FIG 3",
+            "index": "FIG 3",
             "video": true
           }
         },
@@ -444,7 +444,7 @@ window.SITE_DATA = {
             "src": "/assets/projects/filament-winder/nosecone_path.png",
             "alt": "Generated winding path on a nosecone profile",
             "caption": "Generated winding path on a nosecone profile",
-            "index": "FIG 4",
+            "index": "FIG 4",
             "video": false
           }
         },
@@ -453,7 +453,7 @@ window.SITE_DATA = {
             "src": "/assets/projects/filament-winder/gcode_viewer.png",
             "alt": "Layer-by-layer path visualizer in the Go rewrite",
             "caption": "Layer-by-layer path visualizer in the Go rewrite",
-            "index": "FIG 5",
+            "index": "FIG 5",
             "video": false
           }
         },
@@ -473,7 +473,7 @@ window.SITE_DATA = {
           "fig": {
             "src": "/assets/projects/filament-winder/soaking.jpg",
             "caption": "Add a caption",
-            "index": "FIG 6",
+            "index": "FIG 6",
             "video": false
           }
         },
@@ -562,7 +562,7 @@ window.SITE_DATA = {
             "src": "/assets/projects/poseidon-airframe/delicious.jpg",
             "alt": "3D-printed nosecone mandrel boiling out on a stovetop",
             "caption": "Nosecone soup anyone? The steam column heats the plastic to deformation temperature evenly, without burning it.",
-            "index": "FIG 1",
+            "index": "FIG 1",
             "video": false
           }
         },
@@ -800,7 +800,7 @@ window.SITE_DATA = {
             "src": "/assets/projects/woodward-presetter/grobg350.jpg",
             "alt": "GROB G350 5-axis CNC machine",
             "caption": "GROB G350 5-axis CNC machine",
-            "index": "FIG 1",
+            "index": "FIG 1",
             "video": false
           }
         },
@@ -809,7 +809,7 @@ window.SITE_DATA = {
             "src": "/assets/projects/woodward-presetter/fortispro.jpg",
             "alt": "Omega Fortis TMM",
             "caption": "Omega Fortis TMM",
-            "index": "FIG 2",
+            "index": "FIG 2",
             "video": false
           }
         },
@@ -827,7 +827,7 @@ window.SITE_DATA = {
             "src": "/assets/projects/woodward-presetter/cursed_diagram.png",
             "alt": "Data flow diagram, reconstructed from memory",
             "caption": "Data flow diagram (from memory)",
-            "index": "FIG 3",
+            "index": "FIG 3",
             "video": false
           }
         },
@@ -860,7 +860,7 @@ window.SITE_DATA = {
             "src": "/assets/projects/woodward-presetter/laser.mp4",
             "alt": "Laser marker etching a barcode onto a tool holder",
             "caption": "Laser marker etching a barcode onto a tool holder",
-            "index": "FIG 4",
+            "index": "FIG 4",
             "video": true
           }
         },
@@ -869,7 +869,7 @@ window.SITE_DATA = {
             "src": "/assets/projects/woodward-presetter/scanner.jpg",
             "alt": "A successful scan event at the CNC",
             "caption": "Successful scan event",
-            "index": "FIG 5",
+            "index": "FIG 5",
             "video": false
           }
         },
