@@ -183,8 +183,6 @@ const site = {
     headlineHtml: headlineHtml(siteFront.hero && siteFront.hero.headline),
   },
   work: {
-    index: siteFront.work && siteFront.work.index || "01",
-    label: siteFront.work && siteFront.work.label || "Selected projects",
     tabs: (siteFront.work && siteFront.work.tabs) || [],
   },
   contact: (() => {

@@ -266,7 +266,11 @@ function HomeScreen({
     return () => clearInterval(t);
   }, []);
   const shown = data.projects.filter(p => !p.draft);
-  const matchTab = (p, m) => m === "all" || p.tags.some(t => t.toLowerCase().includes(String(m).toLowerCase()));
+  const matchTab = (p, m) => {
+    if (m === "all") return true;
+    const s = String(m).toLowerCase();
+    return (p.category || "").toLowerCase() === s || p.tags.some(t => t.toLowerCase().includes(s));
+  };
   const tabItems = [{
     value: "all",
     label: "All",
@@ -369,21 +373,18 @@ function HomeScreen({
     style: {
       borderBottom: "2px solid var(--line-1)",
       paddingBottom: "var(--space-3)",
-      marginBottom: "var(--space-6)"
+      marginBottom: "var(--space-5)"
     }
   }, /*#__PURE__*/React.createElement(Breadcrumb, {
     size: "xl",
     items: ["work"]
-  })), /*#__PURE__*/React.createElement(SectionRule, {
-    index: work.index || "01",
-    label: work.label || "Selected projects"
-  }), /*#__PURE__*/React.createElement("div", {
+  })), /*#__PURE__*/React.createElement("div", {
     className: "pf-tabs-row",
     style: {
       alignItems: "flex-end",
       justifyContent: "space-between",
       gap: "var(--space-5)",
-      margin: "calc(var(--space-4) / 2) 0 var(--space-5)"
+      margin: "0 0 var(--space-5)"
     }
   }, /*#__PURE__*/React.createElement(Tabs, {
     items: tabItems,

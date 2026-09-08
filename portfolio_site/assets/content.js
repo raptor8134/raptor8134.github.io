@@ -22,16 +22,18 @@ window.SITE_DATA = {
       "headlineHtml": "Half scientist,<br>half engineer,<br><span style=\"color:#2BE08A\">all builder</span>"
     },
     "work": {
-      "index": "01",
-      "label": "Selected projects",
       "tabs": [
         {
-          "label": "Vacuum",
-          "match": "uhv"
+          "label": "Semiconductor",
+          "match": "semiconductor"
         },
         {
-          "label": "Composites",
-          "match": "composites"
+          "label": "Aerospace",
+          "match": "aerospace"
+        },
+        {
+          "label": "Manufacturing",
+          "match": "manufacturing"
         }
       ]
     },

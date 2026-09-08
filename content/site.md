@@ -27,11 +27,12 @@ hero:
 
 # "Selected projects" section
 work:
-  # Filter tabs. "All" is added automatically. `match` is tested as a
-  # substring of each project's tags.
+  # Filter tabs. "All" is added automatically. `match` is checked against a
+  # project's `category`, then as a substring of its `tags`.
   tabs:
-    - { label: Vacuum, match: uhv }
-    - { label: Composites, match: composites }
+    - { label: Semiconductor, match: semiconductor }
+    - { label: Aerospace, match: aerospace }
+    - { label: Manufacturing, match: manufacturing }
 
 # Contact section + footer
 contact:

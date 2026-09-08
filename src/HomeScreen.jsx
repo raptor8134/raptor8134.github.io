@@ -15,7 +15,11 @@ function HomeScreen({onOpen}){
     return ()=>clearInterval(t);
   },[]);
   const shown=data.projects.filter(p=>!p.draft);
-  const matchTab=(p,m)=>m==="all"||p.tags.some(t=>t.toLowerCase().includes(String(m).toLowerCase()));
+  const matchTab=(p,m)=>{
+    if(m==="all")return true;
+    const s=String(m).toLowerCase();
+    return (p.category||"").toLowerCase()===s||p.tags.some(t=>t.toLowerCase().includes(s));
+  };
   const tabItems=[{value:"all",label:"All",count:shown.length}].concat(
     (work.tabs||[]).map(t=>({value:t.match||t.label,label:t.label,count:shown.filter(p=>matchTab(p,t.match||t.label)).length})));
   const list=shown.filter(p=>
@@ -44,11 +48,10 @@ function HomeScreen({onOpen}){
       </section>
 
       <section style={{padding:"calc(var(--space-8) / 2) var(--space-6) var(--space-8)",maxWidth:"var(--container)",margin:"0 auto"}}>
-        <div style={{borderBottom:"2px solid var(--line-1)",paddingBottom:"var(--space-3)",marginBottom:"var(--space-6)"}}>
+        <div style={{borderBottom:"2px solid var(--line-1)",paddingBottom:"var(--space-3)",marginBottom:"var(--space-5)"}}>
           <Breadcrumb size="xl" items={["work"]}/>
         </div>
-        <SectionRule index={work.index||"01"} label={work.label||"Selected projects"}/>
-        <div className="pf-tabs-row" style={{alignItems:"flex-end",justifyContent:"space-between",gap:"var(--space-5)",margin:"calc(var(--space-4) / 2) 0 var(--space-5)"}}>
+        <div className="pf-tabs-row" style={{alignItems:"flex-end",justifyContent:"space-between",gap:"var(--space-5)",margin:"0 0 var(--space-5)"}}>
           <Tabs items={tabItems} value={tab} onChange={setTab}/>
           <div className="pf-search-wrap" style={{width:240}}><Input prompt size="sm" placeholder="filter projects…" value={q} onChange={e=>setQ(e.target.value)}/></div>
         </div>
