@@ -47,7 +47,7 @@ function HomeScreen({onOpen}){
             <span style={{color:"#FFFFFF"}}>{hero.intro}</span>
           </p>
           <div style={{display:"flex",gap:"var(--space-2)",marginTop:"var(--space-5)",justifyContent:"center",flexWrap:"wrap"}}>
-            {primary&&<Button prefix={<Icon name="arrow-down" size={13}/>} onClick={()=>onOpen(primary.id)} style={{width:169,justifyContent:"center"}}>{hero.primaryCta||"Latest project"}</Button>}
+            {primary&&<Button prefix={<Icon name="arrow-down" size={13}/>} onClick={()=>onOpen(primary.id)} style={{width:169,justifyContent:"center",color:"var(--fg-1)"}}>{hero.primaryCta||"Latest project"}</Button>}
             <Button as={sec.href?"a":"button"} href={sec.href} variant="secondary" style={{color:"#EDEDED",borderColor:"#EDEDED",width:169,justifyContent:"center"}} prefix={<Icon name="download" size={13}/>}>{sec.label||"Download Resume"}</Button>
           </div>
         </div>

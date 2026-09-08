@@ -435,7 +435,8 @@ function HomeScreen({
     onClick: () => onOpen(primary.id),
     style: {
       width: 169,
-      justifyContent: "center"
+      justifyContent: "center",
+      color: "var(--fg-1)"
     }
   }, hero.primaryCta || "Latest project"), /*#__PURE__*/React.createElement(Button, {
     as: sec.href ? "a" : "button",
@@ -1048,6 +1049,11 @@ function ContactSection() {
     Breadcrumb
   } = window.DS;
   const c = window.SITE_DATA.site.contact;
+  const linkStyle = {
+    fontFamily: "var(--font-mono)",
+    fontSize: "var(--size-sm)",
+    color: "var(--text-body)"
+  };
   return /*#__PURE__*/React.createElement("section", {
     id: "contact",
     style: {
@@ -1086,24 +1092,15 @@ function ContactSection() {
     }
   }, c.email && /*#__PURE__*/React.createElement("a", {
     href: "mailto:" + c.email,
-    style: {
-      fontFamily: "var(--font-mono)",
-      fontSize: "var(--size-sm)"
-    }
+    style: linkStyle
   }, c.email), c.phone && /*#__PURE__*/React.createElement("a", {
     href: "tel:" + (c.phoneHref || c.phone),
-    style: {
-      fontFamily: "var(--font-mono)",
-      fontSize: "var(--size-sm)"
-    }
+    style: linkStyle
   }, c.phone), c.linkedin && /*#__PURE__*/React.createElement("a", {
     href: /^https?:\/\//.test(c.linkedin) ? c.linkedin : "https://" + c.linkedin,
     target: "_blank",
     rel: "noopener noreferrer",
-    style: {
-      fontFamily: "var(--font-mono)",
-      fontSize: "var(--size-sm)"
-    }
+    style: linkStyle
   }, c.linkedin.replace(/^https?:\/\//, "")))));
 }
 window.ContactSection = ContactSection;

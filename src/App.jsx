@@ -1,6 +1,7 @@
 function ContactSection(){
   const {Breadcrumb}=window.DS;
   const c=window.SITE_DATA.site.contact;
+  const linkStyle={fontFamily:"var(--font-mono)",fontSize:"var(--size-sm)",color:"var(--text-body)"};
   return <section id="contact" style={{padding:"calc(var(--space-8) / 2) var(--space-6) var(--space-9)",maxWidth:"var(--container)",margin:"0 auto"}}>
     <div style={{borderBottom:"2px solid var(--line-1)",paddingBottom:"var(--space-3)",marginBottom:"var(--space-6)"}}>
       <Breadcrumb size="xl" items={["contact"]}/>
@@ -12,9 +13,10 @@ function ContactSection(){
         </p>
       </div>
       <div style={{display:"flex",flexDirection:"column",gap:"var(--space-2)"}}>
-        {c.email&&<a href={"mailto:"+c.email} style={{fontFamily:"var(--font-mono)",fontSize:"var(--size-sm)"}}>{c.email}</a>}
-        {c.phone&&<a href={"tel:"+(c.phoneHref||c.phone)} style={{fontFamily:"var(--font-mono)",fontSize:"var(--size-sm)"}}>{c.phone}</a>}
-        {c.linkedin&&<a href={/^https?:\/\//.test(c.linkedin)?c.linkedin:"https://"+c.linkedin} target="_blank" rel="noopener noreferrer" style={{fontFamily:"var(--font-mono)",fontSize:"var(--size-sm)"}}>{c.linkedin.replace(/^https?:\/\//,"")}</a>}
+        {/* contact links read as plain text; the accent underline (global a{}) is the affordance */}
+        {c.email&&<a href={"mailto:"+c.email} style={linkStyle}>{c.email}</a>}
+        {c.phone&&<a href={"tel:"+(c.phoneHref||c.phone)} style={linkStyle}>{c.phone}</a>}
+        {c.linkedin&&<a href={/^https?:\/\//.test(c.linkedin)?c.linkedin:"https://"+c.linkedin} target="_blank" rel="noopener noreferrer" style={linkStyle}>{c.linkedin.replace(/^https?:\/\//,"")}</a>}
       </div>
     </div>
   </section>;
