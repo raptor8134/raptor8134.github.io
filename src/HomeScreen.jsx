@@ -21,7 +21,9 @@ function HomeScreen({onOpen}){
     return (p.category||"").toLowerCase()===s||p.tags.some(t=>t.toLowerCase().includes(s));
   };
   const tabItems=[{value:"all",label:"All",count:shown.length}].concat(
-    (work.tabs||[]).map(t=>({value:t.match||t.label,label:t.label,count:shown.filter(p=>matchTab(p,t.match||t.label)).length})));
+    (work.tabs||[])
+      .map(t=>({value:t.match||t.label,label:t.label,count:shown.filter(p=>matchTab(p,t.match||t.label)).length}))
+      .filter(t=>t.count>0));   // hide tabs with no projects
   const list=shown.filter(p=>
     matchTab(p,tab)&&
     (q===""||(p.title+p.tags.join(" ")).toLowerCase().includes(q.toLowerCase())));
@@ -49,7 +51,7 @@ function HomeScreen({onOpen}){
 
       <section style={{padding:"calc(var(--space-8) / 2) var(--space-6) var(--space-8)",maxWidth:"var(--container)",margin:"0 auto"}}>
         <div style={{borderBottom:"2px solid var(--line-1)",paddingBottom:"var(--space-3)",marginBottom:"var(--space-5)"}}>
-          <Breadcrumb size="xl" items={["work"]}/>
+          <Breadcrumb size="xl" items={["projects"]}/>
         </div>
         <div className="pf-tabs-row" style={{alignItems:"flex-end",justifyContent:"space-between",gap:"var(--space-5)",margin:"0 0 var(--space-5)"}}>
           <Tabs items={tabItems} value={tab} onChange={setTab}/>

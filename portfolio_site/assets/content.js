@@ -354,7 +354,8 @@ window.SITE_DATA = {
         "composites",
         "g-code",
         "golang",
-        "failure"
+        "failure",
+        "manufacturing"
       ],
       "summary": "Rebuilt an open-source filament winder from salvaged 3D printer hardware and wrote a toolpath generator that extended it to arbitrary axisymmetric mandrels, enabling wound nosecones rather than tubes alone.",
       "meta": [

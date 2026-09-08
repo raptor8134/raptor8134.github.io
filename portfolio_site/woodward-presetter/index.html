@@ -279,7 +279,7 @@ function HomeScreen({
     value: t.match || t.label,
     label: t.label,
     count: shown.filter(p => matchTab(p, t.match || t.label)).length
-  })));
+  })).filter(t => t.count > 0)); // hide tabs with no projects
   const list = shown.filter(p => matchTab(p, tab) && (q === "" || (p.title + p.tags.join(" ")).toLowerCase().includes(q.toLowerCase())));
   const primary = shown[0];
   const sec = hero.secondaryCta || {};
@@ -377,7 +377,7 @@ function HomeScreen({
     }
   }, /*#__PURE__*/React.createElement(Breadcrumb, {
     size: "xl",
-    items: ["work"]
+    items: ["projects"]
   })), /*#__PURE__*/React.createElement("div", {
     className: "pf-tabs-row",
     style: {
@@ -706,7 +706,7 @@ function ProjectScreen({
     }
   }, /*#__PURE__*/React.createElement(Breadcrumb, {
     size: "xl",
-    items: ["work", p.id]
+    items: ["projects", p.id]
   }), /*#__PURE__*/React.createElement(Button, {
     size: "sm",
     variant: "ghost",

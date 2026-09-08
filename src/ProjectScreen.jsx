@@ -52,7 +52,7 @@ function ProjectScreen({id,onBack,onOpen}){
       </div>}
       <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:"var(--space-4)",
         borderBottom:"var(--border-hairline)",paddingBottom:"var(--space-3)"}}>
-        <Breadcrumb size="xl" items={["work",p.id]}/>
+        <Breadcrumb size="xl" items={["projects",p.id]}/>
         <Button size="sm" variant="ghost" prefix={<Icon name="arrow-left" size={13}/>} onClick={onBack}>Back</Button>
       </div>
       <div style={{display:"flex",alignItems:"baseline",gap:"var(--space-3)",marginTop:"var(--space-5)"}}>
