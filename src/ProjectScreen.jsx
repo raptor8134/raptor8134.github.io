@@ -69,7 +69,7 @@ function ProjectScreen({id,onBack,onOpen}){
       </div>}
       <div>{(p.body&&p.body.length?p.body:[{p:"Write-up in progress."}]).map((b,i)=><ArticleBlock key={i} block={b}/>)}</div>
       {others.length>0&&<div style={{marginTop:"var(--space-8)"}}>
-        <SectionRule label="More work"/>
+        <SectionRule label="More projects"/>
         <div style={{display:"flex",flexDirection:"column",marginTop:"var(--space-3)"}}>
           {others.map(o=>(
             <button key={o.id} onClick={()=>onOpen(o.id)} style={{all:"unset",cursor:"pointer",display:"flex",

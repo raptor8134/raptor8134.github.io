@@ -40,9 +40,11 @@ All in frontmatter. Common edits:
   to paint it spring-green: `[[all builder]]`.
 - `hero.intro`, `contact.blurb` — plain sentences.
 - `contact.email`, `contact.phone`, `contact.phoneHref` (digits only, e.g. `+19165214107`).
-- `work.tabs` — the project filter tabs. `match` is checked as a substring of a
-  project's `tags`, so `match: uhv` selects every project tagged `uhv`. "All" is
-  added automatically; its count and each tab's count are computed for you.
+- `projects.pinned` — a list of project `id`s. In the **All** tab they show first,
+  in this order; everything else follows in folder order.
+- `projects.tabs` — the filter tabs. `match` is checked against a project's
+  `category`, then as a substring of its `tags`. "All" is added automatically,
+  counts are computed for you, and a tab with no projects is hidden.
 - `footer.links` — `icon` is a Lucide name (`linkedin`, `github`, `mail`, …).
 - `resume` / `hero.secondaryCta` — `href` points at a file in `assets/`
   (`resume.pdf` is copied there from `content/resume.pdf`).
@@ -70,7 +72,7 @@ Each project gets its own page at `jamesnotley.com/<id>/` (the `id` from
 ### Adding a project
 
 1. Make a folder `content/projects/NN-slug/` — the `NN-` number sets the order
-   projects appear in the grid and the "More work" list. A folder without a
+   projects appear in the grid and the "More projects" list. A folder without a
    `card.md` is ignored, so `content/projects/img/` etc. is fine to keep here.
 2. Add `card.md` and (optionally) `article.md`. Copy an existing pair as a start.
 3. Put any figures in that folder's `images/`.
@@ -80,7 +82,7 @@ Each project gets its own page at `jamesnotley.com/<id>/` (the `id` from
 
 Put `draft: true` in `card.md`. The page still builds and is reachable at its
 URL (`jamesnotley.com/<id>/`) so you can preview it, but it's left out of the
-project grid, the "More work" rail, the sitemap, and search indexes
+project grid, the "More projects" rail, the sitemap, and search indexes
 (`noindex`), and it shows an "unlisted / staging" banner. Remove the line to
 publish.
 

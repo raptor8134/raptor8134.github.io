@@ -4,7 +4,7 @@ window.SITE_DATA = {
     "name": "James Notley",
     "role": "Materials Engineer",
     "nav": [
-      "work",
+      "projects",
       "about",
       "contact"
     ],
@@ -21,7 +21,12 @@ window.SITE_DATA = {
       },
       "headlineHtml": "Half scientist,<br>half engineer,<br><span style=\"color:#2BE08A\">all builder</span>"
     },
-    "work": {
+    "projects": {
+      "pinned": [
+        "uhv-deposition",
+        "filament-winder",
+        "poseidon-airframe"
+      ],
       "tabs": [
         {
           "label": "Semiconductor",
@@ -155,7 +160,7 @@ window.SITE_DATA = {
         "machining",
         "instrumentation"
       ],
-      "summary": "Designed, built, and qualified a three-material evaporation chamber with a rotating source-selection stage and an actively cooled quartz crystal monitor, then extended it with an interchangeable sample holder with built-in annealing up to 1000°C and capable swapping while pumped down.",
+      "summary": "Designed, built, and qualified a three-material evaporation chamber with a rotating source-selection stage and an actively cooled quartz crystal monitor, feeding an existing hub chamber through in-vacuum interchangeable sample stubs.",
       "meta": [
         {
           "key": "Scope",
@@ -176,8 +181,8 @@ window.SITE_DATA = {
               "Interfaces with an existing hub chamber using in-vacuum interchangeable sample stubs",
               "Chamber built from salvaged lab hardware; 5×10⁻⁷ torr achieved",
               "Conduction-cooled QCM doubles the absorbable radiant load at constant crystal temperature",
-              "Annealing stub: four isolated electrical contacts in a 1&quot; × 0.75&quot; removable package, to 1000 °C",
-              "All stage and stub components machined in-house, including diamond-ground alumina"
+              "All stage and stub components machined in-house, including diamond-ground alumina",
+              "The fellowship extension — a 1000 °C annealing sample holder — is <a href=\"/uhv-annealing-stage/\">a project of its own</a>"
             ]
           }
         },
@@ -294,34 +299,10 @@ window.SITE_DATA = {
           }
         },
         {
-          "h": "Extension: 1000 °C annealing stage"
+          "h": "Extension"
         },
         {
-          "p": "The fellowship added a second requirement: a controlled annealing stage. Prior to XPS (X-ray photospectroscopy) in another connected chamber, it is desired that the samples be heated to various temperatures 500-1000°C to be annealed."
-        },
-        {
-          "p": "Both the heater and the thermocouple must sit on the removable stub itself to maintain proximity to the sample., which means routing four electrical contacts through a sample carrier measuring 1&quot; × 0.75&quot; — one that also has to survive repeated in-vacuum handling by the transfer arm and thermal cycling to 1000 °C."
-        },
-        {
-          "p": "I built the contacts out of the retention mechanism rather than adding to it. The stub was already held by two structural pins and a clip. I used one pin to deliver heater current and the clip plus the second pin to return the body to neutral, then added side wings for the thermocouple contacts, isolated by ceramic plates and screws. The sample, heater, and clip are separated by an alumina plate. The heater is 0.011&quot; tungsten wire on ceramic bead insulators, roughly 0.5 Ω, driven at 5-10 V."
-        },
-        {
-          "p": "Differential expansion works in the design&#39;s favor. The 304 stainless body expands faster than the embedded alumina beads and screws, so the ceramics are never crushed or seized on cycling. The structural pins loosen slightly at temperature, but they run with clearance by design and the clip provides retention independently."
-        },
-        {
-          "lead": "Results:",
-          "p": "the stage side delivers power reliably and stubs interchange cleanly even after repeated high-temperature cycling. The silicon reaches target temperature by visual confirmation."
-        },
-        {
-          "lead": "Open issue:",
-          "p": "thermocouple readings drop off abruptly above ~600 °C. Debugging is ongoing. The leading hypothesis is a temperature-dependent shunt path through the alumina isolation — bulk resistivity of alumina falls sharply in exactly that band, which would create a virtual junction and pull the reading toward an intermediate point on the leads. The discriminating test is reversibility on cooldown plus leg-to-leg and leg-to-chassis resistance measured hot and cold; EMI would disappear the instant heater power is cut, a shunt would not. Type K is in use for cost during development and may be replaced regardless once the mechanism is confirmed."
-        },
-        {
-          "note": {
-            "tone": "note",
-            "title": "Pending",
-            "children": "Update pending."
-          }
+          "p": "The summer fellowship added a requirement outside the original senior-design scope: a removable sample holder that anneals silicon to 1000 °C and still interchanges under vacuum. That grew into its own build — see <strong><a href=\"/uhv-annealing-stage/\">1000 °C in-vacuum annealing sample holder →</a></strong>."
         },
         {
           "h": "Fabrication"
@@ -330,13 +311,13 @@ window.SITE_DATA = {
           "p": "I machined all stage and stub components myself: milling 304 stainless and copper on a manual mill, holding ±0.005&quot; on the tightest features. Alumina requires diamond or fiber laser cutting and the lab has no laser, so every ceramic part was ground from sheet scrap with diamond burrs."
         },
         {
-          "p": "Material selection was driven by vacuum compatibility throughout — copper, stainless, molybdenum, tungsten, alumina — with the thermocouple assembly the remaining outgassing question at full temperature."
+          "p": "Material selection was driven by vacuum compatibility throughout — copper, stainless, molybdenum, tungsten, alumina."
         },
         {
           "h": "Status"
         },
         {
-          "p": "Thermal subsystem qualified. Annealing stage mechanically validated with temperature measurement debugging in progress. Chamber currently operates on borrowed pumping; standing up an independent pump stack is in work, presently limited to 1×10⁻⁴ torr pending rate-of-rise testing to separate leak from outgassing."
+          "p": "Thermal subsystem qualified. Chamber currently operates on borrowed pumping; standing up an independent pump stack is in work, presently limited to 1×10⁻⁴ torr pending rate-of-rise testing to separate leak from outgassing."
         },
         {
           "skills": "UHV system design · thermal analysis · precision machining · design for vacuum · instrumentation and measurement · test planning and data analysis"
@@ -904,6 +885,89 @@ window.SITE_DATA = {
         }
       ],
       "draft": true
+    },
+    {
+      "id": "uhv-annealing-stage",
+      "index": "006",
+      "title": "1000 °C In-Vacuum Annealing Sample Holder",
+      "year": "2026",
+      "category": "semiconductor",
+      "tags": [
+        "uhv",
+        "thermal",
+        "machining",
+        "instrumentation"
+      ],
+      "summary": "Part two of the deposition-chamber build: a removable sample stub carrying its own heater and thermocouple that anneals silicon to 1000 °C and still interchanges under vacuum through the hub chamber's transfer arm.",
+      "meta": [
+        {
+          "key": "Scope",
+          "value": "Continuation of the multi-source UHV deposition system, under a summer research fellowship"
+        },
+        {
+          "key": "Role",
+          "value": "Sole technical contributor"
+        }
+      ],
+      "body": [
+        {
+          "p": "This is the second half of the <a href=\"/uhv-deposition/\">multi-source UHV deposition system</a> — the summer fellowship added a requirement the original senior-design scope did not cover."
+        },
+        {
+          "list": {
+            "title": "At a glance",
+            "items": [
+              "Removable sample stub carrying its own heater and thermocouple; four isolated contacts in a 1&quot; × 0.75&quot; package",
+              "Anneals silicon to 1000 °C and still interchanges under vacuum via the hub chamber&#39;s transfer arm",
+              "Electrical contacts built into the existing pin-and-clip retention rather than added to it",
+              "Mechanically validated across repeated high-temperature cycling; thermocouple readout above ~600 °C is an open issue"
+            ]
+          }
+        },
+        {
+          "h": "The requirement"
+        },
+        {
+          "p": "Prior to XPS (X-ray photoelectron spectroscopy) in another connected chamber, samples need to be annealed at various temperatures between 500 and 1000 °C. Both the heater and the thermocouple must sit on the removable stub itself to stay in proximity to the sample, which means routing four electrical contacts through a sample carrier measuring 1&quot; × 0.75&quot; — one that also has to survive repeated in-vacuum handling by the transfer arm and thermal cycling to 1000 °C."
+        },
+        {
+          "h": "Building the contacts into the retention"
+        },
+        {
+          "p": "I built the contacts out of the retention mechanism rather than adding to it. The stub was already held by two structural pins and a clip. I used one pin to deliver heater current and the clip plus the second pin to return the body to neutral, then added side wings for the thermocouple contacts, isolated by ceramic plates and screws. The sample, heater, and clip are separated by an alumina plate. The heater is 0.011&quot; tungsten wire on ceramic bead insulators, roughly 0.5 Ω, driven at 5-10 V."
+        },
+        {
+          "p": "Differential expansion works in the design&#39;s favor. The 304 stainless body expands faster than the embedded alumina beads and screws, so the ceramics are never crushed or seized on cycling. The structural pins loosen slightly at temperature, but they run with clearance by design and the clip provides retention independently."
+        },
+        {
+          "h": "Fabrication"
+        },
+        {
+          "p": "I machined the stub components on a manual mill, holding ±0.005&quot; on the tightest features. Alumina requires diamond or fiber laser cutting and the lab has no laser, so every ceramic part was ground from sheet scrap with diamond burrs. Material selection was vacuum-compatible throughout — copper, stainless, molybdenum, tungsten, alumina — with the thermocouple assembly the remaining outgassing question at full temperature."
+        },
+        {
+          "h": "Where it stands"
+        },
+        {
+          "lead": "Results:",
+          "p": "the stage side delivers power reliably and stubs interchange cleanly even after repeated high-temperature cycling. The silicon reaches target temperature by visual confirmation."
+        },
+        {
+          "lead": "Open issue:",
+          "p": "thermocouple readings drop off abruptly above ~600 °C. Debugging is ongoing. The leading hypothesis is a temperature-dependent shunt path through the alumina isolation — bulk resistivity of alumina falls sharply in exactly that band, which would create a virtual junction and pull the reading toward an intermediate point on the leads. The discriminating test is reversibility on cooldown plus leg-to-leg and leg-to-chassis resistance measured hot and cold; EMI would disappear the instant heater power is cut, a shunt would not. Type K is in use for cost during development and may be replaced regardless once the mechanism is confirmed."
+        },
+        {
+          "note": {
+            "tone": "note",
+            "title": "Pending",
+            "children": "Update pending."
+          }
+        },
+        {
+          "skills": "design for vacuum · precision machining · thermal design · instrumentation and measurement · failure analysis"
+        }
+      ],
+      "draft": false
     }
   ],
   "backdrop": [

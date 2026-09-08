@@ -58,7 +58,7 @@ function App(){
   const {SiteHeader,Button,Icon,Switch}=window.DS;
   const S=window.SITE_DATA.site;
   const [route,setRoute]=React.useState(()=>window.__ROUTE__||routeFromPath());
-  const [active,setActive]=React.useState((S.nav&&S.nav[0])||"work");
+  const [active,setActive]=React.useState((S.nav&&S.nav[0])||"projects");
   const [paper,setPaper]=React.useState(false);
   React.useEffect(()=>{
     // flip the palette with control transitions off, so it changes in one step
@@ -84,7 +84,7 @@ function App(){
 
   React.useEffect(()=>{
     if(route.name!=="page")return;
-    const ids=S.nav||["work","about","contact"];
+    const ids=S.nav||["projects","about","contact"];
     const obs=new IntersectionObserver(entries=>{
       entries.forEach(e=>{if(e.isIntersecting)setActive(e.target.id)});
     },{rootMargin:"-40% 0px -50% 0px"});
@@ -105,14 +105,14 @@ function App(){
 
   const resume=S.resume||{};
   return <div style={{minHeight:"100vh",display:"flex",flexDirection:"column"}}>
-    <SiteHeader links={S.nav} active={route.name==="project"?(S.nav&&S.nav[0]||"work"):active}
+    <SiteHeader links={S.nav} active={route.name==="project"?(S.nav&&S.nav[0]||"projects"):active}
       onNavigate={goSection}
       brand={<span style={{fontFamily:"var(--font-mono)",fontSize:"var(--size-sm)",letterSpacing:"var(--track-wide)",color:"var(--text-strong)"}}>[jn@portfolio ~] <span style={{animation:"cursor-blink 1s step-end infinite"}}>_</span></span>}
       navPrefix={<span className="style-switch"><Switch checked={paper} onChange={()=>setPaper(!paper)}/></span>}
       action={<Button as={resume.href?"a":"button"} href={resume.href} size="sm" variant="secondary" prefix={<Icon name="download" size={13}/>}>{resume.label||"Resume"}</Button>}/>
     <main style={{flex:1}}>
       {route.name==="page"&&<>
-        <section id="work"><window.HomeScreen onOpen={open}/></section>
+        <section id="projects"><window.HomeScreen onOpen={open}/></section>
         <section id="about"><window.AboutScreen/></section>
         <window.ContactSection/>
       </>}

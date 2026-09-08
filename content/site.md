@@ -3,7 +3,7 @@ name: James Notley
 role: Materials Engineer
 
 # Header
-nav: [work, about, contact]
+nav: [projects, about, contact]
 resume:
   label: Resume
   href: /assets/resume.pdf
@@ -25,10 +25,17 @@ hero:
     label: Download Resume
     href: /assets/resume.pdf
 
-# "Selected projects" section
-work:
+# Projects grid
+projects:
+  # Shown first in the "All" tab, in this order. Use each project's `id`.
+  pinned:
+    - uhv-deposition
+    - filament-winder
+    - poseidon-airframe
+
   # Filter tabs. "All" is added automatically. `match` is checked against a
-  # project's `category`, then as a substring of its `tags`.
+  # project's `category`, then as a substring of its `tags`. A tab with no
+  # projects is hidden automatically.
   tabs:
     - { label: Semiconductor, match: semiconductor }
     - { label: Aerospace, match: aerospace }

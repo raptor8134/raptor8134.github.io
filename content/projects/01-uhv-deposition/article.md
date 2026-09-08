@@ -12,8 +12,8 @@ skills: "UHV system design · thermal analysis · precision machining · design 
 - Interfaces with an existing hub chamber using in-vacuum interchangeable sample stubs
 - Chamber built from salvaged lab hardware; 5×10⁻⁷ torr achieved
 - Conduction-cooled QCM doubles the absorbable radiant load at constant crystal temperature
-- Annealing stub: four isolated electrical contacts in a 1" × 0.75" removable package, to 1000 °C
 - All stage and stub components machined in-house, including diamond-ground alumina
+- The fellowship extension — a 1000 °C annealing sample holder — is [a project of its own](/uhv-annealing-stage/)
 
 ## The problem
 
@@ -69,29 +69,16 @@ Linear is the right model here, not a convenient one. At steady state along a co
 > [!note] Pending
 > Fit and residuals to be inserted.
 
-## Extension: 1000 °C annealing stage
+## Extension
 
-The fellowship added a second requirement: a controlled annealing stage. Prior to XPS (X-ray photospectroscopy) in another connected chamber, it is desired that the samples be heated to various temperatures 500-1000°C to be annealed. 
-
-Both the heater and the thermocouple must sit on the removable stub itself to maintain proximity to the sample., which means routing four electrical contacts through a sample carrier measuring 1" × 0.75" — one that also has to survive repeated in-vacuum handling by the transfer arm and thermal cycling to 1000 °C.
-
-I built the contacts out of the retention mechanism rather than adding to it. The stub was already held by two structural pins and a clip. I used one pin to deliver heater current and the clip plus the second pin to return the body to neutral, then added side wings for the thermocouple contacts, isolated by ceramic plates and screws. The sample, heater, and clip are separated by an alumina plate. The heater is 0.011" tungsten wire on ceramic bead insulators, roughly 0.5 Ω, driven at 5-10 V.
-
-Differential expansion works in the design's favor. The 304 stainless body expands faster than the embedded alumina beads and screws, so the ceramics are never crushed or seized on cycling. The structural pins loosen slightly at temperature, but they run with clearance by design and the clip provides retention independently.
-
-**Results:** the stage side delivers power reliably and stubs interchange cleanly even after repeated high-temperature cycling. The silicon reaches target temperature by visual confirmation.
-
-**Open issue:** thermocouple readings drop off abruptly above ~600 °C. Debugging is ongoing. The leading hypothesis is a temperature-dependent shunt path through the alumina isolation — bulk resistivity of alumina falls sharply in exactly that band, which would create a virtual junction and pull the reading toward an intermediate point on the leads. The discriminating test is reversibility on cooldown plus leg-to-leg and leg-to-chassis resistance measured hot and cold; EMI would disappear the instant heater power is cut, a shunt would not. Type K is in use for cost during development and may be replaced regardless once the mechanism is confirmed.
-
-> [!note] Pending
-> Update pending.
+The summer fellowship added a requirement outside the original senior-design scope: a removable sample holder that anneals silicon to 1000 °C and still interchanges under vacuum. That grew into its own build — see **[1000 °C in-vacuum annealing sample holder →](/uhv-annealing-stage/)**.
 
 ## Fabrication
 
 I machined all stage and stub components myself: milling 304 stainless and copper on a manual mill, holding ±0.005" on the tightest features. Alumina requires diamond or fiber laser cutting and the lab has no laser, so every ceramic part was ground from sheet scrap with diamond burrs.
 
-Material selection was driven by vacuum compatibility throughout — copper, stainless, molybdenum, tungsten, alumina — with the thermocouple assembly the remaining outgassing question at full temperature.
+Material selection was driven by vacuum compatibility throughout — copper, stainless, molybdenum, tungsten, alumina.
 
 ## Status
 
-Thermal subsystem qualified. Annealing stage mechanically validated with temperature measurement debugging in progress. Chamber currently operates on borrowed pumping; standing up an independent pump stack is in work, presently limited to 1×10⁻⁴ torr pending rate-of-rise testing to separate leak from outgassing.
+Thermal subsystem qualified. Chamber currently operates on borrowed pumping; standing up an independent pump stack is in work, presently limited to 1×10⁻⁴ torr pending rate-of-rise testing to separate leak from outgassing.

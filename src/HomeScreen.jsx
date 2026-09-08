@@ -5,7 +5,8 @@ function HomeScreen({onOpen}){
   const {Input}=window.DS;
   const data=window.SITE_DATA;
   const hero=data.site.hero||{};
-  const work=data.site.work||{};
+  const cfg=data.site.projects||{};
+  const pinned=cfg.pinned||[];
   const [tab,setTab]=React.useState("all");
   const [q,setQ]=React.useState("");
   const [bgIdx,setBgIdx]=React.useState(()=>Math.floor(Math.random()*data.backdrop.length));
@@ -21,12 +22,16 @@ function HomeScreen({onOpen}){
     return (p.category||"").toLowerCase()===s||p.tags.some(t=>t.toLowerCase().includes(s));
   };
   const tabItems=[{value:"all",label:"All",count:shown.length}].concat(
-    (work.tabs||[])
+    (cfg.tabs||[])
       .map(t=>({value:t.match||t.label,label:t.label,count:shown.filter(p=>matchTab(p,t.match||t.label)).length}))
       .filter(t=>t.count>0));   // hide tabs with no projects
-  const list=shown.filter(p=>
+  const pinRank=id=>{const i=pinned.indexOf(id);return i===-1?pinned.length+1:i;};
+  let list=shown.filter(p=>
     matchTab(p,tab)&&
     (q===""||(p.title+p.tags.join(" ")).toLowerCase().includes(q.toLowerCase())));
+  // in the "All" tab, pinned projects come first (Array.sort is stable, so the
+  // rest keep folder order)
+  if(tab==="all") list=[...list].sort((a,b)=>pinRank(a.id)-pinRank(b.id));
   const primary=shown[0];
   const sec=hero.secondaryCta||{};
   return (

@@ -174,7 +174,7 @@ const withHref = (o) => (o && typeof o === "object" && "href" in o ? { ...o, hre
 const site = {
   name: siteFront.name || "",
   role: siteFront.role || "",
-  nav: siteFront.nav || ["work", "about", "contact"],
+  nav: siteFront.nav || ["projects", "about", "contact"],
   resume: withHref(siteFront.resume) || null,
   hero: {
     intro: (siteFront.hero && siteFront.hero.intro || "").trim(),
@@ -182,8 +182,9 @@ const site = {
     secondaryCta: withHref(siteFront.hero && siteFront.hero.secondaryCta) || null,
     headlineHtml: headlineHtml(siteFront.hero && siteFront.hero.headline),
   },
-  work: {
-    tabs: (siteFront.work && siteFront.work.tabs) || [],
+  projects: {
+    pinned: (siteFront.projects && siteFront.projects.pinned) || [],
+    tabs: (siteFront.projects && siteFront.projects.tabs) || [],
   },
   contact: (() => {
     const c = Object.assign(
@@ -262,7 +263,7 @@ const projects = projSlugs.map((slug, idx) => {
     cardImage,
     body,
     // draft: page still builds and is reachable by URL, but is kept out of the
-    // grid, the "More work" rail, the sitemap, and search indexes.
+    // grid, the "More projects" rail, the sitemap, and search indexes.
     draft: card.data.draft === true || card.data.draft === "true",
   };
 });
