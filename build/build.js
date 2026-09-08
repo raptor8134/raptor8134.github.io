@@ -236,7 +236,8 @@ const projects = projSlugs.map((slug, idx) => {
   let meta = [];
   if (exists(artPath)) {
     const art = parseFront(read(artPath));
-    meta = art.data.meta || [];
+    // meta values render as HTML, so inline markdown (links, emphasis) works
+    meta = (art.data.meta || []).map((m) => ({ key: inline(m.key), value: inline(m.value) }));
     body = mdToBlocks(art.body, ctx);
     if (art.data.skills) body.push({ skills: String(art.data.skills).trim() });
   }

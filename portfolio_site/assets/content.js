@@ -164,7 +164,7 @@ window.SITE_DATA = {
       "meta": [
         {
           "key": "Scope",
-          "value": "Senior design project, sponsored by Dr. [Ludwig Bartels lab at UCR](https://bartels.chem.ucr.edu), continued under a summer research fellowship"
+          "value": "Senior design project sponsored by the <a href=\"https://bartels.chem.ucr.edu\">Ludwig Bartels lab at UCR</a>, continued under a summer research fellowship"
         },
         {
           "key": "Role",

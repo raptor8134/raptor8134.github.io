@@ -767,7 +767,14 @@ function ProjectScreen({
     }
   }, /*#__PURE__*/React.createElement(KeyValueList, {
     columns: 2,
-    items: p.meta
+    items: p.meta.map(m => ({
+      key: /*#__PURE__*/React.createElement(RawHtml, {
+        html: m.key
+      }),
+      value: /*#__PURE__*/React.createElement(RawHtml, {
+        html: m.value
+      })
+    }))
   })), /*#__PURE__*/React.createElement("div", null, (p.body && p.body.length ? p.body : [{
     p: "Write-up in progress."
   }]).map((b, i) => /*#__PURE__*/React.createElement(ArticleBlock, {

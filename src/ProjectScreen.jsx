@@ -65,7 +65,7 @@ function ProjectScreen({id,onBack,onOpen}){
         {p.tags.map(t=><Tag key={t}>{t}</Tag>)}
       </div>
       {p.meta&&p.meta.length>0&&<div style={{margin:"var(--space-5) 0 var(--space-6)",maxWidth:"var(--measure)"}}>
-        <KeyValueList columns={2} items={p.meta}/>
+        <KeyValueList columns={2} items={p.meta.map(m=>({key:<RawHtml html={m.key}/>,value:<RawHtml html={m.value}/>}))}/>
       </div>}
       <div>{(p.body&&p.body.length?p.body:[{p:"Write-up in progress."}]).map((b,i)=><ArticleBlock key={i} block={b}/>)}</div>
       {others.length>0&&<div style={{marginTop:"var(--space-8)"}}>
