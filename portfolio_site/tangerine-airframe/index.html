@@ -261,6 +261,23 @@ figcaption > span:first-child {
   --grad-accent: linear-gradient(90deg, #2BE08A 0%, #1B4FD1 100%);
 }
 
+/* --- TEST: every accent -> solid blue, both themes ------------------------- *
+ * Delete this whole block (keep the file) to go back to: green in dark mode,
+ * the blue remap in light mode, the green->blue style switch, and the green
+ * hero highlight. Nothing above depends on it.                               */
+:root {
+  --accent-spring:      #1B4FD1;
+  --text-accent:        #1B4FD1;
+  --line-accent:        rgba(27, 79, 209, .5);
+  --selection-bg:       rgba(27, 79, 209, .24);
+  --grad-accent:        #1B4FD1;
+  --grad-accent-smooth: #1B4FD1;
+  --grad-accent-diag:   #1B4FD1;
+  --grad-accent-soft:   rgba(27, 79, 209, .16);
+  --hero-mark:          #1B4FD1;
+}
+.style-switch { --grad-accent: #1B4FD1; }
+
 </style>
 </head>
 <body>

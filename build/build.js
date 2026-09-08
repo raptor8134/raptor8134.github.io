@@ -143,7 +143,7 @@ function headlineHtml(s) {
   return String(s || "")
     .replace(/\n+$/, "")
     .split("\n")
-    .map((l) => l.replace(/\[\[([^\]]+)\]\]/g, '<span style="color:#2BE08A">$1</span>'))
+    .map((l) => l.replace(/\[\[([^\]]+)\]\]/g, '<span style="color:var(--hero-mark,#2BE08A)">$1</span>'))
     .join("<br>");
 }
 
