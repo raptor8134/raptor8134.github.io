@@ -72,7 +72,7 @@ you reference a file from `content/site.md`, write it as `/assets/whatever`.
 ## Local CSS
 
 `src/overrides.css` is appended to the design-system token bundle by the build.
-It currently does two things:
+It currently does these things:
 
 - Flips the light/dark palette in one step. `App.jsx` briefly sets
   `[data-theme-animating]` on `<html>` and the rule kills control transitions for
@@ -80,6 +80,13 @@ It currently does two things:
 - **Temporary:** flattens the green→blue accent gradient to solid spring-green
   everywhere except the header style switch. Delete that `:root` / `.style-switch`
   block (keep the file) to restore the gradient.
+- Paper theme only: gives project cards (`.pf-card`) a stronger `--line-2`
+  border, since the default hairline is nearly invisible on white; the accent
+  border is kept on hover.
+
+The `0X` index in the `~/about` section rules is brightened to heading ink in
+`src/AboutScreen.jsx` (the `idx()` helper), not here — `SectionRule` bakes the
+faint colour inline so it can't be reached from CSS.
 
 ## What changed from the plain implementation
 
