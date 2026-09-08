@@ -76,6 +76,14 @@ Each project gets its own page at `jamesnotley.com/<id>/` (the `id` from
 3. Put any figures in that folder's `images/`.
 4. Rebuild.
 
+### Draft / unlisted projects
+
+Put `draft: true` in `card.md`. The page still builds and is reachable at its
+URL (`jamesnotley.com/<id>/`) so you can preview it, but it's left out of the
+project grid, the "More work" rail, the sitemap, and search indexes
+(`noindex`), and it shows an "unlisted / staging" banner. Remove the line to
+publish.
+
 ### `card.md`
 
 ```
@@ -87,6 +95,7 @@ year: "2025"
 category: aerospace
 tags: [composites, g-code, golang, failure]
 image: images/winder.jpg     # optional grid-card thumbnail
+draft: true                  # optional: build the page but keep it unlisted (see below)
 ---
 
 One sentence. This is the card brief and the lead line on the project page.
@@ -116,7 +125,8 @@ Body Markdown maps to the design-system blocks:
 | `- item` / `1. item` | list rows |
 | `> [!note] Title` / `> body` | a Callout. Tones: `note`, `ok`, `warn`, `fail` |
 | GFM table, then an `*italic line*` under it | SpecTable with that line as its caption |
-| `![alt](images/x.jpg "Caption")` | a numbered Figure (FIG 1, FIG 2, …) |
+| `![alt](images/x.jpg "Caption")` | a numbered Figure (FIG 1, FIG 2, …). Videos (`.mp4/.webm/.mov`) become a `<video>` in the same frame. |
+| `![](images/x.jpg)` | same, but with a placeholder **"Add a caption"** where the caption goes — replace it by filling the `"…"` |
 | `[text](https://…)` | a link |
 | `skills:` in frontmatter | the trailing "Skills: …" line |
 

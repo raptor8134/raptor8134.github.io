@@ -42,9 +42,14 @@ function ProjectScreen({id,onBack,onOpen}){
   const {Breadcrumb,Tag,SectionRule,KeyValueList,Button,Icon}=window.DS;
   const data=window.SITE_DATA;
   const p=data.projects.find(x=>x.id===id)||data.projects[0];
-  const others=data.projects.filter(x=>x.id!==p.id);
+  const others=data.projects.filter(x=>x.id!==p.id&&!x.draft);
   return (
     <article style={{maxWidth:820,margin:"0 auto",padding:"var(--space-7) var(--space-6) var(--space-9)"}}>
+      {p.draft&&<div style={{fontFamily:"var(--font-mono)",fontSize:"var(--size-2xs)",letterSpacing:"var(--track-caps)",
+        textTransform:"uppercase",color:"var(--signal-warn)",border:"1px dashed var(--signal-warn)",
+        padding:"var(--space-2) var(--space-3)",marginBottom:"var(--space-4)"}}>
+        Unlisted / staging — not linked from the site or indexed
+      </div>}
       <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:"var(--space-4)",
         borderBottom:"var(--border-hairline)",paddingBottom:"var(--space-3)"}}>
         <Breadcrumb size="xl" items={["work",p.id]}/>

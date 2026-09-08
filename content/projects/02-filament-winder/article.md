@@ -10,13 +10,13 @@ skills: "composites manufacturing · motion control and G-code · Go and Python 
 - Based on Andrew Reilley's open-source Contraption winder; electronics rebuilt from a salvaged Ender 3
 - 4-axis machine, operated in 2-axis configuration for process development
 - Toolpath generator extended from cylinders-only to arbitrary axisymmetric profiles
-- Rewritten from Python to Go with a graphical path visualizer
+  - Rewritten from Python to Go with a graphical path visualizer
 - Did not reach production: mold release failed under winding tension, root cause identified
-- [GitHub link]
+- github.com/raptor8134/cocoon/
 
 ## Why build a winder
 
-Our team's composite airframe components were fabricated by hand layup. That process works, but it has two costs. It is labor-intensive — a tube consumes a full work session and multiple people — and it gives you almost no control over fiber orientation. You are tensioning braided sleeving over a mandrel by hand and accepting whatever angle the material settles into. For structures where the loads are known and the layup could be tailored to them, that is a lot of performance left unclaimed.
+Our team's composite airframe components were fabricated by hand layup. That process works, but it has two costs. It is labor-intensive (a tube consumes a full work session and multiple people) and it gives you little to no control over fiber orientation. You are tensioning braided sleeving over a mandrel by hand and accepting whatever angle the material settles into. For structures where the loads are known and the layup could be tailored to them, that is a lot of performance left unclaimed.
 
 The buy-instead option had just failed decisively. In my first year I ran supplier and fabrication-method research for the team's composite components, and we placed a tube order with a vendor that delayed for roughly six months and ultimately never delivered. The company later closed and sold its equipment off. That experience is what pushed the question from "should we make our own tubing" to "we need to be able to make our own tubing."
 
@@ -24,17 +24,17 @@ Filament winding answers both problems at once: it is automatic, and fiber angle
 
 ## Machine build
 
-I started from Andrew Reilley's Contraption, an open-source winder design, and adapted the mechanical design to the hardware I could actually get. The electronics came entirely out of the guts of a dead Ender 3 — control board, steppers, drivers, supply — which meant reworking the machine's mechanical layout around what those components could drive rather than the reverse.
+I started from Andrew Reilley's Contraption, an open-source winder design, and adapted the mechanical design to the hardware I could actually get. The electronics came entirely out of the guts of a dead Ender 3 ( control board, steppers, drivers, supply) which meant reworking the machine's mechanical layout around what those components could drive rather than the reverse.
 
-Running the machine on 3D printer firmware was a deliberate choice, not a shortcut. A filament winder and a 3D printer solve the same coordination problem: hold two axes in a fixed velocity ratio through a move. Winding a helical pass at a target fiber angle is a linear move in (mandrel rotation, carriage travel) space, which is exactly what a G1 command already expresses. Stock Ender 3 firmware with minor modification handles it, and I got a debugged motion stack, acceleration handling, and a mature G-code interpreter for free.
+Running the machine on 3D printer firmware was a an easy cost and effort saving measure, especially since I had much more design than electronics experience. A filament winder and a 3D printer solve the same coordination problem: hold two axes in a fixed velocity ratio through a move. Winding a helical pass at a target fiber angle is a linear move in (mandrel rotation, carriage travel) space, which is exactly what a G1 command already expresses. Stock Ender 3 firmware with minor modification handles it, and I got a debugged motion stack, acceleration handling, and a mature G-code interpreter for free.
 
-The full machine has four axes — mandrel rotation, carriage travel, filament head rotation, and standoff from the mandrel surface. I ran process development in a two-axis configuration, since head orientation and mandrel proximity matter for fiber placement quality but not for validating that the path geometry and release process work at all.
+The full machine has four axes: mandrel rotation, carriage travel, filament head rotation, and standoff from the mandrel surface. I ran process development in a two-axis configuration, since head orientation and mandrel proximity matter for fiber placement quality but not for validating that the path geometry and release process work..
 
 ![The winder built from salvaged Ender 3 hardware](images/winder_prototype.jpg "The winder built from salvaged Ender 3 hardware")
 
-![winder.mp4 — TK caption](images/winder.mp4 "winder.mp4 — TK caption")
+![](images/winder.mp4)
 
-![celsius.mp4 — TK caption](images/celsius.mp4 "celsius.mp4 — TK caption")
+![](images/celsius.mp4)
 
 ## Toolpath generation
 
@@ -54,18 +54,15 @@ I rewrote the generator from Python to Go and added a GUI. Go for a compiled sin
 
 ## Where it failed
 
-The machine never produced a usable part. Every tube seized on its mandrel and could not be recovered, and the team fabricated by hand for that year's launch as planned.
+Although the winding process itself was solid, none of the resulting parts were usable. Every tube seized on its mandrel and had to be cut apart to be freed. The team fabricated by hand for that year's launch as planned.
 
-![soaking.jpg — TK caption](images/soaking.jpg "soaking.jpg — TK caption")
+![](images/soaking.jpg)
 
-The failure is in release, and the interesting part is why our known-good release methods stopped working. Our hand layups used single-use 3D printed mandrels wrapped in Mylar or aluminum foil as a barrier layer against direct adhesion. That approach was well proven for us — it had outperformed PVA release agent in practice, including on the nosecone where I once recovered a stuck 3D printed mold by boiling it out on a stovetop. On the winder, both barrier films and PVA failed, on 3D printed mandrels and on aluminum pipe alike.
+The failure is in release, and the interesting part is why our known-good release methods stopped working. Our hand layups used single-use 3D printed mandrels wrapped in Mylar or aluminum foil as a barrier layer against direct adhesion. That approach was well proven for us and it had outperformed PVA release agent in practice. On the winder, both barrier films and PVA failed, on 3D printed mandrels and on aluminum pipe alike.
 
-The mechanism is process, not chemistry. Hand layup places material on a mandrel; winding actively pulls it down. Continuous filament tension compacts the laminate radially onto the tool as it is laid, with the compaction pressure scaling as tension over mandrel radius. A release strategy that only has to prevent adhesion is not sufficient once the part is being actively clamped to the tool by its own fiber tension. Our release methods were never bad — they were validated against a process that does not generate that pressure, and we carried the assumption across to one that does.
+The mechanism is mechanical tension: Hand layup places material on a mandrel; winding actively pulls it down. Continuous filament tension compacts the laminate radially onto the tool as it is laid, with the compaction pressure scaling as tension over mandrel radius. A release strategy that only has to prevent adhesion is not sufficient once the part is being actively clamped to the tool by its own fiber tension.  Tension cannot be eliminated since it is necessary to pull filament off of the spool, and is also one of the advantages of the winding process, providing a compressive force between layers similar to vacuum bagging or flat pressing
 
-That reframes the fix. The answer is not a better release agent but tooling that does not require the part to slide off at all: collapsible or multi-part mandrels that can be disassembled from inside the finished part. My teammate subsequently developed multi-part 3D printed molds on exactly that principle, and they are immune to the tension-sticking problem — independent confirmation of the diagnosis, though it arrived too late in my involvement to revive the winder.
-
+Although another team member was able to develop two-part and three-part collapsing mandrels for tubes produced the following year, the winder project had to be shelved due to space constraints, and the general difficulty of training new members to use it compared to the hand layup process.
 ## What I would do differently
 
-Sequence the process risk first. I built the machine and the software before proving the release process, and the release process is what killed it — an inversion of the right order. A single wound sleeve on a collapsible test mandrel, done in a week, would have surfaced the compaction problem before the machine existed.
-
-The unimplemented work, in priority order: closed-loop tension control, which is currently absent and leaves fiber tension to spool drag; multi-part tooling; and a non-geodesic slip constraint in the path solver.
+In retrospect, mold release should have been a much higher priority. My early tests were with mandrels thin and small enough to be destructively removed, and going from soda can to industrial pipe for the mandrel was a larger process change than I thought. My other mistake was building too large such that finding a suitable place to test was a persistent and program-ending problem, my original thinking was future proofing for building longer and larger rockets, but without succeeding in the present preparing for the future is useless.

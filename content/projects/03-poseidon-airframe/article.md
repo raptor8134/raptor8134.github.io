@@ -14,7 +14,7 @@ skills: "composites fabrication · wet layup and tooling design · design for as
 
 ## The vehicle
 
-Poseidon is a liquid bipropellant vehicle derived from the HalfCat reference design — nitrous oxide and ethanol, piston-driven tank pressurization, pintle injector — with a substantially enlarged and modified engine. I did not work on the engine; my scope was airframe, and specifically the composite structure of the upper half of the vehicle. *[Vehicle length, diameter, and target altitude — TK]*
+Poseidon is a liquid bipropellant vehicle derived from the HalfCat reference design (nitrous oxide and ethanol, piston tank, and pintle injector) with a substantially enlarged and modified engine. The default upper airframe of the reference is cardboard, which wasn't going to fly for a 2x diameter increase. As airframe lead, I was responsible for the composite structure of the upper half of the vehicle. *[Vehicle length, diameter, and target altitude — TK]*
 
 ## Composite fabrication
 
@@ -26,13 +26,13 @@ Poseidon is a liquid bipropellant vehicle derived from the HalfCat reference des
 
 The consequence worth flagging is that braid angle depends on the ratio of the sleeve's relaxed diameter to the local mandrel diameter. On a tapered part like the nosecone, the fiber angle therefore varies continuously along the length. *[Whether this was accounted for in ply selection, or characterized after the fact — TK]*
 
-![delicious.jpg — TK caption](images/delicious.jpg "delicious.jpg — TK caption")
+![3D-printed nosecone mandrel boiling out on a stovetop](images/delicious.jpg "Nosecone soup anyone? The steam column heats the plastic to deformation temperature evenly, without burning it.")
 
 ## Fin attachment
 
 The fins bolt to the structural struts separating the motor from the fuel tank rather than being bonded through-wall or tip-to-tip laminated to the airframe.
 
-The driver was transportability. A bonded fin can can is a permanent, awkward, fragile object to move; a bolted arrangement lets the vehicle come apart for transport and lets a damaged fin be replaced without touching the airframe. The trade is joint stiffness and a discrete load introduction into the strut structure rather than a distributed one into the skin. *[Fin material and construction; flutter margin — TK]*
+The driver was transportability. A bonded fin can can is permanent and awkward to move; a bolted arrangement lets the vehicle come apart for transport and lets a damaged fin be replaced without touching the airframe. The tradeoff is lower joint stiffness and extra weight from steel bolts. This wasn't considered a huge issue as our mission profile was dependent on accuracy not pure altitude, and our velocity was not in the critical range for flutter. *[Fin material and construction; flutter margin — TK]*
 
 ## Team
 

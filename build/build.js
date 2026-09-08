@@ -131,7 +131,7 @@ function figure(im, ctx) {
   return {
     src,
     alt: im.text || undefined,
-    caption,
+    caption: caption || "Add a caption",   // default so every figure shows a caption slot
     index: "FIG " + ctx.figN,
     placeholder,
     video: VIDEO_RE.test(im.href || ""),
@@ -263,8 +263,12 @@ const projects = projSlugs.map((slug, idx) => {
     meta,
     cardImage,
     body,
+    // draft: page still builds and is reachable by URL, but is kept out of the
+    // grid, the "More work" rail, the sitemap, and search indexes.
+    draft: card.data.draft === true || card.data.draft === "true",
   };
 });
+const listed = projects.filter((p) => !p.draft);
 
 // --- backdrop images ---
 let backdrop;
@@ -324,7 +328,7 @@ const esc = (s) =>
 
 // Every generated page loads the same bundle and boots the same <App/>; the only
 // per-page difference is <head> metadata and the injected window.__ROUTE__.
-function pageHtml({ title, description, urlPath, route }) {
+function pageHtml({ title, description, urlPath, route, noindex }) {
   const canon = origin ? origin + urlPath : "";
   return `<!DOCTYPE html>
 <html lang="en">
@@ -334,7 +338,7 @@ function pageHtml({ title, description, urlPath, route }) {
 <title>${esc(title)}</title>
 <meta name="description" content="${esc(description)}">
 <meta name="color-scheme" content="dark">
-${canon ? `<link rel="canonical" href="${esc(canon)}">\n` : ""}<meta property="og:type" content="website">
+${noindex ? `<meta name="robots" content="noindex, nofollow">\n` : ""}${canon && !noindex ? `<link rel="canonical" href="${esc(canon)}">\n` : ""}<meta property="og:type" content="website">
 <meta property="og:title" content="${esc(title)}">
 <meta property="og:description" content="${esc(description)}">
 ${canon ? `<meta property="og:url" content="${esc(canon)}">\n` : ""}<link rel="icon" href="${FAVICON}">
@@ -393,6 +397,7 @@ for (const p of projects) {
       description: p.summary || `${p.title} — a project by ${site.name}.`,
       urlPath: `/${p.id}/`,
       route: { name: "project", id: p.id },
+      noindex: p.draft,
     })
   );
 }
@@ -437,7 +442,7 @@ fs.writeFileSync(
 
 // Sitemap + robots (only meaningful once the domain is known).
 if (origin) {
-  const urls = ["/", ...projects.map((p) => `/${p.id}/`)];
+  const urls = ["/", ...listed.map((p) => `/${p.id}/`)];
   fs.writeFileSync(
     path.join(OUT, "sitemap.xml"),
     `<?xml version="1.0" encoding="UTF-8"?>\n` +
@@ -467,5 +472,5 @@ fs.rmSync(path.join(OUT, "README.md"), { force: true });
 
 console.log(`portfolio_site/  —  ${projects.length} project(s), ${about.body.length} about paragraph(s), ${backdrop.length} backdrop image(s)`);
 console.log(`  /                 home`);
-projects.forEach((p) => console.log(`  /${p.id}/${" ".repeat(Math.max(1, 16 - p.id.length))}${p.body.length} block${p.body.length === 1 ? "" : "s"}`));
+projects.forEach((p) => console.log(`  /${p.id}/${" ".repeat(Math.max(1, 20 - p.id.length))}${p.body.length} block${p.body.length === 1 ? "" : "s"}${p.draft ? "   (draft — unlisted, noindex)" : ""}`));
 console.log(origin ? `  sitemap + robots for ${origin}` : `  (no CNAME → skipped sitemap/robots)`);

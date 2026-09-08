@@ -71,9 +71,9 @@ Linear is the right model here, not a convenient one. At steady state along a co
 
 ## Extension: 1000 °C annealing stage
 
-The fellowship added a second requirement: silicon annealing inside the hub chamber, heating a chip to 1000 °C with accurate temperature measurement.
+The fellowship added a second requirement: a controlled annealing stage. Prior to XPS (X-ray photospectroscopy) in another connected chamber, it is desired that the samples be heated to various temperatures 500-1000°C to be annealed. 
 
-Both the heater and the thermocouple must sit on the removable stub itself, which means routing four electrical contacts through a sample carrier measuring 1" × 0.75" — one that also has to survive repeated in-vacuum handling by the transfer arm and thermal cycling to 1000 °C.
+Both the heater and the thermocouple must sit on the removable stub itself to maintain proximity to the sample., which means routing four electrical contacts through a sample carrier measuring 1" × 0.75" — one that also has to survive repeated in-vacuum handling by the transfer arm and thermal cycling to 1000 °C.
 
 I built the contacts out of the retention mechanism rather than adding to it. The stub was already held by two structural pins and a clip. I used one pin to deliver heater current and the clip plus the second pin to return the body to neutral, then added side wings for the thermocouple contacts, isolated by ceramic plates and screws. The sample, heater, and clip are separated by an alumina plate. The heater is 0.011" tungsten wire on ceramic bead insulators, roughly 0.5 Ω, driven at 5-10 V.
 

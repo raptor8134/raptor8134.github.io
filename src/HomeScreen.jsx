@@ -14,13 +14,14 @@ function HomeScreen({onOpen}){
     const t=setInterval(()=>setBgIdx(i=>(i+1)%data.backdrop.length),7000);
     return ()=>clearInterval(t);
   },[]);
+  const shown=data.projects.filter(p=>!p.draft);
   const matchTab=(p,m)=>m==="all"||p.tags.some(t=>t.toLowerCase().includes(String(m).toLowerCase()));
-  const tabItems=[{value:"all",label:"All",count:data.projects.length}].concat(
-    (work.tabs||[]).map(t=>({value:t.match||t.label,label:t.label,count:data.projects.filter(p=>matchTab(p,t.match||t.label)).length})));
-  const list=data.projects.filter(p=>
+  const tabItems=[{value:"all",label:"All",count:shown.length}].concat(
+    (work.tabs||[]).map(t=>({value:t.match||t.label,label:t.label,count:shown.filter(p=>matchTab(p,t.match||t.label)).length})));
+  const list=shown.filter(p=>
     matchTab(p,tab)&&
     (q===""||(p.title+p.tags.join(" ")).toLowerCase().includes(q.toLowerCase())));
-  const primary=data.projects[0];
+  const primary=shown[0];
   const sec=hero.secondaryCta||{};
   return (
     <div>
