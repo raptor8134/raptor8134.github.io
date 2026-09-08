@@ -261,11 +261,24 @@ figcaption > span:first-child {
   --grad-accent: linear-gradient(90deg, #2BE08A 0%, #1B4FD1 100%);
 }
 
-/* --- TEST: every accent -> solid blue, both themes ------------------------- *
+/* --- TEST: every accent -> blue, both themes ----------------------------- *
  * Delete this whole block (keep the file) to go back to: green in dark mode,
  * the blue remap in light mode, the green->blue style switch, and the green
- * hero highlight. Nothing above depends on it.                               */
+ * hero highlight. Nothing above depends on it.
+ * Dark mode uses a lighter blue (#3D7BFF, ~4.7:1 on the dark surfaces);
+ * light mode keeps the deeper #1B4FD1 (~6.6:1 on white).                    */
 :root {
+  --accent-spring:      #3D7BFF;
+  --text-accent:        #3D7BFF;
+  --line-accent:        rgba(61, 123, 255, .5);
+  --selection-bg:       rgba(61, 123, 255, .24);
+  --grad-accent:        #3D7BFF;
+  --grad-accent-smooth: #3D7BFF;
+  --grad-accent-diag:   #3D7BFF;
+  --grad-accent-soft:   rgba(61, 123, 255, .16);
+  --hero-mark:          #3D7BFF;
+}
+[data-theme="paper"] {
   --accent-spring:      #1B4FD1;
   --text-accent:        #1B4FD1;
   --line-accent:        rgba(27, 79, 209, .5);
@@ -276,7 +289,8 @@ figcaption > span:first-child {
   --grad-accent-soft:   rgba(27, 79, 209, .16);
   --hero-mark:          #1B4FD1;
 }
-.style-switch { --grad-accent: #1B4FD1; }
+.style-switch { --grad-accent: #3D7BFF; }
+[data-theme="paper"] .style-switch { --grad-accent: #1B4FD1; }
 
 </style>
 </head>
