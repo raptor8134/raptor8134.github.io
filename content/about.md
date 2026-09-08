@@ -41,4 +41,4 @@ education:
 
 As a researcher on the MEMENCYS fellowship at the Bartels Lab, I design and build vacuum systems for semiconductor material growth, including a manipulator-compatible heated stage and a multi-source metal deposition chamber.
 
-As Airframe Lead for the Highlander Space Program, I led a team of seven students fabricating launch vehicle airframes from fiberglass and sheet metal, and built the filament winder documented on this site.
+As Airframe Lead for the [Highlander Space Program](https://www.instagram.com/hspucr/), I led a team of seven students fabricating launch vehicle airframes from fiberglass and sheet metal, and built the filament winder documented on this site.

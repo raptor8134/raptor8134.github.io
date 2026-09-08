@@ -32,6 +32,16 @@ The block between the two `---` lines at the top of a file is *frontmatter* —
 `key: value` settings. Body text (below the second `---`) is normal Markdown.
 Keep the indentation as shown; it is significant.
 
+## Style rules
+
+- **Highlander Space Program.** First mention on a page (this includes the
+  `Scope` line): link the full name to `https://www.instagram.com/hspucr/` —
+  `[Highlander Space Program](https://www.instagram.com/hspucr/)`. Every mention
+  after that on the same page: `HSP`, unlinked. Structured fields that aren't
+  prose (a CV `org`, etc.) use the full name, unlinked.
+- **`[PLACEHOLDER]` brackets** (`[LAB NAME]`, `[GitHub link]`, `*[… — TK]*`) are
+  intentional "fill me in" markers. `marked` leaves them as literal text.
+
 ## `site.md`
 
 All in frontmatter. Common edits:

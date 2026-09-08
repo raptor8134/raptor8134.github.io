@@ -1,6 +1,6 @@
 ---
 meta:
-  - { key: Scope, value: "[ROCKETRY ORG], year 3" }
+  - { key: Scope, value: "[Highlander Space Program](https://www.instagram.com/hspucr/), year 3" }
   - { key: Role, value: Airframe lead }
 skills: "structural design and FEA · buckling and load path analysis · sheet metal design and forming · design for manufacture · systems integration · propulsion sizing"
 ---

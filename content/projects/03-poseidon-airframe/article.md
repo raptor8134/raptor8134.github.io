@@ -1,6 +1,6 @@
 ---
 meta:
-  - { key: Scope, value: "[ROCKETRY ORG], year 2" }
+  - { key: Scope, value: "[Highlander Space Program](https://www.instagram.com/hspucr/), year 2" }
   - { key: Role, value: Airframe co-lead }
 skills: "composites fabrication · wet layup and tooling design · design for assembly · team lead and process documentation"
 ---

@@ -1,6 +1,6 @@
 ---
 meta:
-  - { key: Scope, value: "Independent project within [ROCKETRY ORG], year 2" }
+  - { key: Scope, value: "Independent project within [Highlander Space Program](https://www.instagram.com/hspucr/), year 2" }
   - { key: Role, value: Sole contributor }
 skills: "composites manufacturing · motion control and G-code · Go and Python · geometric algorithms · design for manufacture · root cause analysis"
 ---

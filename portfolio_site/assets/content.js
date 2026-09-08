@@ -73,7 +73,7 @@ window.SITE_DATA = {
     "intro": "I'm a materials science and engineering student at UC Riverside, building hardware for ultra-high vacuum systems and rocketry.",
     "body": [
       "As a researcher on the MEMENCYS fellowship at the Bartels Lab, I design and build vacuum systems for semiconductor material growth, including a manipulator-compatible heated stage and a multi-source metal deposition chamber.",
-      "As Airframe Lead for the Highlander Space Program, I led a team of seven students fabricating launch vehicle airframes from fiberglass and sheet metal, and built the filament winder documented on this site."
+      "As Airframe Lead for the <a href=\"https://www.instagram.com/hspucr/\">Highlander Space Program</a>, I led a team of seven students fabricating launch vehicle airframes from fiberglass and sheet metal, and built the filament winder documented on this site."
     ],
     "experience": [
       {
@@ -342,7 +342,7 @@ window.SITE_DATA = {
       "meta": [
         {
           "key": "Scope",
-          "value": "Independent project within [ROCKETRY ORG], year 2"
+          "value": "Independent project within <a href=\"https://www.instagram.com/hspucr/\">Highlander Space Program</a>, year 2"
         },
         {
           "key": "Role",
@@ -498,7 +498,7 @@ window.SITE_DATA = {
       "meta": [
         {
           "key": "Scope",
-          "value": "[ROCKETRY ORG], year 2"
+          "value": "<a href=\"https://www.instagram.com/hspucr/\">Highlander Space Program</a>, year 2"
         },
         {
           "key": "Role",
@@ -596,7 +596,7 @@ window.SITE_DATA = {
       "meta": [
         {
           "key": "Scope",
-          "value": "[ROCKETRY ORG], year 3"
+          "value": "<a href=\"https://www.instagram.com/hspucr/\">Highlander Space Program</a>, year 3"
         },
         {
           "key": "Role",
