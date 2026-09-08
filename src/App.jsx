@@ -111,7 +111,7 @@ function App(){
       onNavigate={goSection}
       brand={<span style={{fontFamily:"var(--font-mono)",fontSize:"var(--size-sm)",letterSpacing:"var(--track-wide)",color:"var(--text-strong)"}}>[jn@portfolio ~] <span style={{animation:"cursor-blink 1s step-end infinite"}}>_</span></span>}
       navPrefix={<span className="style-switch"><Switch checked={paper} onChange={()=>setPaper(!paper)}/></span>}
-      action={<Button as={resume.href?"a":"button"} href={resume.href} size="sm" variant="secondary" prefix={<Icon name="download" size={13}/>}>{resume.label||"Resume"}</Button>}/>
+      action={<Button as={resume.href?"a":"button"} href={resume.href} size="sm" variant="secondary" style={{border:"none"}} prefix={<Icon name="download" size={13}/>}>{resume.label||"Resume"}</Button>}/>
     <main style={{flex:1}}>
       {route.name==="page"&&<>
         <section id="projects"><window.HomeScreen onOpen={open}/></section>

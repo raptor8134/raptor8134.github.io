@@ -199,6 +199,20 @@ figcaption > span:first-child {
   white-space: nowrap;
 }
 
+/* Top bar alignment: the active-nav underline is a 1px border + 2px padding on
+ * the label span, which lifted PROJECTS / ABOUT / CONTACT ~1.5px above the
+ * brand, the style switch, and the Resume button. Drop the border + padding
+ * and redraw the underline as a shadow (no layout cost) so the row centres as
+ * one. The active item is the span whose inline style still names
+ * --accent-spring (SiteHeader ships pre-compiled, so we key off that). */
+.pf-header-nav > button > span {
+  padding-bottom: 0 !important;
+  border-bottom: 0 !important;
+}
+.pf-header-nav > button > span[style*="accent-spring"] {
+  box-shadow: 0 2px 0 -1px var(--accent-spring);
+}
+
 /* Project cards in light mode: the hairline border on white is nearly
  * invisible. The border is an inline `var(--border-hairline)`, and the token
  * bakes in --line-1 at :root, so it can't be nudged by redefining --line-1 on
@@ -1293,6 +1307,9 @@ function App() {
       href: resume.href,
       size: "sm",
       variant: "secondary",
+      style: {
+        border: "none"
+      },
       prefix: /*#__PURE__*/React.createElement(Icon, {
         name: "download",
         size: 13
