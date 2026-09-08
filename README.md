@@ -89,6 +89,10 @@ It currently does these things:
   so body links, FIG labels, and article list numbers clear WCAG AA on white —
   the design-system paper values sit at ~3–4:1. The hero highlight is a
   hard-coded `#2BE08A` and is untouched.
+- Paper theme only: **remaps the accents from green to blue** (`#1B4FD1`, ~6.6:1
+  on white). This is the block titled "green accents -> blue" — delete it (keep
+  the file) to fall back to the darkened greens above. Dark mode is untouched;
+  the style switch keeps its own green→blue gradient (literal colours).
 
 The `~/about` section rules (`0X` + label) are brightened to heading ink in
 `src/AboutScreen.jsx` (the `hi()` helper), not here — `SectionRule` bakes the

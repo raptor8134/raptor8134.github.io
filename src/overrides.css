@@ -45,10 +45,26 @@ figcaption > span:first-child {
  * accents below WCAG AA on white — links (--text-accent #0B8F6B) at ~4.0:1,
  * FIG labels and article list numbers (--accent-spring #12A870) at ~3.0:1.
  * Darken both to ~5:1. The hero highlight uses a hard-coded #2BE08A and is
- * unaffected; --line-accent / --selection-bg are literal in the paper scope. */
+ * unaffected; --line-accent / --selection-bg are literal in the paper scope.
+ * These greens are the revert target for the blue swap below. */
 [data-theme="paper"] {
   --text-accent:   #097B5A;
   --accent-spring: #0C7A5A;
+}
+
+/* --- Light mode: green accents -> blue ----------------------------------- *
+ * Delete this whole block (keep the file) to go back to the green accents
+ * above. Dark mode is untouched. #1B4FD1 on white is ~6.6:1 (AA). The header
+ * style switch keeps its own green->blue gradient via .style-switch below.  */
+[data-theme="paper"] {
+  --text-accent:        #1B4FD1;
+  --accent-spring:      #1B4FD1;
+  --line-accent:        rgba(27, 79, 209, .5);
+  --selection-bg:       rgba(27, 79, 209, .18);
+  --grad-accent:        #1B4FD1;
+  --grad-accent-smooth: #1B4FD1;
+  --grad-accent-diag:   #1B4FD1;
+  --grad-accent-soft:   rgba(27, 79, 209, .14);
 }
 
 /* --- TEMPORARY: flatten the accent gradient to solid spring-green --------- *
@@ -60,6 +76,9 @@ figcaption > span:first-child {
   --grad-accent-diag:   var(--accent-spring);
   --grad-accent-soft:   color-mix(in srgb, var(--accent-spring) 15%, transparent);
 }
+/* The style switch keeps the real green -> blue gradient in every theme, so
+ * its colours are literal — the light-mode blue remap would otherwise flatten
+ * it to blue -> blue. */
 .style-switch {
-  --grad-accent: linear-gradient(90deg, var(--accent-spring) 0%, var(--accent-blue) 100%);
+  --grad-accent: linear-gradient(90deg, #2BE08A 0%, #1B4FD1 100%);
 }
