@@ -32,6 +32,25 @@ figcaption > span:first-child {
   border-color: var(--line-accent) !important;
 }
 
+/* Tooltip in light mode: the component's background is a fixed dark ink, but
+ * the paper theme flips its text to --text-strong (near-black too), so the
+ * label reads as a solid black box. Keep the tooltip dark and give it a light
+ * label and a defined edge. */
+[data-theme="paper"] [role="tooltip"] {
+  color: var(--fg-1) !important;
+  border-color: var(--ink-600) !important;
+}
+
+/* Light mode contrast: the design-system paper palette leaves the green
+ * accents below WCAG AA on white — links (--text-accent #0B8F6B) at ~4.0:1,
+ * FIG labels and article list numbers (--accent-spring #12A870) at ~3.0:1.
+ * Darken both to ~5:1. The hero highlight uses a hard-coded #2BE08A and is
+ * unaffected; --line-accent / --selection-bg are literal in the paper scope. */
+[data-theme="paper"] {
+  --text-accent:   #097B5A;
+  --accent-spring: #0C7A5A;
+}
+
 /* --- TEMPORARY: flatten the accent gradient to solid spring-green --------- *
  * Delete this block (leave the file) to restore the green -> blue gradient.
  * The header style switch keeps the real gradient via .style-switch below.   */

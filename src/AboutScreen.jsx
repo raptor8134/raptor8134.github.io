@@ -8,8 +8,9 @@ function AboutScreen(){
     const s=String(d).split(" — ");
     return s.length>1?<>{s[0]}<br/>{s.slice(1).join(" — ")}</>:d;
   };
-  // the "0X" index in these sub-rules reads at heading ink, not the faint default
-  const idx=n=><span style={{color:"var(--text-strong)"}}>{n}</span>;
+  // these sub-rules (both the "0X" and the label) read at heading ink, not the
+  // faint / muted defaults SectionRule bakes in
+  const hi=t=><span style={{color:"var(--text-strong)"}}>{t}</span>;
   return (
     <article style={{maxWidth:"var(--container)",margin:"0 auto",padding:"calc(var(--space-8) / 2) var(--space-6) var(--space-8)"}}>
       <div style={{borderBottom:"2px solid var(--line-1)",paddingBottom:"var(--space-3)"}}>
@@ -25,7 +26,7 @@ function AboutScreen(){
           ))}
         </div>
         <div>
-          {exp.length>0&&<><SectionRule index={idx("01")} label="Experience"/>
+          {exp.length>0&&<><SectionRule index={hi("01")} label={hi("Experience")}/>
           <div style={{margin:"var(--space-3) 0 var(--space-7)",fontFamily:"var(--font-mono)",fontSize:"var(--size-xs)"}}>
             {exp.map((d,i)=>(
               <div key={i} style={{display:"flex",alignItems:"baseline",justifyContent:"space-between",gap:"var(--space-3)",padding:"6px 0",borderBottom:"var(--border-hairline)"}}>
@@ -35,14 +36,14 @@ function AboutScreen(){
           </div></>}
 
           {methods.length>0&&<>
-          <SectionRule index={idx("02")} label="Instruments & methods"/>
+          <SectionRule index={hi("02")} label={hi("Instruments & methods")}/>
           <p style={{fontSize:"var(--size-xs)",color:"var(--text-muted)",margin:"var(--space-3) 0 var(--space-3)"}}>Hover for the full name.</p>
           <div style={{display:"flex",gap:6,flexWrap:"wrap",marginBottom:"var(--space-7)"}}>
             {methods.map(m=><Tooltip key={m.tag} label={m.name}><Tag>{m.tag}</Tag></Tooltip>)}
           </div></>}
 
           {edu.length>0&&<>
-          <SectionRule index={idx("03")} label="Education"/>
+          <SectionRule index={hi("03")} label={hi("Education")}/>
           <div style={{margin:"var(--space-3) 0 0"}}>
             <SpecTable dense columns={["Institution","Degree","Grad"]}
               rows={edu.map(e=>[e.institution,splitDegree(e.degree),e.grad])}/>

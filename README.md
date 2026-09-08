@@ -83,10 +83,16 @@ It currently does these things:
 - Paper theme only: gives project cards (`.pf-card`) a stronger `--line-2`
   border, since the default hairline is nearly invisible on white; the accent
   border is kept on hover.
+- Paper theme only: keeps the tooltip dark (its background is a fixed dark ink)
+  and forces a light label + edge, so it isn't a black-on-black box in light mode.
+- Paper theme only: darkens the green accents (`--text-accent`, `--accent-spring`)
+  so body links, FIG labels, and article list numbers clear WCAG AA on white —
+  the design-system paper values sit at ~3–4:1. The hero highlight is a
+  hard-coded `#2BE08A` and is untouched.
 
-The `0X` index in the `~/about` section rules is brightened to heading ink in
-`src/AboutScreen.jsx` (the `idx()` helper), not here — `SectionRule` bakes the
-faint colour inline so it can't be reached from CSS.
+The `~/about` section rules (`0X` + label) are brightened to heading ink in
+`src/AboutScreen.jsx` (the `hi()` helper), not here — `SectionRule` bakes the
+faint/muted colours inline so they can't be reached from CSS.
 
 ## What changed from the plain implementation
 
