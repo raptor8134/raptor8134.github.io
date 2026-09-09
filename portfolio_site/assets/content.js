@@ -19,7 +19,7 @@ window.SITE_DATA = {
         "label": "Download Resume",
         "href": "/assets/resume.pdf"
       },
-      "headlineHtml": "Half scientist,<br>half engineer,<br><span style=\"color:#2BE08A\">all builder</span>"
+      "headlineHtml": "Half scientist,<br>half engineer,<br><span style=\"color:var(--hero-mark,#2BE08A)\">all builder</span>"
     },
     "projects": {
       "pinned": [

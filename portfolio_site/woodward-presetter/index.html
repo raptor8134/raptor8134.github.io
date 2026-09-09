@@ -213,6 +213,18 @@ figcaption > span:first-child {
   box-shadow: 0 2px 0 -1px var(--accent-spring);
 }
 
+/* Top bar background: opaque, no backdrop-filter. The DS ships the sticky
+ * header translucent + blur; a solid bar reads cleaner here and sidesteps any
+ * compositor edge-feathering during the theme toggle. */
+header {
+  background: var(--ink-900) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+[data-theme="paper"] header {
+  background: var(--paper-100) !important;
+}
+
 /* Project cards in light mode: the hairline border on white is nearly
  * invisible. The border is an inline `var(--border-hairline)`, and the token
  * bakes in --line-1 at :root, so it can't be nudged by redefining --line-1 on
