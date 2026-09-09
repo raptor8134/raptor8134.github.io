@@ -236,15 +236,9 @@ header {
 }
 .pf-articlehead > nav::-webkit-scrollbar { display: none; }
 @media (max-width: 560px) {
-  /* Narrow: drop the Back button onto its own line above the path so the path
-   * gets the full width, and shrink it so the longest id still fits. */
-  .pf-articlehead {
-    flex-wrap: wrap;
-    justify-content: flex-end;
-  }
+  /* Narrow: shrink the path so it still fits on one line beside the Back
+   * button (nowrap + the shrink/scroll fallback above cover the rest). */
   .pf-articlehead > nav {
-    order: 2;
-    flex-basis: 100%;
     font-size: var(--size-sm) !important;   /* beats the inline size on <nav> */
   }
   /* Narrow: stack the Scope / Role list instead of squeezing it to two
