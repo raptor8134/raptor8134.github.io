@@ -36,7 +36,7 @@ function HomeScreen({onOpen}){
   const sec=hero.secondaryCta||{};
   return (
     <div>
-      <section style={{position:"relative",padding:"var(--space-9) var(--space-6) var(--space-7)"}}>
+      <section className="pf-hero" style={{position:"relative",padding:"var(--space-9) var(--space-6) var(--space-7)"}}>
         <ScrollBackdrop image={data.backdrop[bgIdx]} scrim="rgba(18,18,18,.55)"/>
         <div style={{width:"min(540px,100%)",margin:"0 auto",color:"#EDEDED",textAlign:"center",padding:"0 var(--space-4)",boxSizing:"border-box"}}>
         <div>

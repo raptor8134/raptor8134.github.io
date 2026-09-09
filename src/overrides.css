@@ -128,3 +128,11 @@ figcaption > span:first-child {
 }
 .style-switch { --grad-accent: #5B92FF; }
 [data-theme="paper"] .style-switch { --grad-accent: #1B4FD1; }
+
+/* The hero sits on a dark photo backdrop in both themes, so it keeps the
+ * dark-mode accents even in light mode: #3D7BFF for the [[highlight]] and
+ * #5B92FF for the primary-button fill (--grad-accent). */
+[data-theme="paper"] .pf-hero {
+  --hero-mark:   #3D7BFF;
+  --grad-accent: #5B92FF;
+}
