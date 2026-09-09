@@ -44,13 +44,13 @@ function ProjectScreen({id,onBack,onOpen}){
   const p=data.projects.find(x=>x.id===id)||data.projects[0];
   const others=data.projects.filter(x=>x.id!==p.id&&!x.draft);
   return (
-    <article style={{maxWidth:820,margin:"0 auto",padding:"var(--space-7) var(--space-6) var(--space-9)"}}>
+    <article style={{maxWidth:"calc(var(--measure) + 2 * var(--space-6))",margin:"0 auto",padding:"var(--space-7) var(--space-6) var(--space-9)"}}>
       {p.draft&&<div style={{fontFamily:"var(--font-mono)",fontSize:"var(--size-2xs)",letterSpacing:"var(--track-caps)",
         textTransform:"uppercase",color:"var(--signal-warn)",border:"1px dashed var(--signal-warn)",
         padding:"var(--space-2) var(--space-3)",marginBottom:"var(--space-4)"}}>
         Unlisted / staging — not linked from the site or indexed
       </div>}
-      <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:"var(--space-4)",
+      <div className="pf-articlehead" style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:"var(--space-4)",
         borderBottom:"var(--border-hairline)",paddingBottom:"var(--space-3)"}}>
         <Breadcrumb size="xl" items={["projects",p.id]}/>
         <Button size="sm" variant="ghost" prefix={<Icon name="arrow-left" size={13}/>} onClick={onBack}>Back</Button>
@@ -64,7 +64,7 @@ function ProjectScreen({id,onBack,onOpen}){
       <div style={{display:"flex",gap:6,flexWrap:"wrap",margin:"var(--space-4) 0 var(--space-5)"}}>
         {p.tags.map(t=><Tag key={t}>{t}</Tag>)}
       </div>
-      {p.meta&&p.meta.length>0&&<div style={{margin:"var(--space-5) 0 var(--space-6)",maxWidth:"var(--measure)"}}>
+      {p.meta&&p.meta.length>0&&<div className="pf-articlemeta" style={{margin:"var(--space-5) 0 var(--space-6)",maxWidth:"var(--measure)"}}>
         <KeyValueList columns={2} items={p.meta.map(m=>({key:<RawHtml html={m.key}/>,value:<RawHtml html={m.value}/>}))}/>
       </div>}
       <div>{(p.body&&p.body.length?p.body:[{p:"Write-up in progress."}]).map((b,i)=><ArticleBlock key={i} block={b}/>)}</div>

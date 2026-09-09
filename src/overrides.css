@@ -47,6 +47,45 @@ header {
   background: var(--paper-100) !important;
 }
 
+/* Article pages (ProjectScreen) ------------------------------------------- */
+/* The breadcrumb path must never break or wrap (project ids have hyphens, an
+ * easy break point). Let it shrink and scroll inside its flex slot instead. */
+.pf-articlehead > nav {
+  white-space: nowrap;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;            /* if it must scroll, do it without a bar */
+}
+.pf-articlehead > nav::-webkit-scrollbar { display: none; }
+@media (max-width: 560px) {
+  /* Narrow: drop the Back button onto its own line above the path so the path
+   * gets the full width, and shrink it so the longest id still fits. */
+  .pf-articlehead {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  .pf-articlehead > nav {
+    order: 2;
+    flex-basis: 100%;
+    font-size: var(--size-sm) !important;   /* beats the inline size on <nav> */
+  }
+  /* Narrow: stack the Scope / Role list instead of squeezing it to two
+   * columns — label on its own line, value full width below it. */
+  .pf-articlemeta dl {
+    grid-template-columns: 1fr !important;
+  }
+  .pf-articlemeta dl > div {
+    flex-wrap: wrap;
+  }
+  .pf-articlemeta dl > div > span {   /* the dashed leader */
+    display: none !important;
+  }
+  .pf-articlemeta dd {
+    text-align: left !important;
+    flex-basis: 100%;
+  }
+}
+
 /* Project cards in light mode: the hairline border on white is nearly
  * invisible. The border is an inline `var(--border-hairline)`, and the token
  * bakes in --line-1 at :root, so it can't be nudged by redefining --line-1 on
